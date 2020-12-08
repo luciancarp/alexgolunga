@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { fontSizes, fonts } from '../style/global'
 
 const GlobalStyle = createGlobalStyle`
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
@@ -490,6 +491,22 @@ template {
 [hidden] {
   display: none;
 }
+
+/* custom */
+body,
+  html,
+  #root {
+    font-family: ${fonts.body};
+    color:${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.background};
+    font-size: ${fontSizes.regular};
+    font-weight: 400;
+    font-style: normal;
+
+    transition: background-color 0.2s;
+    -webkit-transition: background-color 0.2s;
+    transition-timing-function: ease-out;
+  }
 `
 
 export default GlobalStyle
