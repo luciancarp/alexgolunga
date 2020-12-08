@@ -4,29 +4,33 @@ import PropTypes from 'prop-types'
 
 // import Footer from './footer'
 import ThemeSwitcher from '../components/ThemeSwitcher'
+import Navigation from './Navigation'
 
 const Layout = ({ children }) => {
   return (
     <>
+      <ThemeSwitcher />
       <Container>
-        <ThemeSwitcher />
-        <Content>{children}</Content>
-        {/* <Footer /> */}
+        <Navigation />
+        <>
+          <Content>{children}</Content>
+          {/* <Footer /> */}
+        </>
       </Container>
     </>
   )
 }
 
 const Container = styled.div`
-  /* margin: 0 auto;
+  margin: 0 auto;
   max-width: 1024px;
   padding: 1rem;
   padding-top: 0;
   padding-bottom: 0;
 
   display: flex;
-  flex-direction: column;
-  min-height: 100vh; */
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 const Content = styled.main`
