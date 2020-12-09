@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
 
 const Container = styled.div`
   margin: 0 auto;
-  max-width: 1024px;
+  /* max-width: 1024px; */
   padding: 1rem;
   padding-top: 0;
   padding-bottom: 0;

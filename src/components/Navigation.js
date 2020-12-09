@@ -1,5 +1,5 @@
 import React from 'react'
-// import styled from 'styled-components'
+import styled from 'styled-components'
 
 let navlinks = [
   'Sound Design Reel',
@@ -12,12 +12,14 @@ let navlinks = [
 
 const Navigation = () => {
   return (
-    <div>
+    <Container>
       {navlinks.map((link) => (
         <h2>{link}</h2>
       ))}
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div``
 
 export default Navigation

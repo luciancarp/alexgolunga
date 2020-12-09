@@ -2,6 +2,9 @@ import { createGlobalStyle } from 'styled-components'
 import { fontSizes, fonts } from '../style/global'
 
 const GlobalStyle = createGlobalStyle`
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 
 /* Reset box-model and set borders */

@@ -1,6 +1,6 @@
 export const fonts = {
-  header: 'Montserrat, sans-serif',
-  body: 'Arvo, serif',
+  header: 'Open Sans, sans-serif',
+  body: 'Open Sans, serif',
 }
 
 export const fontSizes = {
