@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import ThemeSwitcher from '../components/ThemeSwitcher'
 import Navigation from './Navigation'
 
+import { spaces } from '../style/global'
+
 const Layout = ({ children }) => {
   return (
     <>
@@ -28,14 +30,16 @@ const Container = styled.div`
   padding-top: 0;
   padding-bottom: 0;
 
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; */
 `
 
 const Content = styled.main`
   /* flex-grow: 1;
   max-width: 600px; */
+  margin-left: 200px;
+  padding: ${spaces.wide};
 `
 
 Layout.propTypes = {

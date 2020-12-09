@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { spaces } from '../style/global'
+
 let navlinks = [
   'Sound Design Reel',
   'Wwise Unity Integration',
   'MaxMSP/Gen/Jitter',
-  'Haptic Design',
   'Haptic Design',
   'Sound Installation: beating.',
 ]
@@ -20,6 +21,16 @@ const Navigation = () => {
   )
 }
 
-const Container = styled.div``
+const Container = styled.div`
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+
+  padding: ${spaces.wide};
+`
 
 export default Navigation
