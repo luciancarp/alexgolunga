@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
+
+import { spaces } from '../style/global'
 
 const Bold = ({ children }) => <span className='bold'>{children}</span>
 const Text = ({ children }) => <p className='align-center'>{children}</p>
@@ -28,12 +29,16 @@ const options = {
 
 const Project = ({ title, body }) => {
   return (
-    <Container>
-      <h3>{title}</h3>
+    <Container id={title}>
+      <Title>{title}</Title>
       <p> {renderRichText(body, options)}</p>
     </Container>
   )
 }
+
+const Title = styled.h1`
+  margin-bottom: ${spaces.regular};
+`
 
 const Container = styled.div``
 

@@ -36,8 +36,8 @@ const Container = styled.div`
 `
 
 const Content = styled.main`
-  /* flex-grow: 1;
-  max-width: 600px; */
+  /* flex-grow: 1; */
+  max-width: 600px;
   margin-left: 200px;
   padding: ${spaces.wide};
 `

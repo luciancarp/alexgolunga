@@ -510,6 +510,25 @@ body,
     -webkit-transition: background-color 0.2s;
     transition-timing-function: ease-out;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${fonts.header};
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  h1 {
+    font-size: ${fontSizes.large};
+  }
+
+  p {
+    line-height: 1.5;
+  }
 `
 
 export default GlobalStyle

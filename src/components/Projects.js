@@ -31,10 +31,13 @@ const Projects = () => {
   return <Container>{projectList}</Container>
 }
 
-const Container = styled.div``
+const Container = styled.div`
+  margin-bottom: 50vh;
+`
+
 const ProjectContainer = styled.div`
   margin-top: ${spaces.wide};
-  margin-bottom: ${spaces.wide};
+  margin-bottom: 3rem;
 `
 
 export default Projects
