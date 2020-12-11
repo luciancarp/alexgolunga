@@ -29,16 +29,12 @@ const Container = styled.div`
   padding: 1rem;
   padding-top: 0;
   padding-bottom: 0;
-
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-between; */
 `
 
 const Content = styled.main`
-  /* flex-grow: 1; */
-  max-width: 600px;
-  margin-left: 200px;
+  /* max-width: 600px; */
+  margin-top: 30vh;
+  margin-left: ${spaces.widthNav};
   padding: ${spaces.wide};
 `
 

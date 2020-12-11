@@ -39,6 +39,7 @@ export const spaces = {
   narrow: '0.75rem',
   regular: '1rem',
   wide: '1.45rem',
+  widthNav: '300px',
 }
 
 export const screenSizes = {

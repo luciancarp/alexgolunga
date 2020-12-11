@@ -29,7 +29,7 @@ const About = () => {
 }
 
 const Container = styled.div`
-  margin-bottom: 50vh;
+  margin-bottom: 6rem;
 `
 
 const Title = styled.h1`

@@ -509,6 +509,8 @@ body,
     transition: background-color 0.2s;
     -webkit-transition: background-color 0.2s;
     transition-timing-function: ease-out;
+
+    
   }
 
   h1,
