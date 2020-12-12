@@ -32,7 +32,7 @@ const Container = styled.div`
 `
 
 const Content = styled.main`
-  /* max-width: 600px; */
+  max-width: 600px;
   margin-top: 30vh;
   margin-left: ${spaces.widthNav};
   padding: ${spaces.wide};

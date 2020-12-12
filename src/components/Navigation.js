@@ -26,7 +26,12 @@ const Navigation = () => {
   return (
     <Container>
       <NavMenu>
-        <NavList items={navLinks} currentClassName='is-current' offset={-20}>
+        <NavList
+          items={navLinks}
+          currentClassName='is-current'
+          scrolledPastClassName='is-past'
+          offset={-20}
+        >
           {navLinks.map((link) => (
             <NavItem>
               <Link
@@ -48,26 +53,37 @@ const Navigation = () => {
 }
 
 const NavItem = styled.li`
-  margin-top: 50px;
-  margin-bottom: 50px;
-  width: 100px;
+  width: 7rem;
+  height: 7rem;
+
+  padding-left: ${spaces.narrow};
+  padding-right: ${spaces.narrow};
+
+  opacity: 0.5;
 
   h2 {
-    font-size: 0.6rem;
+    font-size: 0.75rem;
   }
 
   transform-origin: left;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg);
   -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg); */
+  transform: rotate(90deg);
 
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  -ms-transition: -ms-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 const NavList = styled(Scrollspy)`
   height: 100%;
+
+  margin-top: -3rem;
+  margin-left: ${spaces.regular};
 
   display: flex;
   flex-direction: column;
@@ -77,17 +93,22 @@ const NavList = styled(Scrollspy)`
 
 const NavMenu = styled.nav`
   .is-current {
-    color: ${(props) => props.theme.primary};
+    /* color: ${(props) => props.theme.primary}; */
+
+    opacity: 1;
 
     transform-origin: left;
-    transform: scale(2) translate(0px, 25px) rotate(0deg);
-    -ms-transform: scale(2) translate(0px, 25px) rotate(0deg);
-    -webkit-transform: scale(2) translate(0px, 25px) rotate(0deg);
+    transform: translate(0%, 50%) rotate(0) scale(2);
 
-    -webkit-transition: -webkit-transform 0.2s ease-in-out;
-    -ms-transition: -ms-transform 0.2s ease-in-out;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+    /* height: 1rem; */
+    /* margin: 1rem; */
   }
+
+  /* .is-past {
+    transform: translate(0%, 50%) rotate(90deg);
+  } */
 
   height: 100%;
 `
@@ -101,7 +122,7 @@ const Container = styled.header`
   /* left: 0; */
   overflow: visible;
 
-  padding: ${spaces.wide};
+  /* padding: ${spaces.wide}; */
 `
 
 export default Navigation
