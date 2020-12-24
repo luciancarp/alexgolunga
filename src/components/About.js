@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 import LinkedinSvg from '../assets/svg/linkedin.svg'
@@ -11,49 +11,71 @@ const description =
   'Hi, my name is Alex.\nSound designer and audio engineer.\nMaxMSP programmer.\nPassionate about game audio implementation and DSP.'
 
 const About = () => {
-  return (
-    <Container>
-      <Info>
-        <Title>{title}</Title>
-        <Contact>
-          <Email>agolunga@gmail.com</Email>
+  const [scrolled, setScrolled] = useState(false)
 
-          <Styleda
-            target='_blank'
-            rel='noopener noreferrer'
-            href={'http://twitter.com/'}
-          >
-            <Twitter />
-          </Styleda>
-          <Styleda
-            target='_blank'
-            rel='noopener noreferrer'
-            href={'http://linkedin.com/'}
-          >
-            <Linkedin />
-          </Styleda>
-        </Contact>
-      </Info>
-      <Description>
-        {description.split('\n').map((item, key) => (
-          <DescriptionLine key={key}>
-            {item}
-            <br />
-          </DescriptionLine>
-        ))}
-        <CV>
-          You can find my CV <CVLink>here</CVLink>.
-        </CV>
-      </Description>
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      setScrolled(currentScrollY > 15)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [scrolled])
+
+  return (
+    <Container state={scrolled}>
+      <Header>
+        <Info state={scrolled}>
+          <Title>{title}</Title>
+          <Contact>
+            <Email>agolunga@gmail.com</Email>
+
+            <Styleda
+              target='_blank'
+              rel='noopener noreferrer'
+              href={'http://twitter.com/'}
+            >
+              <Twitter />
+            </Styleda>
+            <Styleda
+              target='_blank'
+              rel='noopener noreferrer'
+              href={'http://linkedin.com/'}
+            >
+              <Linkedin />
+            </Styleda>
+          </Contact>
+        </Info>
+        <Description state={scrolled}>
+          {description.split('\n').map((item, key) => (
+            <DescriptionLine key={key}>
+              {item}
+              <br />
+            </DescriptionLine>
+          ))}
+          <CV>
+            You can find my CV <CVLink>here</CVLink>.
+          </CV>
+        </Description>
+      </Header>
     </Container>
   )
 }
 
-const Container = styled.div`
+const Container = styled('div').attrs(
+  ({ state, duration = '0.2s', start = 1, end = 0.75 }) => ({
+    style: {
+      transition: duration,
+      transform: `scale(${!state ? start : end})`,
+    },
+  })
+)`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1;
+  /* z-index: 1; */
 
   margin-bottom: 5vh;
   padding-top: ${spaces.narrow};
@@ -71,14 +93,31 @@ const Container = styled.div`
     backdrop-filter: blur(5px);
   }
 
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
 `
 
-const Info = styled.div`
+const Header = styled.div`
+  position: relative;
+`
+
+const Info = styled('div').attrs(
+  ({ state, duration = '0.2s', start = 0, end = 100 }) => ({
+    style: {
+      transition: duration,
+      transform: `translate(${!state ? start : end}%, 0%)`,
+    },
+  })
+)`
   padding-right: ${spaces.wide};
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  transition: transform 0.2s ease-in-out;
 `
 const Contact = styled.div`
   display: flex;
@@ -94,7 +133,20 @@ const Title = styled.h1`
   font-size: 3rem;
 `
 
-const Description = styled.div`
+const Description = styled('div').attrs(
+  ({ state, duration = '0.2s', start = 100, end = 0 }) => ({
+    style: {
+      transition: duration,
+      opacity: `${state ? end : start}%`,
+    },
+  })
+)`
+  position: absolute;
+  right: 0;
+  top: 50%;
+
+  /* transition: transform 0.2s ease-in-out; */
+
   padding-left: ${spaces.wide};
 
   display: flex;

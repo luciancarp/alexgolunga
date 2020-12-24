@@ -39,7 +39,7 @@ const Container = styled.div`
 const Content = styled.main`
   max-width: 1024px;
 
-  margin-top: 2.5vh;
+  margin-top: 0;
   margin-left: 0;
   @media (min-width: 1224px) {
     margin-left: ${spaces.widthNav};
