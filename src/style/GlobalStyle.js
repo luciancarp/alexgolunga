@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 import { fontSizes, fonts } from '../style/global'
 
-const GlobalStyle = createGlobalStyle`
+import '../style/typography.css'
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+const GlobalStyle = createGlobalStyle`
 
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 
@@ -496,6 +496,8 @@ template {
 }
 
 /* custom */
+
+
 body,
   html,
   #root {

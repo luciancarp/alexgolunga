@@ -1,6 +1,6 @@
 export const fonts = {
-  header: 'Open Sans, sans-serif',
-  body: 'Open Sans, serif',
+  header: 'Acre, sans-serif',
+  body: 'Acre, serif',
 }
 
 export const fontSizes = {
@@ -20,7 +20,7 @@ export const colors = {
 export const darkTheme = {
   name: 'dark',
   primary: '#ff4500',
-  background: '#1a1a1a',
+  background: '#000',
   backgroundTransp: 'rgba(26, 26, 26, 0.5)',
   backgroundoppositeTransp: 'rgba(238, 238, 238, 0.1)',
   text: '#eee',
