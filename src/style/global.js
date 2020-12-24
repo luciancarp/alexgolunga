@@ -21,7 +21,7 @@ export const darkTheme = {
   name: 'dark',
   primary: '#ff4500',
   background: '#000',
-  backgroundTransp: 'rgba(26, 26, 26, 0.5)',
+  backgroundTransp: 'rgba(0, 0, 0, 0.5)',
   backgroundoppositeTransp: 'rgba(238, 238, 238, 0.1)',
   text: '#eee',
 }
@@ -39,7 +39,7 @@ export const spaces = {
   narrow: '0.75rem',
   regular: '1rem',
   wide: '1.45rem',
-  widthNav: '300px',
+  widthNav: '275px',
 }
 
 export const screenSizes = {

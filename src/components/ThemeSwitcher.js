@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import ThemeContext from '../style/Theme'
-import Sun from '../assets/sun.svg'
-import Moon from '../assets/moon.svg'
+import Sun from '../assets/svg/sun.svg'
+import Moon from '../assets/svg/moon.svg'
 import { spaces, screenSizes } from '../style/global'
 
 const ThemeSwitcher = () => {
