@@ -2,32 +2,26 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
 import Scrollspy from 'react-scrollspy'
-import { useStaticQuery, graphql } from 'gatsby'
 
 import { spaces } from '../style/global'
 
+const navLinks = [
+  { id: 'reel', title: 'Game Audio Reel' },
+  { id: 'wwise', title: 'Wwise Unity Integration' },
+  { id: 'maxmsp', title: 'MaxMSP' },
+  { id: 'haptic', title: 'Haptic Design' },
+  { id: 'recording', title: 'Recording / Mix' },
+  { id: 'beating', title: 'beating.' },
+]
+
+const linkIds = navLinks.map((link) => link.id)
+
 const Navigation = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allContentfulProject {
-        edges {
-          node {
-            title
-          }
-        }
-      }
-    }
-  `)
-
-  const navLinks = data.allContentfulProject.edges.map(
-    (edge) => edge.node.title
-  )
-
   return (
     <Container>
       <NavMenu>
         <NavList
-          items={navLinks}
+          items={linkIds}
           currentClassName='is-current'
           scrolledPastClassName='is-past'
           offset={-20}
@@ -36,13 +30,13 @@ const Navigation = () => {
             <NavItem>
               <Link
                 activeClass='active'
-                to={link}
+                to={link.id}
                 spy={true}
                 smooth={true}
                 offset={-50}
                 duration={300}
               >
-                <h2>{link}</h2>
+                <h2>{link.title}</h2>
               </Link>
             </NavItem>
           ))}

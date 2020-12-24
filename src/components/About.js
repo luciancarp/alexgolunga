@@ -1,25 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
 
 import { spaces } from '../style/global'
 
+const title = 'Alex Golunga'
+const description =
+  'Sound designer and audio engineer. MaxMSP programmer. Passionate about game audio implementation and DSP.'
+
 const About = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allContentfulAbout {
-        edges {
-          node {
-            title
-            description
-          }
-        }
-      }
-    }
-  `)
-
-  const { title, description } = data.allContentfulAbout.edges[0].node
-
   return (
     <Container>
       <Title>{title}</Title>

@@ -1,15 +1,25 @@
 import * as React from 'react'
 
 import Layout from '../components/Layout'
-import Projects from '../components/Projects'
 import About from '../components/About'
 
-// markup
+import Reel from '../components/Reel'
+import Wwise from '../components/Wwise'
+import Maxmsp from '../components/Maxmsp'
+import Haptic from '../components/Haptic'
+import Recording from '../components/Recording'
+import Beating from '../components/Beating'
+
 const IndexPage = () => {
   return (
     <Layout>
       <About />
-      <Projects />
+      <Reel />
+      <Wwise />
+      <Maxmsp />
+      <Haptic />
+      <Recording />
+      <Beating />
     </Layout>
   )
 }

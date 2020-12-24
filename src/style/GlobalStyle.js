@@ -520,8 +520,9 @@ body,
   h5,
   h6 {
     font-family: ${fonts.header};
-    text-transform: uppercase;
-    font-style: normal;
+    /* font-weight: bold; */
+    /* text-transform: uppercase; */
+    /* font-style: normal; */
   }
 
   h1 {
