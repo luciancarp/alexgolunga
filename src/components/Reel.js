@@ -5,24 +5,51 @@ import { spaces } from '../style/global'
 
 const id = 'reel'
 const title = 'Game Audio Reel'
-const content =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam el'
 
 const Reel = () => {
   return (
     <Container id={id}>
       <Title>{title}</Title>
-      <p>{content}</p>
+      <StyledIframe
+        src='https://www.youtube.com/embed/I2N-Hweo3vE'
+        title='Game Audio Reel'
+        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+        frameBorder='0'
+        webkitallowfullscreen='true'
+        mozallowfullscreen='true'
+        allowFullScreen
+        // width="600"
+        // height="337"
+      />
     </Container>
   )
 }
+
+const StyledIframe = styled.iframe`
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* @media (min-width: 425px) {
+    height: 275px;
+  }
+
+  @media (min-width: 600px) {
+    height: 337px;
+  } */
+
+  border-style: solid;
+  border-color: #fff;
+  border-width: 2px;
+`
 
 const Title = styled.h1`
   margin-bottom: ${spaces.regular};
 `
 
 const Container = styled.div`
-  margin-bottom: ${spaces.wide};
+  height: 60vh;
+  margin-bottom: 12.5vh;
 `
 
 export default Reel

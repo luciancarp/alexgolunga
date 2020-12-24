@@ -17,6 +17,7 @@ const About = () => {
         <Title>{title}</Title>
         <Contact>
           <Email>agolunga@gmail.com</Email>
+
           <Styleda
             target='_blank'
             rel='noopener noreferrer'
@@ -54,10 +55,10 @@ const Container = styled.div`
   top: 0;
   z-index: 1;
 
-  margin-bottom: 6rem;
-  padding-top: ${spaces.regular};
-  padding-bottom: ${spaces.regular};
-  min-height: 10vh;
+  margin-bottom: 5vh;
+  padding-top: ${spaces.narrow};
+  padding-bottom: ${spaces.narrow};
+  min-height: 20vh;
 
   transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
