@@ -37,7 +37,7 @@ const Container = styled.div`
 `
 
 const Content = styled.main`
-  max-width: 1024px;
+  max-width: 900px;
 
   margin-top: 0;
   margin-left: 0;

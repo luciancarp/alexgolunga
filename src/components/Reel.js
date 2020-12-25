@@ -28,7 +28,7 @@ const Reel = () => {
 const StyledIframe = styled.iframe`
   display: block;
   width: 100%;
-  height: 100%;
+  height: 60vh;
 
   /* @media (min-width: 425px) {
     height: 275px;
@@ -45,11 +45,12 @@ const StyledIframe = styled.iframe`
 
 const Title = styled.h1`
   margin-bottom: ${spaces.regular};
+  font-size: 1.75rem;
 `
 
 const Container = styled.div`
-  height: 60vh;
-  margin-bottom: 12.5vh;
+  height: 65vh;
+  margin-bottom: 10vh;
 `
 
 export default Reel

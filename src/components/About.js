@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
+import { useMediaQuery } from 'react-responsive'
 
 import LinkedinSvg from '../assets/svg/linkedin.svg'
 import TwitterSvg from '../assets/svg/twitter.svg'
@@ -24,63 +25,82 @@ const About = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [scrolled])
 
-  return (
-    <Container state={scrolled}>
-      <Header>
-        <Info state={scrolled}>
-          <Title>{title}</Title>
-          <Contact>
-            <Email>agolunga@gmail.com</Email>
+  const isShort = useMediaQuery({
+    query: '(max-height: 700px)',
+  })
 
-            <Styleda
-              target='_blank'
-              rel='noopener noreferrer'
-              href={'http://twitter.com/'}
-            >
-              <Twitter />
-            </Styleda>
-            <Styleda
-              target='_blank'
-              rel='noopener noreferrer'
-              href={'http://linkedin.com/'}
-            >
-              <Linkedin />
-            </Styleda>
-          </Contact>
-        </Info>
-        <Description state={scrolled}>
-          {description.split('\n').map((item, key) => (
-            <DescriptionLine key={key}>
-              {item}
-              <br />
-            </DescriptionLine>
-          ))}
-          <CV>
-            You can find my CV <CVLink>here</CVLink>.
-          </CV>
-        </Description>
-      </Header>
-    </Container>
+  const animate = !isShort && scrolled
+
+  return (
+    <>
+      {true && (
+        <Container state={animate} sticky={!isShort}>
+          <Header>
+            <Translate state={animate} endX={25} endY={0}>
+              <Scale state={animate} end={0.75}>
+                <Info state={animate}>
+                  <Title>{title}</Title>
+                  <Contact>
+                    <Email>agolunga@gmail.com</Email>
+
+                    <Styleda
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      href={'http://twitter.com/'}
+                    >
+                      <Twitter />
+                    </Styleda>
+                    <Styleda
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      href={'http://linkedin.com/'}
+                    >
+                      <Linkedin />
+                    </Styleda>
+                  </Contact>
+                </Info>
+              </Scale>
+            </Translate>
+            <Opacity state={animate}>
+              <Description>
+                {description.split('\n').map((item, key) => (
+                  <DescriptionLine key={key}>
+                    {item}
+                    <br />
+                  </DescriptionLine>
+                ))}
+                <CV>
+                  You can find my CV <CVLink>here</CVLink>.
+                </CV>
+              </Description>
+            </Opacity>
+          </Header>
+        </Container>
+      )}
+    </>
   )
 }
 
 const Container = styled('div').attrs(
-  ({ state, duration = '0.2s', start = 1, end = 0.75 }) => ({
+  ({ state, sticky, duration = '0.2s', start = '20vh', end = '12vh' }) => ({
     style: {
       transition: duration,
-      transform: `scale(${!state ? start : end})`,
+      height: `${!state ? start : end}`,
+      paddingTop: `${!state ? '5vh' : '0.50rem'}`,
+      position: `${sticky ? 'sticky' : 'static'}`,
     },
   })
 )`
-  position: -webkit-sticky;
-  position: sticky;
+  /* position: -webkit-sticky;
+  position: sticky; */
   top: 0;
+
   /* z-index: 1; */
 
   margin-bottom: 5vh;
-  padding-top: ${spaces.narrow};
+  /* padding-top: ${spaces.narrow}; */
   padding-bottom: ${spaces.narrow};
-  min-height: 20vh;
+  /* height: 20vh; */
 
   transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
@@ -103,19 +123,12 @@ const Header = styled.div`
   position: relative;
 `
 
-const Info = styled('div').attrs(
-  ({ state, duration = '0.2s', start = 0, end = 100 }) => ({
-    style: {
-      transition: duration,
-      transform: `translate(${!state ? start : end}%, 0%)`,
-    },
-  })
-)`
+const Info = styled.div`
   padding-right: ${spaces.wide};
 
   position: absolute;
   left: 0;
-  top: 50%;
+  /* top: 50%; */
 
   transition: transform 0.2s ease-in-out;
 `
@@ -129,18 +142,11 @@ const Contact = styled.div`
 const Email = styled.h3``
 
 const Title = styled.h1`
-  margin-bottom: ${spaces.wide};
+  margin-bottom: 0.5rem;
   font-size: 3rem;
 `
 
-const Description = styled('div').attrs(
-  ({ state, duration = '0.2s', start = 100, end = 0 }) => ({
-    style: {
-      transition: duration,
-      opacity: `${state ? end : start}%`,
-    },
-  })
-)`
+const Description = styled.div`
   position: absolute;
   right: 0;
   top: 50%;
@@ -186,10 +192,48 @@ const SvgStyle = css`
 
 const Linkedin = styled(LinkedinSvg)`
   ${SvgStyle}
+  padding: 0.25rem;
+  padding-right: 0;
 `
 
 const Twitter = styled(TwitterSvg)`
   ${SvgStyle}
 `
+
+const Translate = styled('div').attrs(
+  ({
+    state,
+    duration = '0.2s',
+    startX = 0,
+    endX = 50,
+    startY = 0,
+    endY = 50,
+  }) => ({
+    style: {
+      transition: duration,
+      transform: `translate(${!state ? startX : endX}%, ${
+        !state ? startY : endY
+      }%)`,
+    },
+  })
+)``
+
+const Opacity = styled('div').attrs(
+  ({ state, duration = '0.2s', start = 100, end = 0 }) => ({
+    style: {
+      transition: duration,
+      opacity: `${state ? end : start}%`,
+    },
+  })
+)``
+
+const Scale = styled('div').attrs(
+  ({ state, duration = '0.2s', start = 1, end = 0.5 }) => ({
+    style: {
+      transition: duration,
+      transform: `scale(${!state ? start : end})`,
+    },
+  })
+)``
 
 export default About
