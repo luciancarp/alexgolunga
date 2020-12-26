@@ -16,16 +16,17 @@ const Reel = () => {
     <Container id={id} isMobileOrTablet={isMobileOrTablet}>
       <Title>{title}</Title>
       <StyledIframe
-        src='https://www.youtube.com/embed/I2N-Hweo3vE'
         title='Game Audio Reel'
         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
         frameBorder='0'
+        loading='lazy'
         webkitallowfullscreen='true'
         mozallowfullscreen='true'
         allowFullScreen
         // width="600"
         // height="337"
         isMobileOrTablet={isMobileOrTablet}
+        src='https://www.youtube.com/embed/I2N-Hweo3vE?autoplay=1'
       />
     </Container>
   )
