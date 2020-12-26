@@ -1,14 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useMediaQuery } from 'react-responsive'
 
-import { spaces } from '../style/global'
+import { spaces, screenSizes } from '../style/global'
 
 const id = 'reel'
 const title = 'Game Audio Reel'
 
 const Reel = () => {
+  const isMobileOrTablet = useMediaQuery({
+    query: `(max-width: ${screenSizes.laptop})`,
+  })
+
   return (
-    <Container id={id}>
+    <Container id={id} isMobileOrTablet={isMobileOrTablet}>
       <Title>{title}</Title>
       <StyledIframe
         src='https://www.youtube.com/embed/I2N-Hweo3vE'
@@ -20,6 +25,7 @@ const Reel = () => {
         allowFullScreen
         // width="600"
         // height="337"
+        isMobileOrTablet={isMobileOrTablet}
       />
     </Container>
   )
@@ -28,15 +34,7 @@ const Reel = () => {
 const StyledIframe = styled.iframe`
   display: block;
   width: 100%;
-  height: 60vh;
-
-  /* @media (min-width: 425px) {
-    height: 275px;
-  }
-
-  @media (min-width: 600px) {
-    height: 337px;
-  } */
+  height: ${(props) => (props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh')};
 
   border-style: solid;
   border-color: #fff;
@@ -49,8 +47,9 @@ const Title = styled.h1`
 `
 
 const Container = styled.div`
-  height: 65vh;
-  margin-bottom: 10vh;
+  height: ${(props) => (props.isMobileOrTablet ? '100%' : '65vh')};
+  margin-bottom: ${(props) =>
+    props.isMobileOrTablet ? `${spaces.wide}` : '10vh'};
 `
 
 export default Reel

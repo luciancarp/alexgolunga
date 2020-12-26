@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive'
 import LinkedinSvg from '../assets/svg/linkedin.svg'
 import TwitterSvg from '../assets/svg/twitter.svg'
 
-import { spaces } from '../style/global'
+import { spaces, screenSizes } from '../style/global'
 
 const title = 'Alex Golunga'
 const description =
@@ -29,11 +29,52 @@ const About = () => {
     query: '(max-height: 700px)',
   })
 
+  const isMobileOrTablet = useMediaQuery({
+    query: `(max-width: ${screenSizes.laptop})`,
+  })
+
   const animate = !isShort && scrolled
+
+  const MobileTabletAbout = () => (
+    <MContainer>
+      <MInfo>
+        <Title>{title}</Title>
+        <Contact>
+          <Email>agolunga@gmail.com</Email>
+
+          <Styleda
+            target='_blank'
+            rel='noopener noreferrer'
+            href={'http://twitter.com/'}
+          >
+            <Twitter />
+          </Styleda>
+          <Styleda
+            target='_blank'
+            rel='noopener noreferrer'
+            href={'http://linkedin.com/'}
+          >
+            <Linkedin />
+          </Styleda>
+        </Contact>
+      </MInfo>
+      <MDescription>
+        {description.split('\n').map((item, key) => (
+          <DescriptionLine key={key}>
+            {item}
+            <br />
+          </DescriptionLine>
+        ))}
+        <CV>
+          You can find my CV <CVLink>here</CVLink>.
+        </CV>
+      </MDescription>
+    </MContainer>
+  )
 
   return (
     <>
-      {true && (
+      {!isMobileOrTablet && (
         <Container state={animate} sticky={!isShort}>
           <Header>
             <Translate state={animate} endX={25} endY={0}>
@@ -77,6 +118,7 @@ const About = () => {
           </Header>
         </Container>
       )}
+      {isMobileOrTablet && <MobileTabletAbout />}
     </>
   )
 }
@@ -235,5 +277,40 @@ const Scale = styled('div').attrs(
     },
   })
 )``
+
+const MContainer = styled.div`
+  top: 0;
+
+  margin-bottom: ${spaces.wide};
+
+  padding-top: ${spaces.wide};
+
+  transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  transition-timing-function: ease-out;
+
+  background-color: ${(props) => props.theme.background};
+
+  @supports (backdrop-filter: none) {
+    background-color: ${(props) => props.theme.backgroundTransp};
+    backdrop-filter: blur(5px);
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+`
+
+const MInfo = styled.div`
+  padding-right: ${spaces.wide};
+  margin-bottom: ${spaces.wide};
+`
+
+const MDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
 
 export default About

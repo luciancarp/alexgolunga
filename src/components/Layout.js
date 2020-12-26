@@ -7,11 +7,11 @@ import { useMediaQuery } from 'react-responsive'
 import ThemeSwitcher from '../components/ThemeSwitcher'
 import Navigation from './Navigation'
 
-import { spaces } from '../style/global'
+import { spaces, screenSizes } from '../style/global'
 
 const Layout = ({ children }) => {
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-width: 1224px)',
+    query: `(min-width: ${screenSizes.laptopL})`,
   })
 
   return (
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
       <Container>
         {isDesktopOrLaptop && <Navigation />}
         <>
-          <Content isDesktopOrLaptop>{children}</Content>
+          <Content>{children}</Content>
           {/* <Footer /> */}
         </>
       </Container>
@@ -39,12 +39,13 @@ const Container = styled.div`
 const Content = styled.main`
   max-width: 900px;
 
-  margin-top: 0;
-  margin-left: 0;
-  @media (min-width: 1224px) {
-    margin-left: ${spaces.widthNav};
+  /* margin-top: 0; */
+  /* margin-left: 0; */
+  margin: 0 auto;
+  @media (min-width: ${screenSizes.laptop}) {
+    /* margin-left: ${spaces.widthNav}; */
   }
-  padding: ${spaces.wide};
+  padding: ${spaces.narrow};
   padding-top: 0;
 `
 
