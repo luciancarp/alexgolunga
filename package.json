@@ -18,7 +18,6 @@
   "license": "0BSD",
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
-    "env-cmd": "^10.1.0",
     "gatsby": "^2.26.1",
     "gatsby-plugin-preload-fonts": "^1.6.1",
     "gatsby-plugin-react-helmet": "^3.6.0",
