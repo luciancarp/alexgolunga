@@ -32,10 +32,6 @@ const StyledSun = styled(Sun)`
   width: 1.8rem;
   fill: rgba(204, 204, 204, 0.25);
 
-  transition: fill 0.2s;
-  -webkit-transition: fill 0.2s;
-  transition-timing-function: ease-out;
-
   @media (min-width: ${screenSizes.laptop}) {
     &:hover {
       fill: rgba(204, 204, 204, 1);
@@ -47,10 +43,6 @@ const StyledMoon = styled(Moon)`
   height: 1.8rem;
   width: 1.8rem;
   fill: rgba(26, 26, 26, 0.25);
-
-  transition: fill 0.2s;
-  -webkit-transition: fill 0.2s;
-  transition-timing-function: ease-out;
 
   @media (min-width: ${screenSizes.laptop}) {
     &:hover {

@@ -133,7 +133,13 @@ const About = () => {
 }
 
 const Container = styled('div').attrs(
-  ({ state, sticky, duration = '0.2s', start = '20vh', end = '12vh' }) => ({
+  ({
+    state,
+    sticky,
+    duration = 'height 0.2s, padding-top 0.2s, position 0.2s',
+    start = '20vh',
+    end = '12vh',
+  }) => ({
     style: {
       transition: duration,
       height: `${!state ? start : end}`,
@@ -156,10 +162,6 @@ const Container = styled('div').attrs(
   margin-right: -${spaces.wide};
   padding-left: ${spaces.wide};
   padding-right: ${spaces.wide};
-
-  transition: background-color 0.2s;
-  -webkit-transition: background-color 0.2s;
-  transition-timing-function: ease-out;
 
   background-color: ${(props) => props.theme.background};
 
@@ -240,9 +242,6 @@ const SvgStyle = css`
   width: 35px;
 
   fill: ${(props) => props.theme.text};
-  transition: fill 0.2s;
-  -webkit-transition: fill 0.2s;
-  transition-timing-function: ease-out;
 `
 
 const Linkedin = styled(LinkedinSvg)`
@@ -258,7 +257,7 @@ const Twitter = styled(TwitterSvg)`
 const Translate = styled('div').attrs(
   ({
     state,
-    duration = '0.2s',
+    duration = 'transform 0.2s',
     startX = 0,
     endX = 50,
     startY = 0,
@@ -274,7 +273,7 @@ const Translate = styled('div').attrs(
 )``
 
 const Opacity = styled('div').attrs(
-  ({ state, duration = '0.2s', start = 100, end = 0 }) => ({
+  ({ state, duration = 'opacity 0.2s', start = 100, end = 0 }) => ({
     style: {
       transition: duration,
       opacity: `${state ? end : start}%`,
@@ -297,10 +296,6 @@ const MContainer = styled.div`
   margin-bottom: ${spaces.wide};
 
   padding-top: ${spaces.wide};
-
-  transition: background-color 0.2s;
-  -webkit-transition: background-color 0.2s;
-  transition-timing-function: ease-out;
 
   background-color: ${(props) => props.theme.background};
 

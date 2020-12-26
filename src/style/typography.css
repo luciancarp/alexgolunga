@@ -1,4 +1,5 @@
 @font-face {
   font-family: 'Acre';
-  src: url('../assets/fonts/Jonathan Ball - Acre-Medium.otf') format('opentype');
+  src: url('../assets/fonts/Jonathan Ball - Acre-Medium.woff2') format('woff2'),
+    url('../assets/fonts/Jonathan Ball - Acre-Medium.otf') format('opentype');
 }

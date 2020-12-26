@@ -508,9 +508,6 @@ body,
     font-weight: 400;
     font-style: normal;
 
-    transition: background-color 0.2s;
-    -webkit-transition: background-color 0.2s;
-    transition-timing-function: ease-out;
 
     
   }
