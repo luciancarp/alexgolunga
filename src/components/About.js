@@ -77,8 +77,17 @@ const About = () => {
       {!isMobileOrTablet && (
         <Container state={animate} sticky={!isShort}>
           <Header>
-            <Translate state={animate} endX={25} endY={0}>
-              <Scale state={animate} end={0.75}>
+            <Translate
+              state={animate}
+              endX={25}
+              endY={0}
+              duration={'transform 0.2s ease-out'}
+            >
+              <Scale
+                state={animate}
+                end={0.75}
+                duration={'transform 0.2s ease-out'}
+              >
                 <Info state={animate}>
                   <Title>{title}</Title>
                   <Contact>
@@ -143,6 +152,10 @@ const Container = styled('div').attrs(
   /* padding-top: ${spaces.narrow}; */
   padding-bottom: ${spaces.narrow};
   /* height: 20vh; */
+  margin-left: -${spaces.wide};
+  margin-right: -${spaces.wide};
+  padding-left: ${spaces.wide};
+  padding-right: ${spaces.wide};
 
   transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
@@ -290,11 +303,6 @@ const MContainer = styled.div`
   transition-timing-function: ease-out;
 
   background-color: ${(props) => props.theme.background};
-
-  @supports (backdrop-filter: none) {
-    background-color: ${(props) => props.theme.backgroundTransp};
-    backdrop-filter: blur(5px);
-  }
 
   display: flex;
   flex-direction: column;

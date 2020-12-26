@@ -37,7 +37,7 @@ const StyledIframe = styled.iframe`
   height: ${(props) => (props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh')};
 
   border-style: solid;
-  border-color: #fff;
+  border-color: ${(props) => props.theme.text};
   border-width: 2px;
 `
 
@@ -50,6 +50,57 @@ const Container = styled.div`
   height: ${(props) => (props.isMobileOrTablet ? '100%' : '65vh')};
   margin-bottom: ${(props) =>
     props.isMobileOrTablet ? `${spaces.wide}` : '10vh'};
+
+  -webkit-animation: fadein 1.5s ease-in-out;
+  -moz-animation: fadein 1.5s ease-in-out;
+  -ms-animation: fadein 1.5s ease-in-out;
+  -o-animation: fadein 1.5s ease-in-out;
+  animation: fadein 1.5s ease-in-out;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-moz-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-ms-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-o-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `
 
 export default Reel
