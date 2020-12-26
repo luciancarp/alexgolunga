@@ -507,7 +507,7 @@ body,
     font-size: ${fontSizes.regular};
     font-weight: 400;
     font-style: normal;
-
+    /* font-display: block; */
 
     
   }
