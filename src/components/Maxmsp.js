@@ -5,6 +5,9 @@ import Img from 'gatsby-image'
 
 import { spaces } from '../style/global'
 
+import JitdemoMp4 from '../assets/videos/Jitdemo720.mp4'
+import JitdemoWebm from '../assets/videos/Jitdemo720.webm'
+
 const id = 'maxmsp'
 const title = 'MaxMSP'
 const content =
@@ -31,6 +34,11 @@ const Maxmsp = () => {
         alt='A corgi smiling happily'
       />
       <p>{content}</p>
+      <video controls>
+        <source src={JitdemoWebm} type='video/webm' />
+        <source src={JitdemoMp4} type='video/mp4' />
+        <track />
+      </video>
     </Container>
   )
 }
