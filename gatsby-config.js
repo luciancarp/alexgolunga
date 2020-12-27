@@ -15,5 +15,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-preload-fonts`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/`,
+      },
+    },
   ],
 }

@@ -1,6 +1,6 @@
 export const fonts = {
-  header: 'Acre, sans-serif',
-  body: 'Acre, serif',
+  header: 'Acre',
+  body: 'Acre',
 }
 
 export const fontSizes = {

@@ -501,7 +501,7 @@ template {
 body,
   html,
   #root {
-    font-family: ${fonts.body};
+    font-family: ${fonts.body}, sans-serif;
     color:${(props) => props.theme.text};
     background-color: ${(props) => props.theme.background};
     font-size: ${fontSizes.regular};
@@ -518,7 +518,7 @@ body,
   h4,
   h5,
   h6 {
-    font-family: ${fonts.header};
+    font-family: ${fonts.header}, sans-serif;
     /* font-weight: bold; */
     /* text-transform: uppercase; */
     /* font-style: normal; */
