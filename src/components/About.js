@@ -151,8 +151,7 @@ const Container = styled('div').attrs(
   /* position: -webkit-sticky;
   position: sticky; */
   top: 0;
-
-  /* z-index: 1; */
+  z-index: 1;
 
   margin-bottom: 5vh;
   /* padding-top: ${spaces.narrow}; */
