@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
 import Scrollspy from 'react-scrollspy'
 
+import { Translate, Opacity } from './Animations'
 import { spaces } from '../style/global'
 
 const navLinks = [
@@ -17,32 +18,43 @@ const navLinks = [
 const linkIds = navLinks.map((link) => link.id)
 
 const Navigation = () => {
+  const [isRendered, setIsRendered] = useState(false)
+
+  useEffect(() => {
+    setTimeout(function () {
+      setIsRendered(true)
+    }, 500)
+  }, [])
   return (
-    <Container>
-      <NavMenu>
-        <NavList
-          items={linkIds}
-          currentClassName='is-current'
-          scrolledPastClassName='is-past'
-          offset={-20}
-        >
-          {navLinks.map((link) => (
-            <NavItem>
-              <Link
-                activeClass='active'
-                to={link.id}
-                spy={true}
-                smooth={true}
-                offset={-50}
-                duration={300}
-              >
-                <h2>{link.title}</h2>
-              </Link>
-            </NavItem>
-          ))}
-        </NavList>
-      </NavMenu>
-    </Container>
+    <Opacity>
+      {isRendered && (
+        <Container>
+          <NavMenu>
+            <NavList
+              items={linkIds}
+              currentClassName='is-current'
+              scrolledPastClassName='is-past'
+              offset={-20}
+            >
+              {navLinks.map((link) => (
+                <NavItem>
+                  <Link
+                    activeClass='active'
+                    to={link.id}
+                    spy={true}
+                    smooth={true}
+                    offset={-50}
+                    duration={300}
+                  >
+                    <h2>{link.title}</h2>
+                  </Link>
+                </NavItem>
+              ))}
+            </NavList>
+          </NavMenu>
+        </Container>
+      )}
+    </Opacity>
   )
 }
 

@@ -5,6 +5,13 @@ import { useMediaQuery } from 'react-responsive'
 import LinkedinSvg from '../assets/svg/linkedin.svg'
 import TwitterSvg from '../assets/svg/twitter.svg'
 
+import {
+  TranslateDynamic,
+  OpacityDynamic,
+  ScaleDynamic,
+  Translate,
+  Opacity,
+} from './Animations'
 import { spaces, screenSizes } from '../style/global'
 
 const title = 'Alex Golunga'
@@ -73,62 +80,64 @@ const About = () => {
   )
 
   return (
-    <>
-      {!isMobileOrTablet && (
-        <Container state={animate} sticky={!isShort}>
-          <Header>
-            <Translate
-              state={animate}
-              endX={25}
-              endY={0}
-              duration={'transform 0.2s ease-out'}
-            >
-              <Scale
+    <Translate>
+      <Opacity>
+        {!isMobileOrTablet && (
+          <Container state={animate} sticky={!isShort}>
+            <Header>
+              <TranslateDynamic
                 state={animate}
-                end={0.75}
+                endX={25}
+                endY={0}
                 duration={'transform 0.2s ease-out'}
               >
-                <Info state={animate}>
-                  <Title>{title}</Title>
-                  <Contact>
-                    <Email>agolunga@gmail.com</Email>
+                <ScaleDynamic
+                  state={animate}
+                  end={0.75}
+                  duration={'transform 0.2s ease-out'}
+                >
+                  <Info state={animate}>
+                    <Title>{title}</Title>
+                    <Contact>
+                      <Email>agolunga@gmail.com</Email>
 
-                    <Styleda
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      href={'http://twitter.com/'}
-                    >
-                      <Twitter />
-                    </Styleda>
-                    <Styleda
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      href={'http://linkedin.com/'}
-                    >
-                      <Linkedin />
-                    </Styleda>
-                  </Contact>
-                </Info>
-              </Scale>
-            </Translate>
-            <Opacity state={animate}>
-              <Description>
-                {description.split('\n').map((item, key) => (
-                  <DescriptionLine key={key}>
-                    {item}
-                    <br />
-                  </DescriptionLine>
-                ))}
-                <CV>
-                  You can find my CV <CVLink>here</CVLink>.
-                </CV>
-              </Description>
-            </Opacity>
-          </Header>
-        </Container>
-      )}
-      {isMobileOrTablet && <MobileTabletAbout />}
-    </>
+                      <Styleda
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        href={'http://twitter.com/'}
+                      >
+                        <Twitter />
+                      </Styleda>
+                      <Styleda
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        href={'http://linkedin.com/'}
+                      >
+                        <Linkedin />
+                      </Styleda>
+                    </Contact>
+                  </Info>
+                </ScaleDynamic>
+              </TranslateDynamic>
+              <OpacityDynamic state={animate}>
+                <Description>
+                  {description.split('\n').map((item, key) => (
+                    <DescriptionLine key={key}>
+                      {item}
+                      <br />
+                    </DescriptionLine>
+                  ))}
+                  <CV>
+                    You can find my CV <CVLink>here</CVLink>.
+                  </CV>
+                </Description>
+              </OpacityDynamic>
+            </Header>
+          </Container>
+        )}
+        {isMobileOrTablet && <MobileTabletAbout />}
+      </Opacity>
+    </Translate>
   )
 }
 
@@ -252,42 +261,6 @@ const Linkedin = styled(LinkedinSvg)`
 const Twitter = styled(TwitterSvg)`
   ${SvgStyle}
 `
-
-const Translate = styled('div').attrs(
-  ({
-    state,
-    duration = 'transform 0.2s',
-    startX = 0,
-    endX = 50,
-    startY = 0,
-    endY = 50,
-  }) => ({
-    style: {
-      transition: duration,
-      transform: `translate(${!state ? startX : endX}%, ${
-        !state ? startY : endY
-      }%)`,
-    },
-  })
-)``
-
-const Opacity = styled('div').attrs(
-  ({ state, duration = 'opacity 0.2s', start = 100, end = 0 }) => ({
-    style: {
-      transition: duration,
-      opacity: `${state ? end : start}%`,
-    },
-  })
-)``
-
-const Scale = styled('div').attrs(
-  ({ state, duration = '0.2s', start = 1, end = 0.5 }) => ({
-    style: {
-      transition: duration,
-      transform: `scale(${!state ? start : end})`,
-    },
-  })
-)``
 
 const MContainer = styled.div`
   top: 0;
