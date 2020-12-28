@@ -5,7 +5,7 @@ import { ThemeProvider } from './src/style/Theme'
 
 import './src/style/bg.css'
 
-export const wrapRootElement = ({ element }) => (
+export const wrapPageElement = ({ element }) => (
   <ThemeProvider>
     <GlobalStyle />
     {element}
