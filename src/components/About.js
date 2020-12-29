@@ -13,6 +13,7 @@ import {
   Opacity,
 } from './Animations'
 import { spaces, screenSizes } from '../style/global'
+import useIsClient from '../hooks/useIsClient'
 
 const title = 'Alex Golunga'
 const description =
@@ -79,67 +80,77 @@ const About = () => {
     </MContainer>
   )
 
+  const { isClient, key } = useIsClient()
+
+  if (!isClient) return <Placeholder />
+
   return (
-    <Translate>
-      <Opacity>
-        {!isMobileOrTablet && (
-          <Container state={animate} sticky={!isShort}>
-            <Header>
-              <TranslateDynamic
-                state={animate}
-                endX={25}
-                endY={0}
-                duration={'transform 0.2s ease-out'}
-              >
-                <ScaleDynamic
+    <div key={key}>
+      {!isMobileOrTablet && (
+        <Container state={animate} sticky={!isShort}>
+          <Translate>
+            <Opacity>
+              <Header>
+                <TranslateDynamic
                   state={animate}
-                  end={0.75}
+                  endX={25}
+                  endY={0}
                   duration={'transform 0.2s ease-out'}
                 >
-                  <Info state={animate}>
-                    <Title>{title}</Title>
-                    <Contact>
-                      <Email>agolunga@gmail.com</Email>
+                  <ScaleDynamic
+                    state={animate}
+                    end={0.75}
+                    duration={'transform 0.2s ease-out'}
+                  >
+                    <Info state={animate}>
+                      <Title>{title}</Title>
+                      <Contact>
+                        <Email>agolunga@gmail.com</Email>
 
-                      <Styleda
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href={'http://twitter.com/'}
-                      >
-                        <Twitter />
-                      </Styleda>
-                      <Styleda
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        href={'http://linkedin.com/'}
-                      >
-                        <Linkedin />
-                      </Styleda>
-                    </Contact>
-                  </Info>
-                </ScaleDynamic>
-              </TranslateDynamic>
-              <OpacityDynamic state={animate}>
-                <Description>
-                  {description.split('\n').map((item, key) => (
-                    <DescriptionLine key={key}>
-                      {item}
-                      <br />
-                    </DescriptionLine>
-                  ))}
-                  <CV>
-                    You can find my CV <CVLink>here</CVLink>.
-                  </CV>
-                </Description>
-              </OpacityDynamic>
-            </Header>
-          </Container>
-        )}
-        {isMobileOrTablet && <MobileTabletAbout />}
-      </Opacity>
-    </Translate>
+                        <Styleda
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          href={'http://twitter.com/'}
+                        >
+                          <Twitter />
+                        </Styleda>
+                        <Styleda
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          href={'http://linkedin.com/'}
+                        >
+                          <Linkedin />
+                        </Styleda>
+                      </Contact>
+                    </Info>
+                  </ScaleDynamic>
+                </TranslateDynamic>
+                <OpacityDynamic state={animate}>
+                  <Description>
+                    {description.split('\n').map((item, key) => (
+                      <DescriptionLine key={key}>
+                        {item}
+                        <br />
+                      </DescriptionLine>
+                    ))}
+                    <CV>
+                      You can find my CV <CVLink>here</CVLink>.
+                    </CV>
+                  </Description>
+                </OpacityDynamic>
+              </Header>
+            </Opacity>
+          </Translate>
+        </Container>
+      )}
+      {isMobileOrTablet && <MobileTabletAbout />}
+    </div>
   )
 }
+
+const Placeholder = styled.div`
+  height: 25vh;
+`
 
 const Container = styled('div').attrs(
   ({

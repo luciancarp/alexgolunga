@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 
 import { Opacity, Translate } from './Animations'
+import useIsClient from '../hooks/useIsClient'
 import { spaces, screenSizes } from '../style/global'
 
 const id = 'reel'
@@ -21,8 +22,12 @@ const Reel = () => {
     }, 500)
   }, [])
 
+  const { isClient, key } = useIsClient()
+
+  if (!isClient) return <Placeholder />
+
   return (
-    <Container id={id} isMobileOrTablet={isMobileOrTablet}>
+    <Container id={id} isMobileOrTablet={isMobileOrTablet} key={key}>
       {isRendered && (
         <Translate>
           <Opacity>
@@ -46,6 +51,10 @@ const Reel = () => {
     </Container>
   )
 }
+
+const Placeholder = styled.div`
+  height: 65vh;
+`
 
 const StyledIframe = styled.iframe`
   display: block;
