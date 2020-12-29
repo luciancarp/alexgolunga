@@ -149,7 +149,7 @@ const About = () => {
 }
 
 const Placeholder = styled.div`
-  height: 25vh;
+  height: 30vh;
 `
 
 const Container = styled('div').attrs(

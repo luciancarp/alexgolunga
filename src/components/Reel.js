@@ -55,7 +55,7 @@ const Reel = () => {
 }
 
 const Placeholder = styled.div`
-  height: 65vh;
+  height: 75vh;
 `
 
 const StyledIframe = styled.iframe`
