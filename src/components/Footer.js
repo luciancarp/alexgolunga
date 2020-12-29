@@ -5,7 +5,17 @@ import { fontSizes } from '../style/global'
 const Footer = () => {
   return (
     <Container>
-      <Center>Made by Lucian Carp © {new Date().getFullYear()}</Center>
+      <Center>
+        Made by{' '}
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
+          href={'https://www.luciancarp.com/'}
+        >
+          Lucian Carp
+        </a>{' '}
+        © {new Date().getFullYear()}
+      </Center>
     </Container>
   )
 }
