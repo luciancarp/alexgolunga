@@ -33,15 +33,11 @@ const About = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [scrolled])
 
-  const isShort = useMediaQuery({
-    query: '(max-height: 700px)',
-  })
-
   const isMobileOrTablet = useMediaQuery({
     query: `(max-width: ${screenSizes.laptop})`,
   })
 
-  const animate = !isShort && scrolled
+  const animate = scrolled
 
   const MobileTabletAbout = () => (
     <MContainer>
@@ -87,7 +83,7 @@ const About = () => {
   return (
     <>
       {!isMobileOrTablet && (
-        <Container state={animate} sticky={!isShort} key={key}>
+        <Container state={animate} key={key}>
           <Translate>
             <Opacity>
               <Header>
@@ -155,21 +151,19 @@ const Placeholder = styled.div`
 const Container = styled('div').attrs(
   ({
     state,
-    sticky,
     duration = 'height 0.2s, padding-top 0.2s, position 0.2s',
     start = '20vh',
-    end = '12vh',
+    end = '6rem',
   }) => ({
     style: {
       transition: duration,
       height: `${!state ? start : end}`,
       paddingTop: `${!state ? '5vh' : '0.50rem'}`,
-      position: `${sticky ? 'sticky' : 'static'}`,
     },
   })
 )`
-  /* position: -webkit-sticky;
-  position: sticky; */
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   z-index: 1;
 
