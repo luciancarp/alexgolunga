@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
+import { Opacity, Translate } from './Animations'
 import { spaces } from '../style/global'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 
@@ -32,24 +33,33 @@ const Maxmsp = () => {
 
   return (
     <Container id={id} ref={halfPage}>
-      <Title>{title}</Title>
-      {hasScrolled && (
-        <Img
-          fluid={query.file.childImageSharp.fluid}
-          alt='A corgi smiling happily'
-        />
-      )}
-      <p>{content}</p>
-      {hasScrolled && (
-        <video controls>
-          <source src={JitdemoWebm} type='video/webm' />
-          <source src={JitdemoMp4} type='video/mp4' />
-          <track />
-        </video>
+      {hasScrolled ? (
+        <Opacity>
+          <Translate>
+            <Title>{title}</Title>
+            <Img
+              fluid={query.file.childImageSharp.fluid}
+              alt='A corgi smiling happily'
+            />
+            <p>{content}</p>
+
+            <video controls>
+              <source src={JitdemoWebm} type='video/webm' />
+              <source src={JitdemoMp4} type='video/mp4' />
+              <track />
+            </video>
+          </Translate>
+        </Opacity>
+      ) : (
+        <Placeholder />
       )}
     </Container>
   )
 }
+
+const Placeholder = styled.div`
+  height: 100vh;
+`
 
 const Title = styled.h1`
   margin-bottom: ${spaces.regular};
