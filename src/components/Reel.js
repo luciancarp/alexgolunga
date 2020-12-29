@@ -28,7 +28,7 @@ const Reel = () => {
 
   return (
     <Container id={id} isMobileOrTablet={isMobileOrTablet} key={key}>
-      {isRendered && (
+      {isRendered ? (
         <Translate>
           <Opacity>
             <Title>{title}</Title>
@@ -47,6 +47,8 @@ const Reel = () => {
             />
           </Opacity>
         </Translate>
+      ) : (
+        <Placeholder />
       )}
     </Container>
   )
