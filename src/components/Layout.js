@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { useMediaQuery } from 'react-responsive'
 
-// import Footer from './footer'
-import ThemeSwitcher from '../components/ThemeSwitcher'
+import Footer from './Footer'
+import ThemeSwitcher from './ThemeSwitcher'
 import Navigation from './Navigation'
 
 import { spaces, screenSizes } from '../style/global'
@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
         {isDesktopOrLaptop && <Navigation />}
         <>
           <Content>{children}</Content>
-          {/* <Footer /> */}
+          <Footer />
         </>
       </Container>
     </>
