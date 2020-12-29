@@ -26,35 +26,37 @@ const Navigation = () => {
     }, 500)
   }, [])
   return (
-    <Opacity>
+    <>
       {isRendered && (
-        <Container>
-          <NavMenu>
-            <NavList
-              items={linkIds}
-              currentClassName='is-current'
-              scrolledPastClassName='is-past'
-              offset={-100}
-            >
-              {navLinks.map((link) => (
-                <NavItem>
-                  <StyledLink
-                    activeClass='active'
-                    to={link.id}
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={300}
-                  >
-                    <h2>{link.title}</h2>
-                  </StyledLink>
-                </NavItem>
-              ))}
-            </NavList>
-          </NavMenu>
-        </Container>
+        <Opacity>
+          <Container>
+            <NavMenu>
+              <NavList
+                items={linkIds}
+                currentClassName='is-current'
+                scrolledPastClassName='is-past'
+                offset={-100}
+              >
+                {navLinks.map((link) => (
+                  <NavItem>
+                    <StyledLink
+                      activeClass='active'
+                      to={link.id}
+                      spy={true}
+                      smooth={true}
+                      offset={-100}
+                      duration={300}
+                    >
+                      <h2>{link.title}</h2>
+                    </StyledLink>
+                  </NavItem>
+                ))}
+              </NavList>
+            </NavMenu>
+          </Container>
+        </Opacity>
       )}
-    </Opacity>
+    </>
   )
 }
 
