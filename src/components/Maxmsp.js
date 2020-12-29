@@ -32,20 +32,20 @@ const Maxmsp = () => {
 
   return (
     <Container id={id} ref={halfPage}>
+      <Title>{title}</Title>
       {hasScrolled && (
-        <>
-          <Title>{title}</Title>
-          <Img
-            fluid={query.file.childImageSharp.fluid}
-            alt='A corgi smiling happily'
-          />
-          <p>{content}</p>
-          <video controls>
-            <source src={JitdemoWebm} type='video/webm' />
-            <source src={JitdemoMp4} type='video/mp4' />
-            <track />
-          </video>
-        </>
+        <Img
+          fluid={query.file.childImageSharp.fluid}
+          alt='A corgi smiling happily'
+        />
+      )}
+      <p>{content}</p>
+      {hasScrolled && (
+        <video controls>
+          <source src={JitdemoWebm} type='video/webm' />
+          <source src={JitdemoMp4} type='video/mp4' />
+          <track />
+        </video>
       )}
     </Container>
   )

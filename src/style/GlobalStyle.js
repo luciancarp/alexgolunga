@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { fontSizes, fonts } from '../style/global'
+import { fontSizes, fonts, spaces } from '../style/global'
 
 import '../style/typography.css'
 
@@ -530,6 +530,7 @@ body,
 
   p {
     line-height: 1.5;
+    margin-bottom: ${spaces.narrow};
   }
 `
 

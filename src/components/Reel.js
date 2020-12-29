@@ -70,13 +70,14 @@ const StyledIframe = styled.iframe`
 
 const Title = styled.h1`
   margin-bottom: ${spaces.regular};
-  font-size: 1.75rem;
 `
 
 const Container = styled.div`
   height: ${(props) => (props.isMobileOrTablet ? '100%' : '65vh')};
   margin-bottom: ${(props) =>
-    props.isMobileOrTablet ? `${spaces.wide}` : '10vh'};
+    props.isMobileOrTablet
+      ? `${spaces.spacer}`
+      : `calc(10vh + ${spaces.wide})`};
 `
 
 export default Reel

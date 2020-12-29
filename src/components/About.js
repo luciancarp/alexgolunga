@@ -85,9 +85,9 @@ const About = () => {
   if (!isClient) return <Placeholder />
 
   return (
-    <div key={key}>
+    <>
       {!isMobileOrTablet && (
-        <Container state={animate} sticky={!isShort}>
+        <Container state={animate} sticky={!isShort} key={key}>
           <Translate>
             <Opacity>
               <Header>
@@ -143,8 +143,8 @@ const About = () => {
           </Translate>
         </Container>
       )}
-      {isMobileOrTablet && <MobileTabletAbout />}
-    </div>
+      {isMobileOrTablet && <MobileTabletAbout key={key} />}
+    </>
   )
 }
 
@@ -237,7 +237,9 @@ const Description = styled.div`
   /* justify-content: space-between; */
 `
 
-const DescriptionLine = styled.p``
+const DescriptionLine = styled.p`
+  margin-bottom: 0.1rem;
+`
 
 const CV = styled.p`
   margin-top: ${spaces.narrow};
@@ -254,6 +256,8 @@ const Styleda = styled.a`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
 `
 
 const SvgStyle = css`

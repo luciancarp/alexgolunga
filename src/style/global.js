@@ -6,7 +6,7 @@ export const fonts = {
 export const fontSizes = {
   small: '0.75rem',
   regular: '1.0rem',
-  large: '1.45rem',
+  large: '1.75rem',
   xLarge: '3rem',
 }
 
@@ -39,6 +39,7 @@ export const spaces = {
   narrow: '0.75rem',
   regular: '1rem',
   wide: '1.45rem',
+  spacer: '4rem',
   widthNav: '325px',
 }
 

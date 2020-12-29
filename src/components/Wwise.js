@@ -1,26 +1,53 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
+import { useMediaQuery } from 'react-responsive'
 
+import { Opacity } from './Animations'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
-import { spaces } from '../style/global'
+import { spaces, screenSizes } from '../style/global'
 
 const id = 'wwise'
 const title = 'Wwise Unity Integration'
-const content =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam elLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam elLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam elLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam elLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam elLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam elLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam efficitur, leo vel porta dapibus, lorem tortor placerat nulla, at gravida ligula lorem auctor lorem. Nulla maximus condimentum ornare. Duis iaculis nibh nec nisi commodo, vel tincidunt mi venenatis. Cras at velit pretium, finibus augue vel, consequat mi. Sed cursus neque id aliquet hendrerit. Vivamus massa metus, pulvinar eget turpis at, dictum placerat libero. Suspendisse potenti. Cras eu tincidunt nunc. Ut quis orci nibh. Nam el'
 
 const Wwise = () => {
   const halfPage = useRef()
-  const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.01)
+  const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1)
+
+  const isMobileOrTablet = useMediaQuery({
+    query: `(max-width: ${screenSizes.laptop})`,
+  })
 
   return (
-    <Container id={id} ref={halfPage}>
-      {hasScrolled && (
-        <>
-          <Title>{title}</Title>
-          <p>{content}</p>
-        </>
-      )}
+    <Container id={id}>
+      <Title>{title}</Title>
+      <p>
+        Burgundy is a demo I created to demonstrate my proficiency with some
+        Wwise and Unity integration features.
+      </p>
+      <p>
+        The sound design is original, and most of the systems created using
+        Wwise are described in the walkthrough below. All of the scripts shown
+        are written by me as well.
+      </p>
+      <div ref={halfPage}>
+        {hasScrolled && (
+          <>
+            <Opacity>
+              <StyledIframe
+                title='Game Audio Reel'
+                allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                frameBorder='0'
+                loading='lazy'
+                webkitallowfullscreen='true'
+                mozallowfullscreen='true'
+                allowFullScreen
+                src='https://www.youtube.com/embed/710vanhhe08'
+                isMobileOrTablet={isMobileOrTablet}
+              />
+            </Opacity>
+          </>
+        )}
+      </div>
     </Container>
   )
 }
@@ -30,7 +57,18 @@ const Title = styled.h1`
 `
 
 const Container = styled.div`
-  margin-bottom: ${spaces.wide};
+  margin-bottom: ${spaces.spacer};
+`
+
+const StyledIframe = styled.iframe`
+  display: block;
+  width: 100%;
+  height: ${(props) => (props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh')};
+  border-style: solid;
+  border-color: ${(props) => props.theme.text};
+  border-width: 2px;
+
+  margin-top: ${spaces.wide};
 `
 
 export default Wwise

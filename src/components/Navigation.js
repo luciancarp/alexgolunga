@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-scroll'
 import Scrollspy from 'react-scrollspy'
 
-import { Translate, Opacity } from './Animations'
+import { Opacity } from './Animations'
 import { spaces } from '../style/global'
 
 const navLinks = [
@@ -34,20 +34,20 @@ const Navigation = () => {
               items={linkIds}
               currentClassName='is-current'
               scrolledPastClassName='is-past'
-              offset={-20}
+              offset={-100}
             >
               {navLinks.map((link) => (
                 <NavItem>
-                  <Link
+                  <StyledLink
                     activeClass='active'
                     to={link.id}
                     spy={true}
                     smooth={true}
-                    offset={-50}
+                    offset={-100}
                     duration={300}
                   >
                     <h2>{link.title}</h2>
-                  </Link>
+                  </StyledLink>
                 </NavItem>
               ))}
             </NavList>
@@ -57,6 +57,10 @@ const Navigation = () => {
     </Opacity>
   )
 }
+
+const StyledLink = styled(Link)`
+  cursor: pointer;
+`
 
 const NavItem = styled.li`
   width: 7rem;
