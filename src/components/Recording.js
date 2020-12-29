@@ -23,9 +23,9 @@ const Recording = () => {
               A short reel consisting of some music projects to which I
               contributed with recording and/or mixing.
             </p>
-            <audio controls>
+            <StyledAudio controls>
               <source src={recmixreel} type='audio/wav' />
-            </audio>
+            </StyledAudio>
           </Translate>
         </Opacity>
       ) : (
@@ -34,6 +34,10 @@ const Recording = () => {
     </Container>
   )
 }
+
+const StyledAudio = styled.audio`
+  margin-bottom: ${spaces.narrow};
+`
 
 const Placeholder = styled.div`
   height: 100vh;

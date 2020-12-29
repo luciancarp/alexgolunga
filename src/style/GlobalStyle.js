@@ -528,6 +528,10 @@ body,
     font-size: ${fontSizes.large};
   }
 
+  h3 {
+    margin-bottom: ${spaces.narrow};
+  }
+
   p {
     line-height: 1.5;
     margin-bottom: ${spaces.narrow};
