@@ -25,7 +25,7 @@ export const Translate = styled.div`
   -o-animation: translate 0.5s ease-in-out;
   animation: translate 0.5s ease-in-out;
 
-  @keyframes translate {
+  @-webkit-keyframes translate {
     from {
       transform: translate(0, 2rem);
     }
@@ -35,15 +35,6 @@ export const Translate = styled.div`
   }
 
   @-moz-keyframes translate {
-    from {
-      transform: translate(0, 2rem);
-    }
-    to {
-      transform: translate(0, 0);
-    }
-  }
-
-  @-webkit-keyframes translate {
     from {
       transform: translate(0, 2rem);
     }
@@ -69,6 +60,15 @@ export const Translate = styled.div`
       transform: translate(0, 0);
     }
   }
+
+  @keyframes translate {
+    from {
+      transform: translate(0, 2rem);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
 `
 
 export const OpacityDynamic = styled('div').attrs(
@@ -87,7 +87,7 @@ export const Opacity = styled.div`
   -o-animation: fadein 0.5s ease-in-out;
   animation: fadein 0.5s ease-in-out;
 
-  @keyframes fadein {
+  @-webkit-keyframes fadein {
     from {
       opacity: 0;
     }
@@ -97,15 +97,6 @@ export const Opacity = styled.div`
   }
 
   @-moz-keyframes fadein {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @-webkit-keyframes fadein {
     from {
       opacity: 0;
     }
@@ -124,6 +115,15 @@ export const Opacity = styled.div`
   }
 
   @-o-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadein {
     from {
       opacity: 0;
     }

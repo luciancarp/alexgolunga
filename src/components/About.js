@@ -41,38 +41,42 @@ const About = () => {
 
   const MobileTabletAbout = () => (
     <MContainer>
-      <MInfo>
-        <Title>{title}</Title>
-        <Contact>
-          <Email>agolunga@gmail.com</Email>
+      <Translate>
+        <Opacity>
+          <MInfo>
+            <Title>{title}</Title>
+            <Contact>
+              <Email>agolunga@gmail.com</Email>
 
-          <Styleda
-            target='_blank'
-            rel='noopener noreferrer'
-            href={'http://twitter.com/'}
-          >
-            <Twitter />
-          </Styleda>
-          <Styleda
-            target='_blank'
-            rel='noopener noreferrer'
-            href={'http://linkedin.com/'}
-          >
-            <Linkedin />
-          </Styleda>
-        </Contact>
-      </MInfo>
-      <MDescription>
-        {description.split('\n').map((item, key) => (
-          <DescriptionLine key={key}>
-            {item}
-            <br />
-          </DescriptionLine>
-        ))}
-        <CV>
-          You can find my CV <CVLink>here</CVLink>.
-        </CV>
-      </MDescription>
+              <Styleda
+                target='_blank'
+                rel='noopener noreferrer'
+                href={'http://twitter.com/'}
+              >
+                <Twitter />
+              </Styleda>
+              <Styleda
+                target='_blank'
+                rel='noopener noreferrer'
+                href={'http://linkedin.com/'}
+              >
+                <Linkedin />
+              </Styleda>
+            </Contact>
+          </MInfo>
+          <MDescription>
+            {description.split('\n').map((item, key) => (
+              <DescriptionLine key={key}>
+                {item}
+                <br />
+              </DescriptionLine>
+            ))}
+            <CV>
+              You can find my CV <CVLink>here</CVLink>.
+            </CV>
+          </MDescription>
+        </Opacity>
+      </Translate>
     </MContainer>
   )
 
