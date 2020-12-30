@@ -21,6 +21,7 @@ const description =
 
 const About = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [showDescription, setShowDescription] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +32,16 @@ const About = () => {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [scrolled])
+
+  useEffect(() => {
+    if (scrolled) {
+      setTimeout(function () {
+        setShowDescription(false)
+      }, 200)
+    } else {
+      setShowDescription(true)
+    }
   }, [scrolled])
 
   const isMobileOrTablet = useMediaQuery({
@@ -125,19 +136,22 @@ const About = () => {
                     </Info>
                   </ScaleDynamic>
                 </TranslateDynamic>
-                <OpacityDynamic state={animate}>
-                  <Description>
-                    {description.split('\n').map((item, key) => (
-                      <DescriptionLine key={key}>
-                        {item}
-                        <br />
-                      </DescriptionLine>
-                    ))}
-                    <CV>
-                      You can find my CV <CVLink>here</CVLink>.
-                    </CV>
-                  </Description>
-                </OpacityDynamic>
+
+                {showDescription && (
+                  <OpacityDynamic state={animate}>
+                    <Description>
+                      {description.split('\n').map((item, key) => (
+                        <DescriptionLine key={key}>
+                          {item}
+                          <br />
+                        </DescriptionLine>
+                      ))}
+                      <CV>
+                        You can find my CV <CVLink>here</CVLink>.
+                      </CV>
+                    </Description>
+                  </OpacityDynamic>
+                )}
               </Header>
             </Opacity>
           </Translate>

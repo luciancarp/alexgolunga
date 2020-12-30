@@ -87,15 +87,15 @@ const NavItem = styled.li`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `
 
 const NavList = styled(Scrollspy)`
   height: 100%;
 
-  margin-top: -3rem;
-  margin-left: ${spaces.regular};
+  margin-top: -2.5rem;
+  margin-left: ${spaces.wide};
 
   display: flex;
   flex-direction: column;
@@ -110,7 +110,7 @@ const NavMenu = styled.nav`
     opacity: 1;
 
     transform-origin: left;
-    transform: translate(0%, 50%) rotate(0) scale(2);
+    transform: translate(0, 2.75rem) rotate(0) scale(2);
 
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
