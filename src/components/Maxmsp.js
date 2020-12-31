@@ -51,97 +51,123 @@ const Maxmsp = () => {
         <Opacity>
           <Translate>
             <Title>{title}</Title>
-            <p>
-              I program custom audio devices such as flexible samplers, basic
-              reverbs, audio spatialisation devices (using binaural and
-              ambisonic externals), synths and utilities.
-            </p>
-
-            <p>
-              These allow me to shape my workflows efficiently and integrate
-              features that might not be present in other plugins.
-            </p>
-
             <GridContainer>
-              <GridItem col={'1 / 2'} row={1}>
-                <StyledImg
-                  fluid={query.tremolo.childImageSharp.fluid}
-                  alt='Tremolo'
-                />
-                <p>Tremolo with switchable waveforms and smoothing</p>
-              </GridItem>
-              <GridItem col={'2 / 2'} row={1}>
-                <StyledImg
-                  fluid={query.envGenSynth.childImageSharp.fluid}
-                  alt='EnvGenSynth'
-                />
+              <GridItem col={'1'} row={'1'}>
                 <p>
-                  Single-oscillator synth with multiple waveform/noise options
-                  and multi-stage envelope generator; also saves a bank of
-                  user-generated presets
+                  I program custom audio devices such as flexible samplers,
+                  basic reverbs, audio spatialisation devices (using binaural
+                  and ambisonic externals), synths and utilities.
                 </p>
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={2}>
-                <StyledImg
-                  fluid={query.FFTFX.childImageSharp.fluid}
-                  alt='FFTFX'
-                />
-                <p>
-                  Effects unit that comprises multiple stages; essentially,
-                  signal is fed into a running buffer (written in gen~), which
-                  in turn feeds a buffer with a blend factor, creating
-                  wavetables for a modulated oscillator. This latest signal is
-                  then convolved (amplitude-only) with the original signal, and
-                  the result is passed to the filtering/overdrive stage.
-                </p>
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={3}>
-                <StyledVideo controls>
-                  <source src={MfeditWebm} type='video/webm' />
-                  <source src={MfeditMp4} type='video/mp4' />
-                  <track />
-                </StyledVideo>
 
                 <p>
-                  Millefeuille: an 8-voice sound layering tool with per-voice
-                  multi-stage amplitude envelopes and non-linear playback
-                  functions
+                  These allow me to shape my workflows efficiently and integrate
+                  features that might not be present in other plugins.
                 </p>
               </GridItem>
-              <GridItem col={'1 / span 2'} row={4}>
+              <GridItem col={'2'} row={'1'}>
+                <ImageContainer>
+                  <StyledImg
+                    fluid={query.tremolo.childImageSharp.fluid}
+                    alt='Tremolo'
+                  />
+
+                  <Caption>
+                    Tremolo with switchable waveforms and smoothing
+                  </Caption>
+                </ImageContainer>
+              </GridItem>
+              <GridItem col={'1'} row={'2'}>
+                <ImageContainer>
+                  <StyledImg
+                    fluid={query.envGenSynth.childImageSharp.fluid}
+                    alt='EnvGenSynth'
+                  />
+                  <Caption>
+                    Single-oscillator synth with multiple waveform/noise options
+                    and multi-stage envelope generator; also saves a bank of
+                    user-generated presets
+                  </Caption>
+                </ImageContainer>
+              </GridItem>
+              <GridItem col={'2'} row={'2'}>
+                <ImageContainer>
+                  <StyledImg
+                    fluid={query.FFTFX.childImageSharp.fluid}
+                    alt='FFTFX'
+                  />
+                  <Caption>
+                    Effects unit that comprises multiple stages; essentially,
+                    signal is fed into a running buffer (written in gen~), which
+                    in turn feeds a buffer with a blend factor, creating
+                    wavetables for a modulated oscillator. This latest signal is
+                    then convolved (amplitude-only) with the original signal,
+                    and the result is passed to the filtering/overdrive stage.
+                  </Caption>
+                </ImageContainer>
+              </GridItem>
+
+              <GridItem col={'1 / span 2'} row={'3'}>
                 <VideoContainer>
-                  <p>I also create minimalist visuals using Jitter:</p>
                   <StyledVideo controls>
-                    <source src={JitdemoWebm} type='video/webm' />
-                    <source src={JitdemoMp4} type='video/mp4' />
+                    <source src={MfeditWebm} type='video/webm' />
+                    <source src={MfeditMp4} type='video/mp4' />
                     <track />
                   </StyledVideo>
-                  <p>
-                    Oscillator waveforms are switched stochastically using a
-                    table of weighted probabilities and the audio morph is
-                    smoothed with gen~
-                  </p>
+                  <Caption>
+                    Millefeuille: an 8-voice sound layering tool with per-voice
+                    multi-stage amplitude envelopes and non-linear playback
+                    functions
+                  </Caption>
                 </VideoContainer>
               </GridItem>
-              <GridItem col={'1 / span 2'} row={5}>
-                <VideoContainer>
-                  <StyledVideo controls>
-                    <source
-                      src={NotionparticlesconvertedWebm}
-                      type='video/webm'
-                    />
-                    <source
-                      src={NotionparticlesconvertedMp4}
-                      type='video/mp4'
-                    />
-                    <track />
-                  </StyledVideo>
-                  <p>
-                    Particle system written with jit.gen and some openGL Jitter
-                    modules. The background is actually displaying the lifetimes
-                    of the particles.
-                  </p>
-                </VideoContainer>
+              <GridItem col={'1 / span 2'} row={'4'}>
+                <InnerGridConteiner>
+                  <GridItem col={'1 / span 2'} row={'1'}>
+                    <h2
+                      style={{
+                        textAlign: 'center',
+                        marginBottom: spaces.wide,
+                      }}
+                    >
+                      I also create minimalist visuals using Jitter:
+                    </h2>
+                  </GridItem>
+
+                  <GridItem col={'1'} row={'2'}>
+                    <VideoContainer>
+                      <StyledVideo controls>
+                        <source src={JitdemoWebm} type='video/webm' />
+                        <source src={JitdemoMp4} type='video/mp4' />
+                        <track />
+                      </StyledVideo>
+                      <Caption>
+                        Oscillator waveforms are switched stochastically using a
+                        table of weighted probabilities and the audio morph is
+                        smoothed with gen~
+                      </Caption>
+                    </VideoContainer>
+                  </GridItem>
+                  <GridItem col={'2'} row={'2'}>
+                    <VideoContainer>
+                      <StyledVideo controls>
+                        <source
+                          src={NotionparticlesconvertedWebm}
+                          type='video/webm'
+                        />
+                        <source
+                          src={NotionparticlesconvertedMp4}
+                          type='video/mp4'
+                        />
+                        <track />
+                      </StyledVideo>
+                      <Caption>
+                        Particle system written with jit.gen and some openGL
+                        Jitter modules. The background is actually displaying
+                        the lifetimes of the particles.
+                      </Caption>
+                    </VideoContainer>
+                  </GridItem>
+                </InnerGridConteiner>
               </GridItem>
             </GridContainer>
           </Translate>
@@ -154,7 +180,15 @@ const Maxmsp = () => {
 }
 
 const VideoContainer = styled.div`
-  width: 70%;
+  max-width: ${(props) =>
+    props.customWidth ? `${props.customWidth}` : '100%'};
+  margin-left: auto;
+  margin-right: auto;
+`
+
+const ImageContainer = styled.div`
+  max-width: ${(props) =>
+    props.customWidth ? `${props.customWidth}` : '100%'};
   margin-left: auto;
   margin-right: auto;
 `
@@ -178,19 +212,31 @@ const StyledVideo = styled.video`
 
 const GridItem = styled.div`
   grid-column: ${(props) => (props.col ? props.col : '1 / 2')};
-  grid-row: ${(props) => (props.row ? `${props.row}` : '1')};
+  grid-row: ${(props) => (props.row ? props.row : '1')};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 const GridContainer = styled.div`
   margin-top: ${spaces.wide};
 
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: auto auto; */
   /* grid-template-rows: 80px auto 80px; */
   column-gap: ${spaces.wide};
-  row-gap: ${spaces.wide};
-  grid-auto-rows: minmax(100px, auto);
+  row-gap: 3rem;
+  /* grid-auto-rows: minmax(100px, auto); */
+`
+
+const InnerGridConteiner = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: ${spaces.wide};
+  row-gap: 0;
 `
 
 const Placeholder = styled.div`
@@ -198,11 +244,15 @@ const Placeholder = styled.div`
 `
 
 const Title = styled.h1`
-  margin-bottom: ${spaces.regular};
+  margin-bottom: ${spaces.wide};
+`
+
+const Caption = styled.figcaption`
+  opacity: 0.75;
 `
 
 const Container = styled.div`
-  margin-bottom: ${spaces.wide};
+  margin-bottom: ${spaces.spacer};
 `
 
 export default Maxmsp

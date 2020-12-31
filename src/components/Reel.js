@@ -70,6 +70,7 @@ const StyledIframe = styled.iframe`
 
 const Title = styled.h1`
   margin-bottom: ${spaces.regular};
+  text-align: left;
 `
 
 const Container = styled.div`

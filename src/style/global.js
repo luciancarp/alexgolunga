@@ -6,8 +6,8 @@ export const fonts = {
 export const fontSizes = {
   small: '0.75rem',
   regular: '1.0rem',
-  large: '1.75rem',
-  xLarge: '3rem',
+  medium: '1.5rem',
+  large: '2.25rem',
 }
 
 export const colors = {

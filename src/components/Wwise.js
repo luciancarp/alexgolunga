@@ -23,27 +23,32 @@ const Wwise = () => {
         <Opacity>
           <Translate>
             <Title>{title}</Title>
-            <p>
-              Burgundy is a demo I created to demonstrate my proficiency with
-              some Wwise and Unity integration features.
-            </p>
-            <p>
-              The sound design is original, and most of the systems created
-              using Wwise are described in the walkthrough below. All of the
-              scripts shown are written by me as well.
-            </p>
-
-            <StyledIframe
-              title='Game Audio Reel'
-              allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-              frameBorder='0'
-              loading='lazy'
-              webkitallowfullscreen='true'
-              mozallowfullscreen='true'
-              allowFullScreen
-              src='https://www.youtube.com/embed/710vanhhe08'
-              isMobileOrTablet={isMobileOrTablet}
-            />
+            <GridContainer>
+              <GridItem col={'1'} row={1}>
+                <p>
+                  Burgundy is a demo I created to demonstrate my proficiency
+                  with some Wwise and Unity integration features.
+                </p>
+                <p>
+                  The sound design is original, and most of the systems created
+                  using Wwise are described in the walkthrough below. All of the
+                  scripts shown are written by me as well.
+                </p>
+              </GridItem>
+              <GridItem col={'2'} row={1}>
+                <StyledIframe
+                  title='Game Audio Reel'
+                  allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                  frameBorder='0'
+                  loading='lazy'
+                  webkitallowfullscreen='true'
+                  mozallowfullscreen='true'
+                  allowFullScreen
+                  src='https://www.youtube.com/embed/K7sFteN4OB0'
+                  isMobileOrTablet={isMobileOrTablet}
+                />
+              </GridItem>
+            </GridContainer>
           </Translate>
         </Opacity>
       ) : (
@@ -53,12 +58,31 @@ const Wwise = () => {
   )
 }
 
+const GridItem = styled.div`
+  grid-column: ${(props) => (props.col ? props.col : '1 / 2')};
+  grid-row: ${(props) => (props.row ? `${props.row}` : '1')};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const GridContainer = styled.div`
+  margin-top: ${spaces.wide};
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: ${spaces.wide};
+  row-gap: ${spaces.wide};
+`
+
 const Placeholder = styled.div`
   height: 100vh;
 `
 
 const Title = styled.h1`
-  margin-bottom: ${spaces.regular};
+  margin-bottom: ${spaces.wide};
 `
 
 const Container = styled.div`
@@ -68,12 +92,14 @@ const Container = styled.div`
 const StyledIframe = styled.iframe`
   display: block;
   width: 100%;
-  height: ${(props) => (props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh')};
+  /* height: ${(props) =>
+    props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh'}; */
+  height: 200px;
   border-style: solid;
   border-color: ${(props) => props.theme.text};
   border-width: 2px;
 
-  margin-top: ${spaces.wide};
+  /* margin-top: ${spaces.wide}; */
 `
 
 export default Wwise

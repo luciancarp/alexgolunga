@@ -44,11 +44,11 @@ const Placeholder = styled.div`
 `
 
 const Title = styled.h1`
-  margin-bottom: ${spaces.regular};
+  margin-bottom: ${spaces.wide};
 `
 
 const Container = styled.div`
-  margin-bottom: ${spaces.wide};
+  margin-bottom: ${spaces.spacer};
 `
 
 export default Recording
