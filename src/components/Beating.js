@@ -29,6 +29,21 @@ const Beating = () => {
       render: file(relativePath: { eq: "render.png" }) {
         ...Image
       }
+      render1: file(relativePath: { eq: "render1.png" }) {
+        ...Image
+      }
+      lissajous1: file(relativePath: { eq: "Lissajous1.png" }) {
+        ...Image
+      }
+      lissajous2: file(relativePath: { eq: "Lissajous2.png" }) {
+        ...Image
+      }
+      lissajous3: file(relativePath: { eq: "Lissajous3.png" }) {
+        ...Image
+      }
+      lissajous4: file(relativePath: { eq: "Lissajous4.png" }) {
+        ...Image
+      }
     }
   `)
 
@@ -41,7 +56,7 @@ const Beating = () => {
           <Translate>
             <Title>{title}</Title>
             <GridContainer>
-              <GridItem col={'1'} row={'1 / 2'}>
+              <GridItem col={'1'} row={'1'}>
                 <p>
                   An exploration of sine waves, the fundamental building blocks
                   of sound.
@@ -55,7 +70,7 @@ const Beating = () => {
                   3D Lissajous curves (pictured right).
                 </p>
               </GridItem>
-              <GridItem col={'1'} row={'2 / 3'}>
+              <GridItem col={'1'} row={'2'}>
                 <p>
                   The listener will create their own perception of the piece by
                   moving around the space and discovering pockets of rhythm,
@@ -73,28 +88,30 @@ const Beating = () => {
               </GridItem>
 
               <GridItem col={'2'} row={'1'}>
-                <StyledImg fluid={query.render.childImageSharp.fluid} />
+                <ImageContainer>
+                  <StyledImg fluid={query.lissajous2.childImageSharp.fluid} />
+                </ImageContainer>
               </GridItem>
 
               <GridItem col={'2'} row={'2'}>
-                <StyledImg fluid={query.render.childImageSharp.fluid} />
+                <ImageContainer>
+                  <StyledImg fluid={query.lissajous4.childImageSharp.fluid} />
+                </ImageContainer>
               </GridItem>
 
-              <GridItem col={'1 / span 2'} row={'3'}>
-                <p style={{ textAlign: 'center' }}>
-                  The installation would ideally be arranged in an empty cuboid
-                  room and use a Quadraphonic or Ambisonic setup.
-                </p>
+              <GridItem col={'3'} row={'1'}>
+                <ImageContainer>
+                  <StyledImg fluid={query.lissajous1.childImageSharp.fluid} />
+                </ImageContainer>
               </GridItem>
 
-              <GridItem col={'1 / span 2'} row={'4'}>
-                <StyledImg fluid={query.render.childImageSharp.fluid} />
-                <p style={{ textAlign: 'center' }}>
-                  Quadraphonic system in a 7m x 7m x 5m room.
-                </p>
+              <GridItem col={'3'} row={'2'}>
+                <ImageContainer>
+                  <StyledImg fluid={query.lissajous3.childImageSharp.fluid} />
+                </ImageContainer>
               </GridItem>
 
-              <GridItem col={'1 / span 2'} row={'5'}>
+              <GridItem col={'2/ span 3'} row={'4'}>
                 <p>
                   Symmetry is generally used as a constraining factor, but in
                   this case it provides homogeneity for the whole space, thus
@@ -112,6 +129,24 @@ const Beating = () => {
                   experience or enhancing it by using the harmonics inherent to
                   the space.
                 </p>
+              </GridItem>
+
+              <GridItem col={'1'} row={'4'}>
+                <ImageContainer>
+                  <h3 style={{ textAlign: 'center' }}>
+                    The installation would ideally be arranged in an empty
+                    cuboid room and use a Quadraphonic or Ambisonic setup.
+                  </h3>
+                  <StyledImgCaption
+                    fluid={query.render.childImageSharp.fluid}
+                  />
+                  <Caption style={{ textAlign: 'center' }}>
+                    Quadraphonic system in a 7m x 7m x 5m room.
+                  </Caption>
+                </ImageContainer>
+              </GridItem>
+
+              <GridItem col={'1'} row={'6'}>
                 <p>
                   Attached you will also find an audiovisual demo emulating a
                   Quad setup using the Ambisonics format (headphone use is
@@ -126,18 +161,26 @@ const Beating = () => {
                 </p>
               </GridItem>
 
-              <GridItem col={'1 / span 2'} row={'6'}>
-                <VideoContainer>
+              <GridItem col={'2/ span 3'} row={'6'}>
+                <ImageContainer>
+                  <StyledImgBorder
+                    fluid={query.render1.childImageSharp.fluid}
+                  />
+                </ImageContainer>
+              </GridItem>
+
+              <GridItem col={'1/ span 3'} row={'8'}>
+                <VideoContainer customWidth={'50%'}>
                   <h3>Audiovisual Demo (Headphones Recommended)</h3>
                   <StyledVideo controls>
                     <source src={ImmenvdemovidWebm} type='video/webm' />
                     <source src={ImmenvdemovidMp4} type='video/mp4' />
                     <track />
                   </StyledVideo>
-                  <p style={{ fontStyle: 'italic', opacity: '0.75' }}>
+                  <Caption>
                     Apologies for the dropped frames towards the end, this is
                     due to hardware limitations.
-                  </p>
+                  </Caption>
                 </VideoContainer>
               </GridItem>
             </GridContainer>
@@ -150,14 +193,34 @@ const Beating = () => {
   )
 }
 
+const Caption = styled.figcaption`
+  opacity: 0.75;
+`
+
 const VideoContainer = styled.div`
-  width: 70%;
+  max-width: ${(props) =>
+    props.customWidth ? `${props.customWidth}` : '100%'};
   margin-left: auto;
   margin-right: auto;
 `
 
-const StyledImg = styled(Img)`
+const ImageContainer = styled.div`
+  max-width: ${(props) =>
+    props.customWidth ? `${props.customWidth}` : '100%'};
+  margin-left: auto;
+  margin-right: auto;
+`
+
+const StyledImg = styled(Img)``
+
+const StyledImgCaption = styled(Img)`
   margin-bottom: ${spaces.narrow};
+  border-style: solid;
+  border-color: ${(props) => props.theme.text};
+  border-width: 2px;
+`
+
+const StyledImgBorder = styled(Img)`
   border-style: solid;
   border-color: ${(props) => props.theme.text};
   border-width: 2px;
@@ -176,13 +239,16 @@ const StyledVideo = styled.video`
 const GridItem = styled.div`
   grid-column: ${(props) => (props.col ? props.col : '1 / 2')};
   grid-row: ${(props) => (props.row ? props.row : '1')};
+
+  margin-top: auto;
+  margin-bottom: auto;
 `
 
 const GridContainer = styled.div`
   margin-top: ${spaces.wide};
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 2fr 1fr 1fr;
   column-gap: ${spaces.wide};
   row-gap: ${spaces.wide};
   /* grid-auto-rows: minmax(100px, auto); */
