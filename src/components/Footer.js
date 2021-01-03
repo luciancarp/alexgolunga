@@ -25,7 +25,7 @@ const Center = styled.div`
 `
 
 const Container = styled.footer`
-  min-height: 20vh;
+  min-height: 6rem;
   /* max-width: 600px; */
 
   display: flex;

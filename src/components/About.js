@@ -143,7 +143,17 @@ const About = () => {
                         </DescriptionLine>
                       ))}
                       <CV>
-                        You can find my CV <CVLink>here</CVLink>.
+                        You can find my CV{' '}
+                        <CVLink
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          href={
+                            'https://drive.google.com/file/d/1ZaE4Q1xFWWhXAM-ZUVd4rZuQOZJxQrHu/view'
+                          }
+                        >
+                          here
+                        </CVLink>
+                        .
                       </CV>
                     </Description>
                   </OpacityDynamic>
@@ -200,7 +210,7 @@ const Container = styled('div').attrs(
 
   @supports (backdrop-filter: none) {
     background-color: ${(props) => props.theme.backgroundTransp};
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(${(props) => props.theme.blur});
   }
 
   /* display: flex;

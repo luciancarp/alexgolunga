@@ -21,8 +21,8 @@ export const darkTheme = {
   name: 'dark',
   primary: '#ff4500',
   background: '#000',
-  backgroundTransp: 'rgba(0, 0, 0, 0.5)',
-  backgroundoppositeTransp: 'rgba(238, 238, 238, 0.1)',
+  backgroundTransp: 'rgba(0, 0, 0, 0.4)',
+  blur: '10px',
   text: '#eee',
 }
 
@@ -30,8 +30,8 @@ export const lightTheme = {
   name: 'light',
   primary: '#ff4500',
   background: '#eee',
-  backgroundTransp: 'rgba(238, 238, 238, 0.5)',
-  backgroundoppositeTransp: 'rgba(26, 26, 26, 0.1)',
+  backgroundTransp: 'rgba(238, 238, 238, 0.4)',
+  blur: '10px',
   text: '#1a1a1a',
 }
 
