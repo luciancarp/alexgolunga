@@ -21,6 +21,7 @@ const description =
 
 const About = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [showSticky, setShowSticky] = useState(false)
   const [showDescription, setShowDescription] = useState(true)
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const About = () => {
       const currentScrollY = window.scrollY
 
       setScrolled(currentScrollY > 15)
+      setShowSticky(currentScrollY > 100)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -49,6 +51,34 @@ const About = () => {
   })
 
   const animate = scrolled
+
+  const MInfoSticky = () => (
+    <MInfoStickyContainer>
+      <MInfoStickyContent>
+        <Title customMargin={'0.4rem'} customFontSize={'1.7rem'}>
+          {title}
+        </Title>
+        <Contact>
+          <Email>agolunga@gmail.com</Email>
+
+          <Styleda
+            target='_blank'
+            rel='noopener noreferrer'
+            href={'http://twitter.com/'}
+          >
+            <Twitter />
+          </Styleda>
+          <Styleda
+            target='_blank'
+            rel='noopener noreferrer'
+            href={'http://linkedin.com/'}
+          >
+            <Linkedin />
+          </Styleda>
+        </Contact>
+      </MInfoStickyContent>
+    </MInfoStickyContainer>
+  )
 
   const MobileTabletAbout = () => (
     <MContainer>
@@ -164,11 +194,18 @@ const About = () => {
         </Container>
       )}
       {isMobileOrTablet && (
-        <Translate>
-          <Opacity>
-            <MobileTabletAbout key={key} />
-          </Opacity>
-        </Translate>
+        <>
+          <Translate>
+            <Opacity>
+              <MobileTabletAbout key={key} />
+            </Opacity>
+          </Translate>
+          {scrolled && (
+            <OpacityDynamic state={showSticky} start={0} end={100}>
+              <MInfoSticky />
+            </OpacityDynamic>
+          )}
+        </>
       )}
     </>
   )
@@ -242,8 +279,12 @@ const Contact = styled.div`
 const Email = styled.h3``
 
 const Title = styled.h1`
-  margin-bottom: 0.5rem;
-  font-size: 3rem;
+  /* margin-bottom: 0.5rem;
+  font-size: 3rem; */
+  margin-bottom: ${(props) =>
+    props.customMargin ? `${props.customMargin}` : '0.5rem'};
+  font-size: ${(props) =>
+    props.customFontSize ? `${props.customFontSize}` : '3rem'};
 `
 
 const Description = styled.div`
@@ -319,6 +360,34 @@ const MContainer = styled.div`
 const MInfo = styled.div`
   padding-right: ${spaces.wide};
   margin-bottom: ${spaces.wide};
+`
+
+const MInfoStickyContainer = styled.div`
+  /* position: -webkit-sticky;
+  position: sticky; */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+
+  background-color: ${(props) => props.theme.background};
+
+  @supports (backdrop-filter: none) {
+    background-color: ${(props) => props.theme.backgroundTransp};
+    backdrop-filter: blur(${(props) => props.theme.blur});
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+`
+
+const MInfoStickyContent = styled.div`
+  display: inline-block;
 `
 
 const MDescription = styled.div`
