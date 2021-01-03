@@ -52,42 +52,38 @@ const About = () => {
 
   const MobileTabletAbout = () => (
     <MContainer>
-      <Translate>
-        <Opacity>
-          <MInfo>
-            <Title>{title}</Title>
-            <Contact>
-              <Email>agolunga@gmail.com</Email>
+      <MInfo>
+        <Title>{title}</Title>
+        <Contact>
+          <Email>agolunga@gmail.com</Email>
 
-              <Styleda
-                target='_blank'
-                rel='noopener noreferrer'
-                href={'http://twitter.com/'}
-              >
-                <Twitter />
-              </Styleda>
-              <Styleda
-                target='_blank'
-                rel='noopener noreferrer'
-                href={'http://linkedin.com/'}
-              >
-                <Linkedin />
-              </Styleda>
-            </Contact>
-          </MInfo>
-          <MDescription>
-            {description.split('\n').map((item, key) => (
-              <DescriptionLine key={key}>
-                {item}
-                <br />
-              </DescriptionLine>
-            ))}
-            <CV>
-              You can find my CV <CVLink>here</CVLink>.
-            </CV>
-          </MDescription>
-        </Opacity>
-      </Translate>
+          <Styleda
+            target='_blank'
+            rel='noopener noreferrer'
+            href={'http://twitter.com/'}
+          >
+            <Twitter />
+          </Styleda>
+          <Styleda
+            target='_blank'
+            rel='noopener noreferrer'
+            href={'http://linkedin.com/'}
+          >
+            <Linkedin />
+          </Styleda>
+        </Contact>
+      </MInfo>
+      <MDescription>
+        {description.split('\n').map((item, key) => (
+          <DescriptionLine key={key}>
+            {item}
+            <br />
+          </DescriptionLine>
+        ))}
+        <CV>
+          You can find my CV <CVLink>here</CVLink>.
+        </CV>
+      </MDescription>
     </MContainer>
   )
 
@@ -157,7 +153,13 @@ const About = () => {
           </Translate>
         </Container>
       )}
-      {isMobileOrTablet && <MobileTabletAbout key={key} />}
+      {isMobileOrTablet && (
+        <Translate>
+          <Opacity>
+            <MobileTabletAbout key={key} />
+          </Opacity>
+        </Translate>
+      )}
     </>
   )
 }
