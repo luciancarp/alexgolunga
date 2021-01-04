@@ -3,6 +3,11 @@ require('dotenv').config({
 })
 
 module.exports = {
+  siteMetadata: {
+    title: `Alex Golunga`,
+    description: `Sound designer and audio engineer`,
+    author: `Lucian Carp`,
+  },
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',

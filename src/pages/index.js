@@ -10,17 +10,22 @@ import Haptic from '../components/Haptic'
 import Recording from '../components/Recording'
 import Beating from '../components/Beating'
 
+import SEO from '../components/SEO'
+
 const IndexPage = () => {
   return (
-    <Layout>
-      <About />
-      <Reel />
-      <Wwise />
-      <Maxmsp />
-      <Haptic />
-      <Recording />
-      <Beating />
-    </Layout>
+    <>
+      <SEO />
+      <Layout>
+        <About />
+        <Reel />
+        <Wwise />
+        <Maxmsp />
+        <Haptic />
+        <Recording />
+        <Beating />
+      </Layout>
+    </>
   )
 }
 
