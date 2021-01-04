@@ -2,10 +2,11 @@ import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import { useMediaQuery } from 'react-responsive'
 
 import { Opacity, Translate } from './Animations'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
-import { spaces } from '../style/global'
+import { spaces, screenSizes } from '../style/global'
 
 import ImmenvdemovidMp4 from '../assets/videos/Immenvdemovid.mp4'
 import ImmenvdemovidWebm from '../assets/videos/Immenvdemovid.webm'
@@ -47,8 +48,142 @@ const Beating = () => {
     }
   `)
 
+  const content1 = (
+    <>
+      <p>
+        An exploration of sine waves, the fundamental building blocks of sound.
+      </p>
+      <p>
+        A showcase of the beating effect and the physicality of sound through an
+        immersive composition.
+      </p>
+      <p>
+        Accompanied by a visual analogue in the form of audio-reactive 3D
+        Lissajous curves (pictured right).
+      </p>
+    </>
+  )
+
+  const content2 = (
+    <>
+      <p>
+        The listener will create their own perception of the piece by moving
+        around the space and discovering pockets of rhythm, dissonance, and pure
+        sine tone.
+      </p>
+      <p>
+        The decision to remain static and explore the temporal dimension of the
+        composition is encouraged as well.
+      </p>
+      <p>
+        The relationship between the individual sound objects is expressed
+        through the visuals. The audio signals are used as modulating inputs to
+        produce a unified visual output.
+      </p>
+    </>
+  )
+
+  const Lissajous1 = () => (
+    <ImageContainer>
+      <StyledImg fluid={query.lissajous1.childImageSharp.fluid} />
+    </ImageContainer>
+  )
+
+  const Lissajous2 = () => (
+    <ImageContainer>
+      <StyledImg fluid={query.lissajous2.childImageSharp.fluid} />
+    </ImageContainer>
+  )
+
+  const Lissajous3 = () => (
+    <ImageContainer>
+      <StyledImg fluid={query.lissajous3.childImageSharp.fluid} />
+    </ImageContainer>
+  )
+
+  const Lissajous4 = () => (
+    <ImageContainer>
+      <StyledImg fluid={query.lissajous4.childImageSharp.fluid} />
+    </ImageContainer>
+  )
+
+  const content3 = (
+    <>
+      <p>
+        Symmetry is generally used as a constraining factor, but in this case it
+        provides homogeneity for the whole space, thus communicating the
+        importance of individual perception and liberating one from the idea of
+        an optimal listening position.
+      </p>
+      <p>
+        This provides an adequate canvas for the visuals as well, which are
+        represented in a 1:1 aspect ratio. They would be projected on the
+        ceiling of the space.
+      </p>
+      <p>
+        The room would be acoustically analysed beforehand to identify room
+        modes — information that will be used for tuning the experience or
+        enhancing it by using the harmonics inherent to the space.
+      </p>
+    </>
+  )
+
+  const QuadraphonicImg = () => (
+    <ImageContainer>
+      <h3 style={{ textAlign: 'center' }}>
+        The installation would ideally be arranged in an empty cuboid room and
+        use a Quadraphonic or Ambisonic setup.
+      </h3>
+      <StyledImgCaption fluid={query.render.childImageSharp.fluid} />
+      <Caption style={{ textAlign: 'center' }}>
+        Quadraphonic system in a 7m x 7m x 5m room.
+      </Caption>
+    </ImageContainer>
+  )
+
+  const content4 = (
+    <>
+      <p>
+        Attached you will also find an audiovisual demo emulating a Quad setup
+        using the Ambisonics format (headphone use is recommended). It showcases
+        some spatial choreography and the use of the beating effect, along with
+        a direct feed from the visual engine.
+      </p>
+      <p>
+        The software used in the installation consists of custom patches built
+        using Max/MSP and Jitter and their respective Max4Live ports.
+      </p>
+    </>
+  )
+
+  const RenderImg = () => (
+    <ImageContainer>
+      <StyledImgBorder fluid={query.render1.childImageSharp.fluid} />
+    </ImageContainer>
+  )
+
+  const DemoVideo = ({ customWidth = '50%' }) => (
+    <VideoContainer customWidth={customWidth}>
+      <h3>Audiovisual Demo (Headphones Recommended)</h3>
+      <StyledVideo controls>
+        <source src={ImmenvdemovidWebm} type='video/webm' />
+        <source src={ImmenvdemovidMp4} type='video/mp4' />
+        <track />
+      </StyledVideo>
+      <Caption>
+        Apologies for the dropped frames towards the end, this is due to
+        hardware limitations.
+      </Caption>
+    </VideoContainer>
+  )
+
   const halfPage = useRef()
   const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1)
+
+  const isMobileOrTablet = useMediaQuery({
+    query: `(max-width: ${screenSizes.laptop})`,
+  })
+
   return (
     <Container id={id} ref={halfPage}>
       {hasScrolled ? (
@@ -56,133 +191,98 @@ const Beating = () => {
           <Translate>
             <Title>{title}</Title>
             <GridContainer>
-              <GridItem col={'1'} row={'1'}>
-                <p>
-                  An exploration of sine waves, the fundamental building blocks
-                  of sound.
-                </p>
-                <p>
-                  A showcase of the beating effect and the physicality of sound
-                  through an immersive composition.
-                </p>
-                <p>
-                  Accompanied by a visual analogue in the form of audio-reactive
-                  3D Lissajous curves (pictured right).
-                </p>
-              </GridItem>
-              <GridItem col={'1'} row={'2'}>
-                <p>
-                  The listener will create their own perception of the piece by
-                  moving around the space and discovering pockets of rhythm,
-                  dissonance, and pure sine tone.
-                </p>
-                <p>
-                  The decision to remain static and explore the temporal
-                  dimension of the composition is encouraged as well.
-                </p>
-                <p>
-                  The relationship between the individual sound objects is
-                  expressed through the visuals. The audio signals are used as
-                  modulating inputs to produce a unified visual output.
-                </p>
-              </GridItem>
+              {isMobileOrTablet ? (
+                <>
+                  <GridItem col={'1'} row={'1'}>
+                    <Lissajous2 />
+                  </GridItem>
 
-              <GridItem col={'2'} row={'1'}>
-                <ImageContainer>
-                  <StyledImg fluid={query.lissajous2.childImageSharp.fluid} />
-                </ImageContainer>
-              </GridItem>
+                  <GridItem col={'2 / span 3'} row={'1'}>
+                    <Lissajous4 />
+                  </GridItem>
 
-              <GridItem col={'2'} row={'2'}>
-                <ImageContainer>
-                  <StyledImg fluid={query.lissajous4.childImageSharp.fluid} />
-                </ImageContainer>
-              </GridItem>
+                  <GridItem col={'1 / span 3'} row={'2'}>
+                    {content1}
+                  </GridItem>
 
-              <GridItem col={'3'} row={'1'}>
-                <ImageContainer>
-                  <StyledImg fluid={query.lissajous1.childImageSharp.fluid} />
-                </ImageContainer>
-              </GridItem>
+                  <GridItem col={'1'} row={'3'}>
+                    <Lissajous1 />
+                  </GridItem>
 
-              <GridItem col={'3'} row={'2'}>
-                <ImageContainer>
-                  <StyledImg fluid={query.lissajous3.childImageSharp.fluid} />
-                </ImageContainer>
-              </GridItem>
+                  <GridItem col={'2 / span 3'} row={'3'}>
+                    <Lissajous3 />
+                  </GridItem>
 
-              <GridItem col={'2/ span 3'} row={'4'}>
-                <p>
-                  Symmetry is generally used as a constraining factor, but in
-                  this case it provides homogeneity for the whole space, thus
-                  communicating the importance of individual perception and
-                  liberating one from the idea of an optimal listening position.
-                </p>
-                <p>
-                  This provides an adequate canvas for the visuals as well,
-                  which are represented in a 1:1 aspect ratio. They would be
-                  projected on the ceiling of the space.
-                </p>
-                <p>
-                  The room would be acoustically analysed beforehand to identify
-                  room modes — information that will be used for tuning the
-                  experience or enhancing it by using the harmonics inherent to
-                  the space.
-                </p>
-              </GridItem>
+                  <GridItem col={'1 / span 3'} row={'4'}>
+                    {content2}
+                  </GridItem>
 
-              <GridItem col={'1'} row={'4'}>
-                <ImageContainer>
-                  <h3 style={{ textAlign: 'center' }}>
-                    The installation would ideally be arranged in an empty
-                    cuboid room and use a Quadraphonic or Ambisonic setup.
-                  </h3>
-                  <StyledImgCaption
-                    fluid={query.render.childImageSharp.fluid}
-                  />
-                  <Caption style={{ textAlign: 'center' }}>
-                    Quadraphonic system in a 7m x 7m x 5m room.
-                  </Caption>
-                </ImageContainer>
-              </GridItem>
+                  <GridItem col={'1 / span 3'} row={'5'}>
+                    <QuadraphonicImg />
+                  </GridItem>
 
-              <GridItem col={'1'} row={'6'}>
-                <p>
-                  Attached you will also find an audiovisual demo emulating a
-                  Quad setup using the Ambisonics format (headphone use is
-                  recommended). It showcases some spatial choreography and the
-                  use of the beating effect, along with a direct feed from the
-                  visual engine.
-                </p>
-                <p>
-                  The software used in the installation consists of custom
-                  patches built using Max/MSP and Jitter and their respective
-                  Max4Live ports.
-                </p>
-              </GridItem>
+                  <GridItem col={'1 / span 3'} row={'6'}>
+                    {content3}
+                  </GridItem>
 
-              <GridItem col={'2/ span 3'} row={'6'}>
-                <ImageContainer>
-                  <StyledImgBorder
-                    fluid={query.render1.childImageSharp.fluid}
-                  />
-                </ImageContainer>
-              </GridItem>
+                  <GridItem col={'1/ span 3'} row={'7'}>
+                    <RenderImg />
+                  </GridItem>
 
-              <GridItem col={'1/ span 3'} row={'8'}>
-                <VideoContainer customWidth={'50%'}>
-                  <h3>Audiovisual Demo (Headphones Recommended)</h3>
-                  <StyledVideo controls>
-                    <source src={ImmenvdemovidWebm} type='video/webm' />
-                    <source src={ImmenvdemovidMp4} type='video/mp4' />
-                    <track />
-                  </StyledVideo>
-                  <Caption>
-                    Apologies for the dropped frames towards the end, this is
-                    due to hardware limitations.
-                  </Caption>
-                </VideoContainer>
-              </GridItem>
+                  <GridItem col={'1/ span 3'} row={'8'}>
+                    {content4}
+                  </GridItem>
+
+                  <GridItem col={'1/ span 3'} row={'9'}>
+                    <DemoVideo customWidth={'70%'} />
+                  </GridItem>
+                </>
+              ) : (
+                <>
+                  <GridItem col={'1'} row={'1'}>
+                    {content1}
+                  </GridItem>
+                  <GridItem col={'1'} row={'2'}>
+                    {content2}
+                  </GridItem>
+
+                  <GridItem col={'2'} row={'1'}>
+                    <Lissajous2 />
+                  </GridItem>
+
+                  <GridItem col={'2'} row={'2'}>
+                    <Lissajous4 />
+                  </GridItem>
+
+                  <GridItem col={'3'} row={'1'}>
+                    <Lissajous1 />
+                  </GridItem>
+
+                  <GridItem col={'3'} row={'2'}>
+                    <Lissajous3 />
+                  </GridItem>
+
+                  <GridItem col={'2/ span 3'} row={'4'}>
+                    {content3}
+                  </GridItem>
+
+                  <GridItem col={'1'} row={'4'}>
+                    <QuadraphonicImg />
+                  </GridItem>
+
+                  <GridItem col={'1'} row={'6'}>
+                    {content4}
+                  </GridItem>
+
+                  <GridItem col={'2/ span 3'} row={'6'}>
+                    <RenderImg />
+                  </GridItem>
+
+                  <GridItem col={'1/ span 3'} row={'8'}>
+                    <DemoVideo />
+                  </GridItem>
+                </>
+              )}
             </GridContainer>
           </Translate>
         </Opacity>
