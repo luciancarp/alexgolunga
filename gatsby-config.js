@@ -35,5 +35,17 @@ module.exports = {
         devMode: false,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Alex Golunga`,
+        short_name: `Alex Golunga`,
+        start_url: `/`,
+        background_color: `#000`,
+        theme_color: `#000`,
+        display: `minimal-ui`,
+        icon: `src/assets/images/alex-golunga.png`, // This path is relative to the root of the site.
+      },
+    },
   ],
 }
