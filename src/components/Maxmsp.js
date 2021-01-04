@@ -2,9 +2,10 @@ import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import { useMediaQuery } from 'react-responsive'
 
 import { Opacity, Translate } from './Animations'
-import { spaces } from '../style/global'
+import { spaces, screenSizes } from '../style/global'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 
 import JitdemoMp4 from '../assets/videos/Jitdemo720.mp4'
@@ -42,6 +43,113 @@ const Maxmsp = () => {
     }
   `)
 
+  const content1 = (
+    <>
+      <p>
+        I program custom audio devices such as flexible samplers, basic reverbs,
+        audio spatialisation devices (using binaural and ambisonic externals),
+        synths and utilities.
+      </p>
+
+      <p>
+        These allow me to shape my workflows efficiently and integrate features
+        that might not be present in other plugins.
+      </p>
+    </>
+  )
+
+  const TremoloImg = () => (
+    <ImageContainer>
+      <StyledImg fluid={query.tremolo.childImageSharp.fluid} alt='Tremolo' />
+
+      <Caption>Tremolo with switchable waveforms and smoothing</Caption>
+    </ImageContainer>
+  )
+
+  const EnvGenSynthImg = () => (
+    <ImageContainer>
+      <StyledImg
+        fluid={query.envGenSynth.childImageSharp.fluid}
+        alt='EnvGenSynth'
+      />
+      <Caption>
+        Single-oscillator synth with multiple waveform/noise options and
+        multi-stage envelope generator; also saves a bank of user-generated
+        presets
+      </Caption>
+    </ImageContainer>
+  )
+
+  const FFTFXImg = () => (
+    <ImageContainer>
+      <StyledImg fluid={query.FFTFX.childImageSharp.fluid} alt='FFTFX' />
+      <Caption>
+        Effects unit that comprises multiple stages; essentially, signal is fed
+        into a running buffer (written in gen~), which in turn feeds a buffer
+        with a blend factor, creating wavetables for a modulated oscillator.
+        This latest signal is then convolved (amplitude-only) with the original
+        signal, and the result is passed to the filtering/overdrive stage.
+      </Caption>
+    </ImageContainer>
+  )
+
+  const MfeditVideo = () => (
+    <VideoContainer>
+      <StyledVideo controls>
+        <source src={MfeditWebm} type='video/webm' />
+        <source src={MfeditMp4} type='video/mp4' />
+        <track />
+      </StyledVideo>
+      <Caption>
+        Millefeuille: an 8-voice sound layering tool with per-voice multi-stage
+        amplitude envelopes and non-linear playback functions
+      </Caption>
+    </VideoContainer>
+  )
+
+  const JitterTitle = () => (
+    <h2
+      style={{
+        textAlign: 'center',
+        marginBottom: spaces.wide,
+      }}
+    >
+      I also create minimalist visuals using Jitter:
+    </h2>
+  )
+
+  const JitDemoVideo = () => (
+    <VideoContainer>
+      <StyledVideo controls>
+        <source src={JitdemoWebm} type='video/webm' />
+        <source src={JitdemoMp4} type='video/mp4' />
+        <track />
+      </StyledVideo>
+      <Caption>
+        Oscillator waveforms are switched stochastically using a table of
+        weighted probabilities and the audio morph is smoothed with gen~
+      </Caption>
+    </VideoContainer>
+  )
+
+  const ParticlesVideo = () => (
+    <VideoContainer>
+      <StyledVideo controls>
+        <source src={NotionparticlesconvertedWebm} type='video/webm' />
+        <source src={NotionparticlesconvertedMp4} type='video/mp4' />
+        <track />
+      </StyledVideo>
+      <Caption>
+        Particle system written with jit.gen and some openGL Jitter modules. The
+        background is actually displaying the lifetimes of the particles.
+      </Caption>
+    </VideoContainer>
+  )
+
+  const isMobileOrTablet = useMediaQuery({
+    query: `(max-width: ${screenSizes.laptop})`,
+  })
+
   const halfPage = useRef()
   const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1)
 
@@ -52,123 +160,73 @@ const Maxmsp = () => {
           <Translate>
             <Title>{title}</Title>
             <GridContainer>
-              <GridItem col={'1'} row={'1'}>
-                <p>
-                  I program custom audio devices such as flexible samplers,
-                  basic reverbs, audio spatialisation devices (using binaural
-                  and ambisonic externals), synths and utilities.
-                </p>
-
-                <p>
-                  These allow me to shape my workflows efficiently and integrate
-                  features that might not be present in other plugins.
-                </p>
-              </GridItem>
-              <GridItem col={'2'} row={'1'}>
-                <ImageContainer>
-                  <StyledImg
-                    fluid={query.tremolo.childImageSharp.fluid}
-                    alt='Tremolo'
-                  />
-
-                  <Caption>
-                    Tremolo with switchable waveforms and smoothing
-                  </Caption>
-                </ImageContainer>
-              </GridItem>
-              <GridItem col={'1'} row={'2'}>
-                <ImageContainer>
-                  <StyledImg
-                    fluid={query.envGenSynth.childImageSharp.fluid}
-                    alt='EnvGenSynth'
-                  />
-                  <Caption>
-                    Single-oscillator synth with multiple waveform/noise options
-                    and multi-stage envelope generator; also saves a bank of
-                    user-generated presets
-                  </Caption>
-                </ImageContainer>
-              </GridItem>
-              <GridItem col={'2'} row={'2'}>
-                <ImageContainer>
-                  <StyledImg
-                    fluid={query.FFTFX.childImageSharp.fluid}
-                    alt='FFTFX'
-                  />
-                  <Caption>
-                    Effects unit that comprises multiple stages; essentially,
-                    signal is fed into a running buffer (written in gen~), which
-                    in turn feeds a buffer with a blend factor, creating
-                    wavetables for a modulated oscillator. This latest signal is
-                    then convolved (amplitude-only) with the original signal,
-                    and the result is passed to the filtering/overdrive stage.
-                  </Caption>
-                </ImageContainer>
-              </GridItem>
-
-              <GridItem col={'1 / span 2'} row={'3'}>
-                <VideoContainer>
-                  <StyledVideo controls>
-                    <source src={MfeditWebm} type='video/webm' />
-                    <source src={MfeditMp4} type='video/mp4' />
-                    <track />
-                  </StyledVideo>
-                  <Caption>
-                    Millefeuille: an 8-voice sound layering tool with per-voice
-                    multi-stage amplitude envelopes and non-linear playback
-                    functions
-                  </Caption>
-                </VideoContainer>
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={'4'}>
-                <InnerGridConteiner>
+              {isMobileOrTablet ? (
+                <>
                   <GridItem col={'1 / span 2'} row={'1'}>
-                    <h2
-                      style={{
-                        textAlign: 'center',
-                        marginBottom: spaces.wide,
-                      }}
-                    >
-                      I also create minimalist visuals using Jitter:
-                    </h2>
+                    {content1}
                   </GridItem>
+                  <GridItem col={'1 / span 2'} row={'2'}>
+                    <TremoloImg />
+                  </GridItem>
+                  <GridItem col={'1 / span 2'} row={'3'}>
+                    <EnvGenSynthImg />
+                  </GridItem>
+                  <GridItem col={'1 / span 2'} row={'4'}>
+                    <FFTFXImg />
+                  </GridItem>
+                  <GridItem col={'1 / span 2'} row={'5'}>
+                    <MfeditVideo />
+                  </GridItem>
+                  <GridItem col={'1 / span 2'} row={'6'}>
+                    <InnerGridConteiner>
+                      <GridItem col={'1 / span 2'} row={'1'}>
+                        <JitterTitle />
+                      </GridItem>
 
+                      <GridItem col={'1 / span 2'} row={'2'}>
+                        <div style={{ marginBottom: '2rem' }}>
+                          <JitDemoVideo />
+                        </div>
+                      </GridItem>
+                      <GridItem col={'1 / span 2'} row={'3'}>
+                        <ParticlesVideo />
+                      </GridItem>
+                    </InnerGridConteiner>
+                  </GridItem>
+                </>
+              ) : (
+                <>
+                  <GridItem col={'1'} row={'1'}>
+                    {content1}
+                  </GridItem>
+                  <GridItem col={'2'} row={'1'}>
+                    <TremoloImg />
+                  </GridItem>
                   <GridItem col={'1'} row={'2'}>
-                    <VideoContainer>
-                      <StyledVideo controls>
-                        <source src={JitdemoWebm} type='video/webm' />
-                        <source src={JitdemoMp4} type='video/mp4' />
-                        <track />
-                      </StyledVideo>
-                      <Caption>
-                        Oscillator waveforms are switched stochastically using a
-                        table of weighted probabilities and the audio morph is
-                        smoothed with gen~
-                      </Caption>
-                    </VideoContainer>
+                    <EnvGenSynthImg />
                   </GridItem>
                   <GridItem col={'2'} row={'2'}>
-                    <VideoContainer>
-                      <StyledVideo controls>
-                        <source
-                          src={NotionparticlesconvertedWebm}
-                          type='video/webm'
-                        />
-                        <source
-                          src={NotionparticlesconvertedMp4}
-                          type='video/mp4'
-                        />
-                        <track />
-                      </StyledVideo>
-                      <Caption>
-                        Particle system written with jit.gen and some openGL
-                        Jitter modules. The background is actually displaying
-                        the lifetimes of the particles.
-                      </Caption>
-                    </VideoContainer>
+                    <FFTFXImg />
                   </GridItem>
-                </InnerGridConteiner>
-              </GridItem>
+                  <GridItem col={'1 / span 2'} row={'3'}>
+                    <MfeditVideo />
+                  </GridItem>
+                  <GridItem col={'1 / span 2'} row={'4'}>
+                    <InnerGridConteiner>
+                      <GridItem col={'1 / span 2'} row={'1'}>
+                        <JitterTitle />
+                      </GridItem>
+
+                      <GridItem col={'1'} row={'2'}>
+                        <JitDemoVideo />
+                      </GridItem>
+                      <GridItem col={'2'} row={'2'}>
+                        <ParticlesVideo />
+                      </GridItem>
+                    </InnerGridConteiner>
+                  </GridItem>
+                </>
+              )}
             </GridContainer>
           </Translate>
         </Opacity>
