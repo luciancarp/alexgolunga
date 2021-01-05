@@ -72,10 +72,10 @@ export const Translate = styled.div`
 `
 
 export const OpacityDynamic = styled('div').attrs(
-  ({ state = true, duration = 'opacity 0.2s', start = 100, end = 0 }) => ({
+  ({ state = true, duration = 'opacity 0.2s', start = 1, end = 0 }) => ({
     style: {
       transition: duration,
-      opacity: `${state ? end : start}%`,
+      opacity: `${state ? end : start}`,
     },
   })
 )``

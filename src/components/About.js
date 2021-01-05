@@ -201,7 +201,7 @@ const About = () => {
             </Opacity>
           </Translate>
           {scrolled && (
-            <OpacityDynamic state={showSticky} start={0} end={100}>
+            <OpacityDynamic state={showSticky} start={0} end={1}>
               <MInfoSticky />
             </OpacityDynamic>
           )}
