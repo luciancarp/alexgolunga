@@ -526,7 +526,7 @@ body,
 
   h1 {
     font-size: ${fontSizes.large};
-    text-align: center;
+    /* text-align: center; */
   }
 
   h2 { 
