@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree, extend } from 'react-three-fiber'
 import * as THREE from 'three'
 import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline'
 
+import ThemeContext from '../style/Theme'
 import useWindowHeight from '../hooks/useWindowHeight'
 import useWindowWidth from '../hooks/useWindowWidth'
 
@@ -19,7 +20,7 @@ let phaseY = 0.0
 let phaseZ = 0.0
 let step = 0.02
 
-const Line = (props) => {
+const Line = ({ theme }) => {
   const line = useRef()
 
   const [points] = useMemo(() => {
@@ -56,15 +57,17 @@ const Line = (props) => {
     line.current.setPoints(points)
   })
 
+  let color = theme.name === 'light' ? '#e6e6e6' : '#666'
+
   return (
     <mesh raycast={MeshLineRaycast}>
       <meshLine attach='geometry' points={points} ref={line} />
       <meshLineMaterial
         attach='material'
-        // transparent
+        transparent
         depthTest={false}
         lineWidth={1}
-        color={'#777'}
+        color={color}
         sizeAttenuation={1}
       />
     </mesh>
@@ -83,16 +86,20 @@ const Lissajous = () => {
   let width = useWindowWidth
   let height = useWindowHeight
   return (
-    <Canvas>
-      <Camera
-        position={[0, 0, 50]}
-        fov={75}
-        aspect={width / height}
-        near={0.1}
-        far={1000}
-      />
-      <Line />
-    </Canvas>
+    <ThemeContext.Consumer>
+      {(theme) => (
+        <Canvas>
+          <Camera
+            position={[0, 0, 50]}
+            fov={75}
+            aspect={width / height}
+            near={0.1}
+            far={1000}
+          />
+          <Line theme={theme} />
+        </Canvas>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 
