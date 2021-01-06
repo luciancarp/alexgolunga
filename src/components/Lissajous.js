@@ -1,6 +1,12 @@
 import React, { useRef, useEffect, useMemo } from 'react'
-import { Canvas, useFrame, useThree } from 'react-three-fiber'
+import { Canvas, useFrame, useThree, extend } from 'react-three-fiber'
 import * as THREE from 'three'
+import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline'
+
+import useWindowHeight from '../hooks/useWindowHeight'
+import useWindowWidth from '../hooks/useWindowWidth'
+
+extend({ MeshLine, MeshLineMaterial })
 
 let sizeX = 80.0
 let sizeY = 80.0
@@ -37,49 +43,51 @@ const Line = (props) => {
     phaseX += 0.001
     phaseY += 0.001
     phaseZ += 0.001
-
     let angle = step
-    for (let i = 0; i < line.current.geometry.vertices.length; i++) {
+    for (let i = 0; i < points.length; i++) {
       let x = sizeX * Math.sin(fa * angle + phaseX)
       let y = sizeY * Math.sin(fb * angle + phaseY)
       let z = sizeZ * Math.sin(fc * angle + phaseZ)
-
-      line.current.geometry.vertices[i].set(x, y, z)
+      points[i].x = x
+      points[i].y = y
+      points[i].z = z
       angle += step
     }
-
-    line.current.geometry.verticesNeedUpdate = true
+    line.current.setPoints(points)
   })
 
   return (
-    <line {...props} ref={line}>
-      <geometry attach='geometry' vertices={[...points]} />
-      <lineBasicMaterial
+    <mesh raycast={MeshLineRaycast}>
+      <meshLine attach='geometry' points={points} ref={line} />
+      <meshLineMaterial
         attach='material'
-        color={'grey'}
-        linewidth={1}
-        linecap={'round'}
-        linejoin={'round'}
+        // transparent
+        depthTest={false}
+        lineWidth={1}
+        color={'#777'}
+        sizeAttenuation={1}
       />
-    </line>
+    </mesh>
   )
 }
 
 function Camera(props) {
   const ref = useRef()
   const { setDefaultCamera } = useThree()
-  useEffect(() => void setDefaultCamera(ref.current), [setDefaultCamera])
+  useEffect(() => void setDefaultCamera(ref.current), [])
   useFrame(() => ref.current.updateMatrixWorld())
   return <perspectiveCamera ref={ref} {...props} />
 }
 
 const Lissajous = () => {
+  let width = useWindowWidth
+  let height = useWindowHeight
   return (
     <Canvas>
       <Camera
         position={[0, 0, 50]}
         fov={75}
-        aspect={window.innerWidth / window.innerHeight}
+        aspect={width / height}
         near={0.1}
         far={1000}
       />

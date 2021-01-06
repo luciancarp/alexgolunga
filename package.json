@@ -36,7 +36,8 @@
     "react-scrollspy": "^3.4.3",
     "react-three-fiber": "^5.3.11",
     "styled-components": "^5.2.1",
-    "three": "^0.124.0"
+    "three": "^0.124.0",
+    "three.meshline": "^1.3.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
