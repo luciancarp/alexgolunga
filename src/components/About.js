@@ -137,8 +137,8 @@ const About = () => {
               }
               shadow={
                 theme.name === 'dark'
-                  ? '0px 0px 15px 10px rgba(0, 0, 0, 0.75)'
-                  : '12px -5px 20px 0px rgba(238, 238, 238, 0.7), -12px -5px 20px 0px rgba(238, 238, 238, 0.7)'
+                  ? '12px -20px 20px 0px rgba(0, 0, 0, 0.8), -12px -20px 20px 0px rgba(0, 0, 0, 0.8)'
+                  : '12px -20px 20px 0px rgba(238, 238, 238, 0.8), -12px -20px 20px 0px rgba(238, 238, 238, 0.8)'
               }
             >
               <Translate>
@@ -236,7 +236,7 @@ const Placeholder = styled.div`
 const Container = styled('div').attrs(
   ({
     state,
-    duration = 'height 0.2s, padding-top 0.2s, position 0.2s, background-color 0.2s, backdropFilter 0.2s, box-shadow 0.2s',
+    duration = 'height 0.2s, padding-top 0.2s, position 0.2s, background-color 0.2s, backdropFilter 0.2s,WebkitBackdropFilter 0.2s, box-shadow 0.2s',
     start = '20vh',
     end = '6rem',
     background = 'rgba(0, 0, 0, 0.5)',
@@ -248,6 +248,7 @@ const Container = styled('div').attrs(
       paddingTop: `${!state ? '5vh' : '0.50rem'}`,
       backgroundColor: `${!state ? 'rgba(0, 0, 0, 0)' : background}`,
       backdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
+      WebkitBackdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
       boxShadow: `${!state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow}`,
     },
   })
