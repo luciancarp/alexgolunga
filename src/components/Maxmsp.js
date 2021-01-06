@@ -50,11 +50,6 @@ const Maxmsp = () => {
         audio spatialisation devices (using binaural and ambisonic externals),
         synths and utilities.
       </p>
-
-      <p>
-        These allow me to shape my workflows efficiently and integrate features
-        that might not be present in other plugins.
-      </p>
     </>
   )
 
@@ -62,7 +57,7 @@ const Maxmsp = () => {
     <ImageContainer>
       <StyledImg fluid={query.tremolo.childImageSharp.fluid} alt='Tremolo' />
 
-      <Caption>Tremolo with switchable waveforms and smoothing</Caption>
+      <Caption>Tremolo with switchable waveforms and smoothing.</Caption>
     </ImageContainer>
   )
 
@@ -74,8 +69,7 @@ const Maxmsp = () => {
       />
       <Caption>
         Single-oscillator synth with multiple waveform/noise options and
-        multi-stage envelope generator; also saves a bank of user-generated
-        presets
+        multi-stage envelope generator.
       </Caption>
     </ImageContainer>
   )
@@ -84,11 +78,8 @@ const Maxmsp = () => {
     <ImageContainer>
       <StyledImg fluid={query.FFTFX.childImageSharp.fluid} alt='FFTFX' />
       <Caption>
-        Effects unit that comprises multiple stages; essentially, signal is fed
-        into a running buffer (written in gen~), which in turn feeds a buffer
-        with a blend factor, creating wavetables for a modulated oscillator.
-        This latest signal is then convolved (amplitude-only) with the original
-        signal, and the result is passed to the filtering/overdrive stage.
+        Spectral/wavetable based FX unit written using gen~. Great for mangling
+        stuff together.
       </Caption>
     </ImageContainer>
   )
@@ -102,7 +93,7 @@ const Maxmsp = () => {
       </StyledVideo>
       <Caption>
         Millefeuille: an 8-voice sound layering tool with per-voice multi-stage
-        amplitude envelopes and non-linear playback functions
+        amplitude envelopes and non-linear playback functions.
       </Caption>
     </VideoContainer>
   )
@@ -118,8 +109,8 @@ const Maxmsp = () => {
     </h2>
   )
 
-  const JitDemoVideo = () => (
-    <VideoContainer>
+  const JitDemoVideo = ({ customWidth = '50%' }) => (
+    <VideoContainer customWidth={customWidth}>
       <StyledVideo controls>
         <source src={JitdemoWebm} type='video/webm' />
         <source src={JitdemoMp4} type='video/mp4' />
@@ -132,8 +123,8 @@ const Maxmsp = () => {
     </VideoContainer>
   )
 
-  const ParticlesVideo = () => (
-    <VideoContainer>
+  const ParticlesVideo = ({ customWidth = '50%' }) => (
+    <VideoContainer customWidth={customWidth}>
       <StyledVideo controls>
         <source src={NotionparticlesconvertedWebm} type='video/webm' />
         <source src={NotionparticlesconvertedMp4} type='video/mp4' />
@@ -185,30 +176,30 @@ const Maxmsp = () => {
 
                       <GridItem col={'1 / span 2'} row={'2'}>
                         <div style={{ marginBottom: '2rem' }}>
-                          <JitDemoVideo />
+                          <JitDemoVideo customWidth={'70%'} />
                         </div>
                       </GridItem>
                       <GridItem col={'1 / span 2'} row={'3'}>
-                        <ParticlesVideo />
+                        <ParticlesVideo customWidth={'70%'} />
                       </GridItem>
                     </InnerGridConteiner>
                   </GridItem>
                 </>
               ) : (
                 <>
-                  <GridItem col={'1'} row={'1'}>
+                  <GridItem col={'1 / span 2'} row={'1'}>
                     {content1}
-                  </GridItem>
-                  <GridItem col={'2'} row={'1'}>
-                    <TremoloImg />
                   </GridItem>
                   <GridItem col={'1'} row={'2'}>
                     <EnvGenSynthImg />
                   </GridItem>
+                  <GridItem col={'1'} row={'3'}>
+                    <TremoloImg />
+                  </GridItem>
                   <GridItem col={'2'} row={'2'}>
                     <FFTFXImg />
                   </GridItem>
-                  <GridItem col={'1 / span 2'} row={'3'}>
+                  <GridItem col={'2'} row={'3'}>
                     <MfeditVideo />
                   </GridItem>
                   <GridItem col={'1 / span 2'} row={'4'}>
@@ -218,10 +209,10 @@ const Maxmsp = () => {
                       </GridItem>
 
                       <GridItem col={'1'} row={'2'}>
-                        <JitDemoVideo />
+                        <JitDemoVideo customWidth={'100%'} />
                       </GridItem>
                       <GridItem col={'2'} row={'2'}>
-                        <ParticlesVideo />
+                        <ParticlesVideo customWidth={'100%'} />
                       </GridItem>
                     </InnerGridConteiner>
                   </GridItem>

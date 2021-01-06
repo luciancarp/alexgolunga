@@ -38,7 +38,7 @@ const Navigation = () => {
                 offset={-100}
               >
                 {navLinks.map((link) => (
-                  <NavItem>
+                  <NavItem key={link.id}>
                     <StyledLink
                       activeClass='active'
                       to={link.id}

@@ -107,26 +107,26 @@ const Beating = () => {
     </ImageContainer>
   )
 
-  const content3 = (
-    <>
-      <p>
-        Symmetry is generally used as a constraining factor, but in this case it
-        provides homogeneity for the whole space, thus communicating the
-        importance of individual perception and liberating one from the idea of
-        an optimal listening position.
-      </p>
-      <p>
-        This provides an adequate canvas for the visuals as well, which are
-        represented in a 1:1 aspect ratio. They would be projected on the
-        ceiling of the space.
-      </p>
-      <p>
-        The room would be acoustically analysed beforehand to identify room
-        modes — information that will be used for tuning the experience or
-        enhancing it by using the harmonics inherent to the space.
-      </p>
-    </>
-  )
+  // const content3 = (
+  //   <>
+  //     <p>
+  //       Symmetry is generally used as a constraining factor, but in this case it
+  //       provides homogeneity for the whole space, thus communicating the
+  //       importance of individual perception and liberating one from the idea of
+  //       an optimal listening position.
+  //     </p>
+  //     <p>
+  //       This provides an adequate canvas for the visuals as well, which are
+  //       represented in a 1:1 aspect ratio. They would be projected on the
+  //       ceiling of the space.
+  //     </p>
+  //     <p>
+  //       The room would be acoustically analysed beforehand to identify room
+  //       modes — information that will be used for tuning the experience or
+  //       enhancing it by using the harmonics inherent to the space.
+  //     </p>
+  //   </>
+  // )
 
   const QuadraphonicImg = () => (
     <ImageContainer>
@@ -141,26 +141,26 @@ const Beating = () => {
     </ImageContainer>
   )
 
-  const content4 = (
-    <>
-      <p>
-        Attached you will also find an audiovisual demo emulating a Quad setup
-        using the Ambisonics format (headphone use is recommended). It showcases
-        some spatial choreography and the use of the beating effect, along with
-        a direct feed from the visual engine.
-      </p>
-      <p>
-        The software used in the installation consists of custom patches built
-        using Max/MSP and Jitter and their respective Max4Live ports.
-      </p>
-    </>
-  )
+  // const content4 = (
+  //   <>
+  //     <p>
+  //       Attached you will also find an audiovisual demo emulating a Quad setup
+  //       using the Ambisonics format (headphone use is recommended). It showcases
+  //       some spatial choreography and the use of the beating effect, along with
+  //       a direct feed from the visual engine.
+  //     </p>
+  //     <p>
+  //       The software used in the installation consists of custom patches built
+  //       using Max/MSP and Jitter and their respective Max4Live ports.
+  //     </p>
+  //   </>
+  // )
 
-  const RenderImg = () => (
-    <ImageContainer>
-      <StyledImgBorder fluid={query.render1.childImageSharp.fluid} />
-    </ImageContainer>
-  )
+  // const RenderImg = () => (
+  //   <ImageContainer>
+  //     <StyledImgBorder fluid={query.render1.childImageSharp.fluid} />
+  //   </ImageContainer>
+  // )
 
   const DemoVideo = ({ customWidth = '50%' }) => (
     <VideoContainer customWidth={customWidth}>
@@ -175,6 +175,21 @@ const Beating = () => {
         hardware limitations.
       </Caption>
     </VideoContainer>
+  )
+
+  const Link = () => (
+    <p style={{ textAlign: 'center' }}>
+      More info available{' '}
+      <StyledLink
+        target='_blank'
+        rel='noopener noreferrer'
+        href={
+          'https://drive.google.com/file/d/1taV9MUO9aaK7DFGrPHO48WjaAL5Yn7kg/view?usp=sharing'
+        }
+      >
+        here
+      </StyledLink>
+    </p>
   )
 
   const halfPage = useRef()
@@ -222,19 +237,11 @@ const Beating = () => {
                   </GridItem>
 
                   <GridItem col={'1 / span 3'} row={'6'}>
-                    {content3}
-                  </GridItem>
-
-                  <GridItem col={'1/ span 3'} row={'7'}>
-                    <RenderImg />
-                  </GridItem>
-
-                  <GridItem col={'1/ span 3'} row={'8'}>
-                    {content4}
-                  </GridItem>
-
-                  <GridItem col={'1/ span 3'} row={'9'}>
                     <DemoVideo customWidth={'70%'} />
+                  </GridItem>
+
+                  <GridItem col={'1 /span 3'} row={'7'}>
+                    <Link />
                   </GridItem>
                 </>
               ) : (
@@ -263,23 +270,15 @@ const Beating = () => {
                   </GridItem>
 
                   <GridItem col={'2/ span 3'} row={'4'}>
-                    {content3}
-                  </GridItem>
-
-                  <GridItem col={'1'} row={'4'}>
                     <QuadraphonicImg />
                   </GridItem>
 
-                  <GridItem col={'1'} row={'6'}>
-                    {content4}
+                  <GridItem col={'1'} row={'4'}>
+                    <DemoVideo customWidth={'100%'} />
                   </GridItem>
 
-                  <GridItem col={'2/ span 3'} row={'6'}>
-                    <RenderImg />
-                  </GridItem>
-
-                  <GridItem col={'1/ span 3'} row={'8'}>
-                    <DemoVideo />
+                  <GridItem col={'1 /span 3'} row={'5'}>
+                    <Link />
                   </GridItem>
                 </>
               )}
@@ -292,6 +291,11 @@ const Beating = () => {
     </Container>
   )
 }
+
+const StyledLink = styled.a`
+  text-decoration: underline;
+  cursor: pointer;
+`
 
 const Caption = styled.figcaption`
   opacity: 0.75;
@@ -320,11 +324,11 @@ const StyledImgCaption = styled(Img)`
   border-width: 2px;
 `
 
-const StyledImgBorder = styled(Img)`
-  border-style: solid;
-  border-color: ${(props) => props.theme.text};
-  border-width: 2px;
-`
+// const StyledImgBorder = styled(Img)`
+//   border-style: solid;
+//   border-color: ${(props) => props.theme.text};
+//   border-width: 2px;
+// `
 
 const StyledVideo = styled.video`
   width: 100%;

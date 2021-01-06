@@ -112,7 +112,17 @@ const About = () => {
           </DescriptionLine>
         ))}
         <CV>
-          You can find my CV <CVLink>here</CVLink>.
+          You can find my CV{' '}
+          <CVLink
+            target='_blank'
+            rel='noopener noreferrer'
+            href={
+              'https://drive.google.com/file/d/1ZaE4Q1xFWWhXAM-ZUVd4rZuQOZJxQrHu/view'
+            }
+          >
+            here
+          </CVLink>
+          .
         </CV>
       </MDescription>
     </MContainer>
