@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useMemo } from 'react'
 import { Canvas, useFrame, useThree } from 'react-three-fiber'
 import * as THREE from 'three'
 
@@ -14,25 +14,42 @@ let phaseZ = 0.0
 let step = 0.02
 
 const Line = (props) => {
-  // This reference will give us direct access to the mesh so we can animate it
   const line = useRef()
 
-  // Rotate mesh every frame, this is outside of React without overhead
-  // useFrame(() => ())
+  const [points] = useMemo(() => {
+    const points = []
+    const length = 360
 
-  const points = []
-  const length = 360
+    let angle = step
+    for (let i = 0; i < length; i++) {
+      let x = sizeX * Math.sin(fa * angle + phaseX)
+      let y = sizeY * Math.sin(fb * angle + phaseY)
+      let z = sizeZ * Math.sin(fc * angle + phaseZ)
 
-  let angle = step
-  for (let i = 0; i < length; i++) {
-    let x = sizeX * Math.sin(fa * angle + phaseX)
-    let y = sizeY * Math.sin(fb * angle + phaseY)
-    let z = sizeZ * Math.sin(fc * angle + phaseZ)
+      points.push(new THREE.Vector3(x, y, z))
 
-    points.push(new THREE.Vector3(x, y, z))
+      angle += step
+    }
+    return [points]
+  }, [])
 
-    angle += step
-  }
+  useFrame(() => {
+    phaseX += 0.001
+    phaseY += 0.001
+    phaseZ += 0.001
+
+    let angle = step
+    for (let i = 0; i < line.current.geometry.vertices.length; i++) {
+      let x = sizeX * Math.sin(fa * angle + phaseX)
+      let y = sizeY * Math.sin(fb * angle + phaseY)
+      let z = sizeZ * Math.sin(fc * angle + phaseZ)
+
+      line.current.geometry.vertices[i].set(x, y, z)
+      angle += step
+    }
+
+    line.current.geometry.verticesNeedUpdate = true
+  })
 
   return (
     <line {...props} ref={line}>
@@ -40,7 +57,7 @@ const Line = (props) => {
       <lineBasicMaterial
         attach='material'
         color={'grey'}
-        linewidth={30}
+        linewidth={1}
         linecap={'round'}
         linejoin={'round'}
       />
