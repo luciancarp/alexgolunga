@@ -13,6 +13,7 @@ import {
   Opacity,
 } from './Animations'
 import { spaces, screenSizes } from '../style/global'
+import ThemeContext from '../style/Theme'
 import useIsClient from '../hooks/useIsClient'
 
 const title = 'Alex Golunga'
@@ -124,74 +125,86 @@ const About = () => {
   return (
     <>
       {!isMobileOrTablet && (
-        <Container state={animate} key={key}>
-          <Translate>
-            <Opacity>
-              <Header>
-                <TranslateDynamic
-                  state={animate}
-                  endX={25}
-                  endY={0}
-                  duration={'transform 0.2s ease-out'}
-                >
-                  <ScaleDynamic
-                    state={animate}
-                    end={0.75}
-                    duration={'transform 0.2s ease-out'}
-                  >
-                    <Info state={animate}>
-                      <Title>{title}</Title>
-                      <Contact>
-                        <Email>agolunga@gmail.com</Email>
+        <ThemeContext.Consumer>
+          {(theme) => (
+            <Container
+              state={animate}
+              key={key}
+              background={
+                theme.name === 'dark'
+                  ? 'rgba(0, 0, 0, 0.5)'
+                  : 'rgba(238, 238, 238, 0.4)'
+              }
+            >
+              <Translate>
+                <Opacity>
+                  <Header>
+                    <TranslateDynamic
+                      state={animate}
+                      endX={25}
+                      endY={0}
+                      duration={'transform 0.2s ease-out'}
+                    >
+                      <ScaleDynamic
+                        state={animate}
+                        end={0.75}
+                        duration={'transform 0.2s ease-out'}
+                      >
+                        <Info state={animate}>
+                          <Title>{title}</Title>
+                          <Contact>
+                            <Email>agolunga@gmail.com</Email>
 
-                        <Styleda
-                          target='_blank'
-                          rel='noopener noreferrer'
-                          href={'http://twitter.com/'}
-                        >
-                          <Twitter />
-                        </Styleda>
-                        <Styleda
-                          target='_blank'
-                          rel='noopener noreferrer'
-                          href={'http://linkedin.com/'}
-                        >
-                          <Linkedin />
-                        </Styleda>
-                      </Contact>
-                    </Info>
-                  </ScaleDynamic>
-                </TranslateDynamic>
+                            <Styleda
+                              target='_blank'
+                              rel='noopener noreferrer'
+                              href={'http://twitter.com/'}
+                            >
+                              <Twitter />
+                            </Styleda>
+                            <Styleda
+                              target='_blank'
+                              rel='noopener noreferrer'
+                              href={'http://linkedin.com/'}
+                            >
+                              <Linkedin />
+                            </Styleda>
+                          </Contact>
+                        </Info>
+                      </ScaleDynamic>
+                    </TranslateDynamic>
 
-                {showDescription && (
-                  <OpacityDynamic state={animate}>
-                    <Description>
-                      {description.split('\n').map((item, key) => (
-                        <DescriptionLine key={key}>
-                          {item}
-                          <br />
-                        </DescriptionLine>
-                      ))}
-                      <CV>
-                        You can find my CV{' '}
-                        <CVLink
-                          target='_blank'
-                          rel='noopener noreferrer'
-                          href={
-                            'https://drive.google.com/file/d/1ZaE4Q1xFWWhXAM-ZUVd4rZuQOZJxQrHu/view'
-                          }
-                        >
-                          here
-                        </CVLink>
-                        .
-                      </CV>
-                    </Description>
-                  </OpacityDynamic>
-                )}
-              </Header>
-            </Opacity>
-          </Translate>
-        </Container>
+                    {showDescription && (
+                      <OpacityDynamic state={animate}>
+                        <Description>
+                          {description.split('\n').map((item, key) => (
+                            <DescriptionLine key={key}>
+                              {item}
+                              <br />
+                            </DescriptionLine>
+                          ))}
+                          <CV>
+                            You can find my CV{' '}
+                            <CVLink
+                              target='_blank'
+                              rel='noopener noreferrer'
+                              href={
+                                'https://drive.google.com/file/d/1ZaE4Q1xFWWhXAM-ZUVd4rZuQOZJxQrHu/view'
+                              }
+                            >
+                              here
+                            </CVLink>
+                            .
+                          </CV>
+                        </Description>
+                      </OpacityDynamic>
+                    )}
+                  </Header>
+                </Opacity>
+              </Translate>
+            </Container>
+          )}
+        </ThemeContext.Consumer>
       )}
       {isMobileOrTablet && (
         <>
@@ -218,42 +231,38 @@ const Placeholder = styled.div`
 const Container = styled('div').attrs(
   ({
     state,
-    duration = 'height 0.2s, padding-top 0.2s, position 0.2s',
+    duration = 'height 0.2s, padding-top 0.2s, position 0.2s, background-color 0.2s, backdropFilter 0.2s',
     start = '20vh',
     end = '6rem',
+    background = 'rgba(0, 0, 0, 0.5)',
   }) => ({
     style: {
       transition: duration,
       height: `${!state ? start : end}`,
       paddingTop: `${!state ? '5vh' : '0.50rem'}`,
+      backgroundColor: `${!state ? 'rgba(0, 0, 0, 0)' : background}`,
+      backdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
     },
   })
 )`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 
   margin-bottom: 5vh;
-  /* padding-top: ${spaces.narrow}; */
   padding-bottom: ${spaces.narrow};
-  /* height: 20vh; */
   margin-left: -${spaces.wide};
   margin-right: -${spaces.wide};
   padding-left: ${spaces.wide};
   padding-right: ${spaces.wide};
 
-  background-color: ${(props) => props.theme.background};
+  /* background-color: ${(props) => props.theme.background};
 
   @supports (backdrop-filter: none) {
     background-color: ${(props) => props.theme.backgroundTransp};
     backdrop-filter: blur(${(props) => props.theme.blur});
-  }
-
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between; */
+  } */
 `
 
 const Header = styled.div`
@@ -349,7 +358,7 @@ const MContainer = styled.div`
 
   padding-top: ${spaces.wide};
 
-  background-color: ${(props) => props.theme.background};
+  /* background-color: ${(props) => props.theme.background}; */
 
   display: flex;
   flex-direction: column;
@@ -369,7 +378,7 @@ const MInfoStickyContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
 
   background-color: ${(props) => props.theme.background};

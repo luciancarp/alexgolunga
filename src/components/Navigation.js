@@ -104,6 +104,8 @@ const NavList = styled(Scrollspy)`
 `
 
 const NavMenu = styled.nav`
+  position: relative;
+  z-index: 10;
   .is-current {
     /* color: ${(props) => props.theme.primary}; */
 

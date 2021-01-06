@@ -34,7 +34,9 @@
     "react-responsive": "^8.2.0",
     "react-scroll": "^1.8.1",
     "react-scrollspy": "^3.4.3",
-    "styled-components": "^5.2.1"
+    "react-three-fiber": "^5.3.11",
+    "styled-components": "^5.2.1",
+    "three": "^0.124.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

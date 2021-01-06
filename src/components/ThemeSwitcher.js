@@ -25,6 +25,8 @@ const ThemeSwitcherContainer = styled.div`
 
   margin: 0;
   padding: ${spaces.narrow};
+
+  z-index: 10;
 `
 
 const StyledSun = styled(Sun)`

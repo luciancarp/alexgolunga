@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive'
 import Footer from './Footer'
 import ThemeSwitcher from './ThemeSwitcher'
 import Navigation from './Navigation'
+import Lissajous from './Lissajous'
 
 import { spaces, screenSizes } from '../style/global'
 
@@ -16,14 +17,17 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <ThemeSwitcher />
       <Container>
+        <ThemeSwitcher />
         {isDesktopOrLaptop && <Navigation />}
         <>
           <Content>{children}</Content>
           <Footer />
         </>
       </Container>
+      <LissajousContainer>
+        <Lissajous />
+      </LissajousContainer>
     </>
   )
 }
@@ -34,6 +38,9 @@ const Container = styled.div`
   padding: 1rem;
   padding-top: 0;
   padding-bottom: 0;
+
+  position: relative;
+  z-index: 10;
 `
 
 const Content = styled.main`
@@ -47,6 +54,16 @@ const Content = styled.main`
   }
   padding: ${spaces.narrow};
   padding-top: 0;
+`
+
+const LissajousContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 `
 
 Layout.propTypes = {
