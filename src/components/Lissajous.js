@@ -14,7 +14,7 @@ let sizeY = 80.0
 let sizeZ = 80.0
 let fa = 3
 let fb = 12
-let fc = 2.0
+let fc = 2
 let phaseX = 0.0
 let phaseY = 0.0
 let phaseZ = 0.0
@@ -66,7 +66,7 @@ const Line = ({ theme }) => {
         attach='material'
         transparent
         depthTest={false}
-        lineWidth={1}
+        lineWidth={2}
         color={color}
         sizeAttenuation={1}
       />
@@ -77,9 +77,17 @@ const Line = ({ theme }) => {
 function Camera(props) {
   const ref = useRef()
   const { setDefaultCamera } = useThree()
-  useEffect(() => void setDefaultCamera(ref.current), [])
+  useEffect(() => void setDefaultCamera(ref.current), [setDefaultCamera])
   useFrame(() => ref.current.updateMatrixWorld())
   return <perspectiveCamera ref={ref} {...props} />
+}
+
+function Dolly() {
+  useFrame(({ clock, camera }) => {
+    camera.position.z = Math.sin(0.2 * clock.getElapsedTime()) * 100 + 60
+    camera.rotation.z = Math.sin(0.2 * clock.getElapsedTime()) * 0.25
+  })
+  return null
 }
 
 const Lissajous = () => {
@@ -97,6 +105,7 @@ const Lissajous = () => {
             far={1000}
           />
           <Line theme={theme} />
+          <Dolly />
         </Canvas>
       )}
     </ThemeContext.Consumer>

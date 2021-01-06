@@ -398,7 +398,7 @@ const MInfoStickyContainer = styled.div`
     backdrop-filter: blur(${(props) => props.theme.blur});
   }
 
-  box-shadow: 0px 0px 10px 5px ${(props) => props.theme.backgroundTransp};
+  /* box-shadow: 0px 0px 10px 5px ${(props) => props.theme.backgroundTransp}; */
 
   display: flex;
   justify-content: center;
