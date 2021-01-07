@@ -1,14 +1,11 @@
 import React, { useRef, useEffect, useMemo } from 'react'
-import { Canvas, useFrame, useThree, extend } from 'react-three-fiber'
+import { Canvas, useFrame, useThree } from 'react-three-fiber'
 import * as THREE from 'three'
-import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline'
 import { ResizeObserver } from '@juggle/resize-observer'
 
 import ThemeContext from '../style/Theme'
 import useWindowHeight from '../hooks/useWindowHeight'
 import useWindowWidth from '../hooks/useWindowWidth'
-
-extend({ MeshLine, MeshLineMaterial })
 
 let sizeX = 80.0
 let sizeY = 80.0
@@ -45,33 +42,33 @@ const Line = ({ theme }) => {
     phaseX += 0.001
     phaseY += 0.001
     phaseZ += 0.001
+
     let angle = step
-    for (let i = 0; i < points.length; i++) {
+    for (let i = 0; i < line.current.geometry.vertices.length; i++) {
       let x = sizeX * Math.sin(fa * angle + phaseX)
       let y = sizeY * Math.sin(fb * angle + phaseY)
       let z = sizeZ * Math.sin(fc * angle + phaseZ)
-      points[i].x = x
-      points[i].y = y
-      points[i].z = z
+
+      line.current.geometry.vertices[i].set(x, y, z)
       angle += step
     }
-    line.current.setPoints(points)
+
+    line.current.geometry.verticesNeedUpdate = true
   })
 
   let color = theme.name === 'light' ? '#e6e6e6' : '#666'
 
   return (
-    <mesh raycast={MeshLineRaycast}>
-      <meshLine attach='geometry' points={points} ref={line} />
-      <meshLineMaterial
+    <line ref={line}>
+      <geometry attach='geometry' vertices={[...points]} />
+      <lineBasicMaterial
         attach='material'
-        transparent
-        depthTest={false}
-        lineWidth={2}
         color={color}
-        sizeAttenuation={1}
+        linewidth={1}
+        linecap={'round'}
+        linejoin={'round'}
       />
-    </mesh>
+    </line>
   )
 }
 
