@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useMemo } from 'react'
 import { Canvas, useFrame, useThree, extend } from 'react-three-fiber'
 import * as THREE from 'three'
 import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline'
+import { ResizeObserver } from '@juggle/resize-observer'
 
 import ThemeContext from '../style/Theme'
 import useWindowHeight from '../hooks/useWindowHeight'
@@ -96,7 +97,12 @@ const Lissajous = () => {
   return (
     <ThemeContext.Consumer>
       {(theme) => (
-        <Canvas>
+        <Canvas
+          resize={{
+            polyfill: ResizeObserver,
+          }}
+        >
+          >
           <Camera
             position={[0, 0, 50]}
             fov={75}
