@@ -51,6 +51,9 @@ const Beating = () => {
   const content1 = (
     <>
       <p>
+        <i>beating.</i> is a sound installation.
+      </p>
+      <p>
         An exploration of sine waves, the fundamental building blocks of sound.
       </p>
       <p>
@@ -132,7 +135,7 @@ const Beating = () => {
     <ImageContainer>
       <h3 style={{ textAlign: 'center' }}>
         The installation would ideally be arranged in an empty cuboid room and
-        use a Quadraphonic or Ambisonic setup.
+        use an Ambisonic setup.
       </h3>
       <StyledImgCaption fluid={query.render.childImageSharp.fluid} />
       <Caption style={{ textAlign: 'center' }}>
@@ -164,13 +167,15 @@ const Beating = () => {
 
   const DemoVideo = ({ customWidth = '50%' }) => (
     <VideoContainer customWidth={customWidth}>
-      <h3>Audiovisual Demo (Headphones Recommended)</h3>
+      <h3 style={{ textAlign: 'center' }}>
+        Audiovisual Demo (Headphones Recommended)
+      </h3>
       <StyledVideo controls>
         <source src={ImmenvdemovidWebm} type='video/webm' />
         <source src={ImmenvdemovidMp4} type='video/mp4' />
         <track />
       </StyledVideo>
-      <Caption>
+      <Caption style={{ textAlign: 'center' }}>
         Apologies for the dropped frames towards the end, this is due to
         hardware limitations.
       </Caption>

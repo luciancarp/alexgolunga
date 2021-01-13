@@ -67,7 +67,7 @@ const Line = ({ theme }) => {
         attach='material'
         transparent
         depthTest={false}
-        lineWidth={2}
+        lineWidth={1}
         color={color}
         sizeAttenuation={1}
       />
@@ -85,8 +85,8 @@ function Camera(props) {
 
 function Dolly() {
   useFrame(({ clock, camera }) => {
-    camera.position.z = Math.sin(0.2 * clock.getElapsedTime()) * 100 + 60
-    camera.rotation.z = Math.sin(0.2 * clock.getElapsedTime()) * 0.25
+    camera.position.z = Math.sin(0.09 * clock.getElapsedTime()) * 100 + 60
+    camera.rotation.z = Math.sin(0.09 * clock.getElapsedTime()) * 0.25
   })
   return null
 }
@@ -102,7 +102,6 @@ const Lissajous = () => {
             polyfill: ResizeObserver,
           }}
         >
-          >
           <Camera
             position={[0, 0, 50]}
             fov={75}

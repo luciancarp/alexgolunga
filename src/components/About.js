@@ -142,8 +142,8 @@ const About = () => {
               key={key}
               background={
                 theme.name === 'dark'
-                  ? 'rgba(0, 0, 0, 1)'
-                  : 'rgba(238, 238, 238, 1)'
+                  ? 'rgba(0, 0, 0, 0.5)'
+                  : 'rgba(238, 238, 238, 0.5)'
               }
               shadow={
                 theme.name === 'dark'
@@ -246,7 +246,7 @@ const Placeholder = styled.div`
 const Container = styled('div').attrs(
   ({
     state,
-    duration = 'height 0.2s, padding-top 0.2s, position 0.2s, background-color 0.2s, box-shadow 0.2s',
+    duration = 'height 0.2s, padding-top 0.2s, position 0.2s, background-color 0.2s, webkitBackdropFilter 0.2s, backdropFilter 0.2s, box-shadow 0.2s',
     start = '20vh',
     end = '6rem',
     background = 'rgba(0, 0, 0, 0.5)',
@@ -257,6 +257,8 @@ const Container = styled('div').attrs(
       height: `${!state ? start : end}`,
       paddingTop: `${!state ? '5vh' : '0.50rem'}`,
       backgroundColor: `${!state ? 'rgba(0, 0, 0, 0)' : background}`,
+      webkitBackdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
+      backdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
       boxShadow: `${!state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow}`,
     },
   })
@@ -401,10 +403,11 @@ const MInfoStickyContainer = styled.div`
 
   background-color: ${(props) => props.theme.background};
 
-  /* @supports (backdrop-filter: none) {
+  @supports (backdrop-filter: none) {
     background-color: ${(props) => props.theme.backgroundTransp};
+    -webkit-backdrop-filter: blur(${(props) => props.theme.blur});
     backdrop-filter: blur(${(props) => props.theme.blur});
-  } */
+  }
 
   /* box-shadow: 0px 0px 10px 5px ${(props) => props.theme.backgroundTransp}; */
 
