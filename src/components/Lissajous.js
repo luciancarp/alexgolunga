@@ -129,7 +129,7 @@ const Lissajous = () => {
           />
           <Line theme={theme} />
           <Dolly />
-          <FrameLimiter fps={30} />
+          <FrameLimiter fps={24} />
         </Canvas>
       )}
     </ThemeContext.Consumer>
