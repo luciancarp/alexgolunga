@@ -10,6 +10,7 @@ import { spaces, screenSizes } from '../style/global'
 
 import ImmenvdemovidMp4 from '../assets/videos/Immenvdemovid.mp4'
 import ImmenvdemovidWebm from '../assets/videos/Immenvdemovid.webm'
+import ImmenvdemovidPoster from '../Immenvdemovid-preview.jpg'
 
 const id = 'beating'
 const title = 'beating.'
@@ -170,7 +171,7 @@ const Beating = () => {
       <h3 style={{ textAlign: 'center' }}>
         Audiovisual Demo (Headphones Recommended)
       </h3>
-      <StyledVideo controls>
+      <StyledVideo controls preload='none' poster={ImmenvdemovidPoster}>
         <source src={ImmenvdemovidWebm} type='video/webm' />
         <source src={ImmenvdemovidMp4} type='video/mp4' />
         <track />

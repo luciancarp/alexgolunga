@@ -10,10 +10,13 @@ import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 
 import JitdemoMp4 from '../assets/videos/Jitdemo720.mp4'
 import JitdemoWebm from '../assets/videos/Jitdemo720.webm'
+import JitdemoPoster from '../Jitdemo720-preview.jpg'
 import MfeditMp4 from '../assets/videos/Mfedit.mp4'
 import MfeditWebm from '../assets/videos/Mfedit.webm'
+import MfeditPoster from '../Mfedit-preview.jpg'
 import NotionparticlesconvertedMp4 from '../assets/videos/Notionparticlesconverted.mp4'
 import NotionparticlesconvertedWebm from '../assets/videos/Notionparticlesconverted.webm'
+import NotionparticlesconvertedPoster from '../Notionparticlesconverted-preview.jpg'
 
 const id = 'maxmsp'
 const title = 'MaxMSP'
@@ -86,7 +89,7 @@ const Maxmsp = () => {
 
   const MfeditVideo = () => (
     <VideoContainer>
-      <StyledVideo controls>
+      <StyledVideo controls preload='none' poster={MfeditPoster}>
         <source src={MfeditWebm} type='video/webm' />
         <source src={MfeditMp4} type='video/mp4' />
         <track />
@@ -111,7 +114,7 @@ const Maxmsp = () => {
 
   const JitDemoVideo = ({ customWidth = '50%' }) => (
     <VideoContainer customWidth={customWidth}>
-      <StyledVideo controls>
+      <StyledVideo controls preload='none' poster={JitdemoPoster}>
         <source src={JitdemoWebm} type='video/webm' />
         <source src={JitdemoMp4} type='video/mp4' />
         <track />
@@ -125,7 +128,11 @@ const Maxmsp = () => {
 
   const ParticlesVideo = ({ customWidth = '50%' }) => (
     <VideoContainer customWidth={customWidth}>
-      <StyledVideo controls>
+      <StyledVideo
+        controls
+        preload='none'
+        poster={NotionparticlesconvertedPoster}
+      >
         <source src={NotionparticlesconvertedWebm} type='video/webm' />
         <source src={NotionparticlesconvertedMp4} type='video/mp4' />
         <track />

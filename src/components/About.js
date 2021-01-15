@@ -8,7 +8,6 @@ import TwitterSvg from '../assets/svg/twitter.svg'
 import {
   TranslateDynamic,
   OpacityDynamic,
-  ScaleDynamic,
   Translate,
   Opacity,
 } from './Animations'

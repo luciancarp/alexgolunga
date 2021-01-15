@@ -23,7 +23,7 @@ const Recording = () => {
               A short reel consisting of some music projects to which I
               contributed with recording and/or mixing.
             </p>
-            <StyledAudio controls>
+            <StyledAudio controls preload='none'>
               <source src={recmixreel} type='audio/wav' />
             </StyledAudio>
           </Translate>
