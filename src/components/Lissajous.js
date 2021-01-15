@@ -91,6 +91,22 @@ function Dolly() {
   return null
 }
 
+const FrameLimiter = (props) => {
+  const [clock] = React.useState(new THREE.Clock())
+
+  useFrame((state) => {
+    state.ready = false
+    const timeUntilNextFrame = 1000 / props.fps - clock.getDelta()
+
+    setTimeout(() => {
+      state.ready = true
+      state.invalidate()
+    }, Math.max(0, timeUntilNextFrame))
+  })
+
+  return <></>
+}
+
 const Lissajous = () => {
   let width = useWindowWidth
   let height = useWindowHeight
@@ -101,7 +117,7 @@ const Lissajous = () => {
           resize={{
             polyfill: ResizeObserver,
           }}
-          gl={{ antialias: false }}
+          // gl={{ antialias: false }}
           pixelRatio={1}
         >
           <Camera
@@ -113,6 +129,7 @@ const Lissajous = () => {
           />
           <Line theme={theme} />
           <Dolly />
+          <FrameLimiter fps={30} />
         </Canvas>
       )}
     </ThemeContext.Consumer>
