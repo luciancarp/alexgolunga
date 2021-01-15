@@ -10,6 +10,7 @@ export const TranslateDynamic = styled('div').attrs(
     endY = 50,
   }) => ({
     style: {
+      webkitTransition: duration,
       transition: duration,
       transform: `translate(${!state ? startX : endX}%, ${
         !state ? startY : endY
@@ -74,6 +75,7 @@ export const Translate = styled.div`
 export const OpacityDynamic = styled('div').attrs(
   ({ state = true, duration = 'opacity 0.2s', start = 1, end = 0 }) => ({
     style: {
+      webkitTransition: duration,
       transition: duration,
       opacity: `${state ? end : start}`,
     },
@@ -136,6 +138,7 @@ export const Opacity = styled.div`
 export const ScaleDynamic = styled('div').attrs(
   ({ state = true, duration = '0.2s', start = 1, end = 0.5 }) => ({
     style: {
+      webkitTransition: duration,
       transition: duration,
       transform: `scale(${!state ? start : end})`,
     },

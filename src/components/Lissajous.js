@@ -101,6 +101,8 @@ const Lissajous = () => {
           resize={{
             polyfill: ResizeObserver,
           }}
+          gl={{ antialias: false }}
+          pixelRatio={1}
         >
           <Camera
             position={[0, 0, 50]}
