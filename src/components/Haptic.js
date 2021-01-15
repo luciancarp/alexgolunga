@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
-import { Opacity, Translate } from './Animations'
+import { Opacity } from './Animations'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 import { spaces } from '../style/global'
 
@@ -45,35 +45,31 @@ const Haptic = () => {
     <Container id={id} ref={halfPage}>
       {hasScrolled ? (
         <Opacity>
-          <Translate>
-            <Title>{title}</Title>
-            <p>
-              If you have an iPhone with iOS 13.0 or later, you can download the
-              Lofelt Studio app and scan these QR codes to experience the
-              haptics I designed for a few sounds. Make sure your phone is not
-              in Silent Mode in order to hear the audio.
-            </p>
-            <GridContainer>
-              <GridItem col={'1'} row={1}>
-                <StyledImg
-                  fluid={query.superhotReworkHaptic.childImageSharp.fluid}
-                />
-                <p>Section from SUPERHOT: MCD trailer Re-Sound Design</p>
-              </GridItem>
-              <GridItem col={'2'} row={1}>
-                <StyledImg
-                  fluid={query.particlesHaptic.childImageSharp.fluid}
-                />
-                <p>Jitter Particles Animation</p>
-              </GridItem>
-              <GridItem col={'3'} row={1}>
-                <StyledImg
-                  fluid={query.weaponLaunchImpact.childImageSharp.fluid}
-                />
-                <p>Weapon Launch / Impact</p>
-              </GridItem>
-            </GridContainer>
-          </Translate>
+          <Title>{title}</Title>
+          <p>
+            If you have an iPhone with iOS 13.0 or later, you can download the
+            Lofelt Studio app and scan these QR codes to experience the haptics
+            I designed for a few sounds. Make sure your phone is not in Silent
+            Mode in order to hear the audio.
+          </p>
+          <GridContainer>
+            <GridItem col={'1'} row={1}>
+              <StyledImg
+                fluid={query.superhotReworkHaptic.childImageSharp.fluid}
+              />
+              <p>Section from SUPERHOT: MCD trailer Re-Sound Design</p>
+            </GridItem>
+            <GridItem col={'2'} row={1}>
+              <StyledImg fluid={query.particlesHaptic.childImageSharp.fluid} />
+              <p>Jitter Particles Animation</p>
+            </GridItem>
+            <GridItem col={'3'} row={1}>
+              <StyledImg
+                fluid={query.weaponLaunchImpact.childImageSharp.fluid}
+              />
+              <p>Weapon Launch / Impact</p>
+            </GridItem>
+          </GridContainer>
         </Opacity>
       ) : (
         <Placeholder />

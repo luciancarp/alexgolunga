@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 
-import { Opacity, Translate } from './Animations'
+import { Opacity } from './Animations'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 import { spaces } from '../style/global'
 
@@ -17,16 +17,14 @@ const Recording = () => {
     <Container id={id} ref={halfPage}>
       {hasScrolled ? (
         <Opacity>
-          <Translate>
-            <Title>{title}</Title>
-            <p>
-              A short reel consisting of some music projects to which I
-              contributed with recording and/or mixing.
-            </p>
-            <StyledAudio controls preload='none'>
-              <source src={recmixreel} type='audio/wav' />
-            </StyledAudio>
-          </Translate>
+          <Title>{title}</Title>
+          <p>
+            A short reel consisting of some music projects to which I
+            contributed with recording and/or mixing.
+          </p>
+          <StyledAudio controls preload='none'>
+            <source src={recmixreel} type='audio/wav' />
+          </StyledAudio>
         </Opacity>
       ) : (
         <Placeholder />

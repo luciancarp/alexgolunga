@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { useMediaQuery } from 'react-responsive'
 
-import { Opacity, Translate } from './Animations'
+import { Opacity } from './Animations'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 import { spaces, screenSizes } from '../style/global'
 
@@ -209,87 +209,85 @@ const Beating = () => {
     <Container id={id} ref={halfPage}>
       {hasScrolled ? (
         <Opacity>
-          <Translate>
-            <Title>{title}</Title>
-            <GridContainer>
-              {isMobileOrTablet ? (
-                <>
-                  <GridItem col={'1'} row={'1'}>
-                    <Lissajous2 />
-                  </GridItem>
+          <Title>{title}</Title>
+          <GridContainer>
+            {isMobileOrTablet ? (
+              <>
+                <GridItem col={'1'} row={'1'}>
+                  <Lissajous2 />
+                </GridItem>
 
-                  <GridItem col={'2 / span 3'} row={'1'}>
-                    <Lissajous4 />
-                  </GridItem>
+                <GridItem col={'2 / span 3'} row={'1'}>
+                  <Lissajous4 />
+                </GridItem>
 
-                  <GridItem col={'1 / span 3'} row={'2'}>
-                    {content1}
-                  </GridItem>
+                <GridItem col={'1 / span 3'} row={'2'}>
+                  {content1}
+                </GridItem>
 
-                  <GridItem col={'1'} row={'3'}>
-                    <Lissajous1 />
-                  </GridItem>
+                <GridItem col={'1'} row={'3'}>
+                  <Lissajous1 />
+                </GridItem>
 
-                  <GridItem col={'2 / span 3'} row={'3'}>
-                    <Lissajous3 />
-                  </GridItem>
+                <GridItem col={'2 / span 3'} row={'3'}>
+                  <Lissajous3 />
+                </GridItem>
 
-                  <GridItem col={'1 / span 3'} row={'4'}>
-                    {content2}
-                  </GridItem>
+                <GridItem col={'1 / span 3'} row={'4'}>
+                  {content2}
+                </GridItem>
 
-                  <GridItem col={'1 / span 3'} row={'5'}>
-                    <QuadraphonicImg />
-                  </GridItem>
+                <GridItem col={'1 / span 3'} row={'5'}>
+                  <QuadraphonicImg />
+                </GridItem>
 
-                  <GridItem col={'1 / span 3'} row={'6'}>
-                    <DemoVideo customWidth={'70%'} />
-                  </GridItem>
+                <GridItem col={'1 / span 3'} row={'6'}>
+                  <DemoVideo customWidth={'70%'} />
+                </GridItem>
 
-                  <GridItem col={'1 /span 3'} row={'7'}>
-                    <Link />
-                  </GridItem>
-                </>
-              ) : (
-                <>
-                  <GridItem col={'1'} row={'1'}>
-                    {content1}
-                  </GridItem>
-                  <GridItem col={'1'} row={'2'}>
-                    {content2}
-                  </GridItem>
+                <GridItem col={'1 /span 3'} row={'7'}>
+                  <Link />
+                </GridItem>
+              </>
+            ) : (
+              <>
+                <GridItem col={'1'} row={'1'}>
+                  {content1}
+                </GridItem>
+                <GridItem col={'1'} row={'2'}>
+                  {content2}
+                </GridItem>
 
-                  <GridItem col={'2'} row={'1'}>
-                    <Lissajous2 />
-                  </GridItem>
+                <GridItem col={'2'} row={'1'}>
+                  <Lissajous2 />
+                </GridItem>
 
-                  <GridItem col={'2'} row={'2'}>
-                    <Lissajous4 />
-                  </GridItem>
+                <GridItem col={'2'} row={'2'}>
+                  <Lissajous4 />
+                </GridItem>
 
-                  <GridItem col={'3'} row={'1'}>
-                    <Lissajous1 />
-                  </GridItem>
+                <GridItem col={'3'} row={'1'}>
+                  <Lissajous1 />
+                </GridItem>
 
-                  <GridItem col={'3'} row={'2'}>
-                    <Lissajous3 />
-                  </GridItem>
+                <GridItem col={'3'} row={'2'}>
+                  <Lissajous3 />
+                </GridItem>
 
-                  <GridItem col={'2/ span 3'} row={'4'}>
-                    <QuadraphonicImg />
-                  </GridItem>
+                <GridItem col={'2/ span 3'} row={'4'}>
+                  <QuadraphonicImg />
+                </GridItem>
 
-                  <GridItem col={'1'} row={'4'}>
-                    <DemoVideo customWidth={'100%'} />
-                  </GridItem>
+                <GridItem col={'1'} row={'4'}>
+                  <DemoVideo customWidth={'100%'} />
+                </GridItem>
 
-                  <GridItem col={'1 /span 3'} row={'5'}>
-                    <Link />
-                  </GridItem>
-                </>
-              )}
-            </GridContainer>
-          </Translate>
+                <GridItem col={'1 /span 3'} row={'5'}>
+                  <Link />
+                </GridItem>
+              </>
+            )}
+          </GridContainer>
         </Opacity>
       ) : (
         <Placeholder />

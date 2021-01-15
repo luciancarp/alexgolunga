@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 
-import { Opacity, Translate } from './Animations'
+import { Opacity } from './Animations'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 import { spaces, screenSizes } from '../style/global'
 
@@ -24,22 +24,21 @@ const Wwise = () => {
     <Container id={id} ref={halfPage}>
       {hasScrolled ? (
         <Opacity>
-          <Translate>
-            <Title>{title}</Title>
-            <GridContainer>
-              <GridItem col={'1'} row={1}>
-                <p>
-                  Burgundy is a demo I created to demonstrate my proficiency
-                  with some Wwise and Unity integration features.
-                </p>
-                <p>
-                  The sound design is original, and most of the systems created
-                  using Wwise are described in the walkthrough below. All of the
-                  scripts shown are written by me as well.
-                </p>
-              </GridItem>
-              <GridItem col={'2'} row={1}>
-                {/* <StyledIframe
+          <Title>{title}</Title>
+          <GridContainer>
+            <GridItem col={'1'} row={1}>
+              <p>
+                Burgundy is a demo I created to demonstrate my proficiency with
+                some Wwise and Unity integration features.
+              </p>
+              <p>
+                The sound design is original, and most of the systems created
+                using Wwise are described in the walkthrough below. All of the
+                scripts shown are written by me as well.
+              </p>
+            </GridItem>
+            <GridItem col={'2'} row={1}>
+              {/* <StyledIframe
                   title='Game Audio Reel'
                   allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
                   frameBorder='0'
@@ -50,18 +49,17 @@ const Wwise = () => {
                   src='https://www.youtube.com/embed/K7sFteN4OB0'
                   isMobileOrTablet={isMobileOrTablet}
                 /> */}
-                <StyledVideo
-                  controls
-                  preload='none'
-                  poster={WwisePoster}
-                  isMobileOrTablet={isMobileOrTablet}
-                >
-                  <source src={WwiseMp4} type='video/mp4' />
-                  <track />
-                </StyledVideo>
-              </GridItem>
-            </GridContainer>
-          </Translate>
+              <StyledVideo
+                controls
+                preload='none'
+                poster={WwisePoster}
+                isMobileOrTablet={isMobileOrTablet}
+              >
+                <source src={WwiseMp4} type='video/mp4' />
+                <track />
+              </StyledVideo>
+            </GridItem>
+          </GridContainer>
         </Opacity>
       ) : (
         <Placeholder />

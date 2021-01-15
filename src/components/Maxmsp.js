@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { useMediaQuery } from 'react-responsive'
 
-import { Opacity, Translate } from './Animations'
+import { Opacity } from './Animations'
 import { spaces, screenSizes } from '../style/global'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 
@@ -155,78 +155,76 @@ const Maxmsp = () => {
     <Container id={id} ref={halfPage}>
       {hasScrolled ? (
         <Opacity>
-          <Translate>
-            <Title>{title}</Title>
-            <GridContainer>
-              {isMobileOrTablet ? (
-                <>
-                  <GridItem col={'1 / span 2'} row={'1'}>
-                    {content1}
-                  </GridItem>
-                  <GridItem col={'1 / span 2'} row={'2'}>
-                    <TremoloImg />
-                  </GridItem>
-                  <GridItem col={'1 / span 2'} row={'3'}>
-                    <EnvGenSynthImg />
-                  </GridItem>
-                  <GridItem col={'1 / span 2'} row={'4'}>
-                    <FFTFXImg />
-                  </GridItem>
-                  <GridItem col={'1 / span 2'} row={'5'}>
-                    <MfeditVideo />
-                  </GridItem>
-                  <GridItem col={'1 / span 2'} row={'6'}>
-                    <InnerGridConteiner>
-                      <GridItem col={'1 / span 2'} row={'1'}>
-                        <JitterTitle />
-                      </GridItem>
+          <Title>{title}</Title>
+          <GridContainer>
+            {isMobileOrTablet ? (
+              <>
+                <GridItem col={'1 / span 2'} row={'1'}>
+                  {content1}
+                </GridItem>
+                <GridItem col={'1 / span 2'} row={'2'}>
+                  <TremoloImg />
+                </GridItem>
+                <GridItem col={'1 / span 2'} row={'3'}>
+                  <EnvGenSynthImg />
+                </GridItem>
+                <GridItem col={'1 / span 2'} row={'4'}>
+                  <FFTFXImg />
+                </GridItem>
+                <GridItem col={'1 / span 2'} row={'5'}>
+                  <MfeditVideo />
+                </GridItem>
+                <GridItem col={'1 / span 2'} row={'6'}>
+                  <InnerGridConteiner>
+                    <GridItem col={'1 / span 2'} row={'1'}>
+                      <JitterTitle />
+                    </GridItem>
 
-                      <GridItem col={'1 / span 2'} row={'2'}>
-                        <div style={{ marginBottom: '2rem' }}>
-                          <JitDemoVideo customWidth={'70%'} />
-                        </div>
-                      </GridItem>
-                      <GridItem col={'1 / span 2'} row={'3'}>
-                        <ParticlesVideo customWidth={'70%'} />
-                      </GridItem>
-                    </InnerGridConteiner>
-                  </GridItem>
-                </>
-              ) : (
-                <>
-                  <GridItem col={'1 / span 2'} row={'1'}>
-                    {content1}
-                  </GridItem>
-                  <GridItem col={'1'} row={'2'}>
-                    <EnvGenSynthImg />
-                  </GridItem>
-                  <GridItem col={'1'} row={'3'}>
-                    <TremoloImg />
-                  </GridItem>
-                  <GridItem col={'2'} row={'2'}>
-                    <FFTFXImg />
-                  </GridItem>
-                  <GridItem col={'2'} row={'3'}>
-                    <MfeditVideo />
-                  </GridItem>
-                  <GridItem col={'1 / span 2'} row={'4'}>
-                    <InnerGridConteiner>
-                      <GridItem col={'1 / span 2'} row={'1'}>
-                        <JitterTitle />
-                      </GridItem>
+                    <GridItem col={'1 / span 2'} row={'2'}>
+                      <div style={{ marginBottom: '2rem' }}>
+                        <JitDemoVideo customWidth={'70%'} />
+                      </div>
+                    </GridItem>
+                    <GridItem col={'1 / span 2'} row={'3'}>
+                      <ParticlesVideo customWidth={'70%'} />
+                    </GridItem>
+                  </InnerGridConteiner>
+                </GridItem>
+              </>
+            ) : (
+              <>
+                <GridItem col={'1 / span 2'} row={'1'}>
+                  {content1}
+                </GridItem>
+                <GridItem col={'1'} row={'2'}>
+                  <EnvGenSynthImg />
+                </GridItem>
+                <GridItem col={'1'} row={'3'}>
+                  <TremoloImg />
+                </GridItem>
+                <GridItem col={'2'} row={'2'}>
+                  <FFTFXImg />
+                </GridItem>
+                <GridItem col={'2'} row={'3'}>
+                  <MfeditVideo />
+                </GridItem>
+                <GridItem col={'1 / span 2'} row={'4'}>
+                  <InnerGridConteiner>
+                    <GridItem col={'1 / span 2'} row={'1'}>
+                      <JitterTitle />
+                    </GridItem>
 
-                      <GridItem col={'1'} row={'2'}>
-                        <JitDemoVideo customWidth={'100%'} />
-                      </GridItem>
-                      <GridItem col={'2'} row={'2'}>
-                        <ParticlesVideo customWidth={'100%'} />
-                      </GridItem>
-                    </InnerGridConteiner>
-                  </GridItem>
-                </>
-              )}
-            </GridContainer>
-          </Translate>
+                    <GridItem col={'1'} row={'2'}>
+                      <JitDemoVideo customWidth={'100%'} />
+                    </GridItem>
+                    <GridItem col={'2'} row={'2'}>
+                      <ParticlesVideo customWidth={'100%'} />
+                    </GridItem>
+                  </InnerGridConteiner>
+                </GridItem>
+              </>
+            )}
+          </GridContainer>
         </Opacity>
       ) : (
         <Placeholder />
