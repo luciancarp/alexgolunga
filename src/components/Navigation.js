@@ -78,11 +78,11 @@ const NavItem = styled.li`
   }
 
   transform-origin: left;
-  /* transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg); */
+
+  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 
+  -webkit-transition: transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
 
   display: flex;
@@ -112,8 +112,11 @@ const NavMenu = styled.nav`
     opacity: 1;
 
     transform-origin: left;
+
+    -webkit-transform: translate(0, 2.75rem) rotate(0) scale(2);
     transform: translate(0, 2.75rem) rotate(0) scale(2);
 
+    -webkit-transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
     /* height: 1rem; */

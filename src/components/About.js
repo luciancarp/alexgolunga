@@ -156,37 +156,37 @@ const About = () => {
                   <Header>
                     <TranslateDynamic
                       state={animate}
-                      endX={25}
+                      endX={17.7}
                       endY={0}
                       duration={'transform 0.2s ease-out'}
                     >
-                      <ScaleDynamic
+                      {/* <ScaleDynamic
                         state={animate}
                         end={0.75}
                         duration={'transform 0.2s ease-out'}
-                      >
-                        <Info state={animate}>
-                          <Title>{title}</Title>
-                          <Contact>
-                            <Email>agolunga@gmail.com</Email>
+                      > */}
+                      <Info state={animate}>
+                        <Title>{title}</Title>
+                        <Contact>
+                          <Email>agolunga@gmail.com</Email>
 
-                            <Styleda
-                              target='_blank'
-                              rel='noopener noreferrer'
-                              href={'http://twitter.com/'}
-                            >
-                              <Twitter />
-                            </Styleda>
-                            <Styleda
-                              target='_blank'
-                              rel='noopener noreferrer'
-                              href={'http://linkedin.com/'}
-                            >
-                              <Linkedin />
-                            </Styleda>
-                          </Contact>
-                        </Info>
-                      </ScaleDynamic>
+                          <Styleda
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            href={'http://twitter.com/'}
+                          >
+                            <Twitter />
+                          </Styleda>
+                          <Styleda
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            href={'http://linkedin.com/'}
+                          >
+                            <Linkedin />
+                          </Styleda>
+                        </Contact>
+                      </Info>
+                      {/* </ScaleDynamic> */}
                     </TranslateDynamic>
 
                     {showDescription && (
@@ -246,20 +246,32 @@ const Placeholder = styled.div`
 const Container = styled('div').attrs(
   ({
     state,
-    duration = 'height 0.2s, padding-top 0.2s, position 0.2s, background-color 0.2s, webkitBackdropFilter 0.2s, backdropFilter 0.2s, box-shadow 0.2s',
-    start = '20vh',
-    end = '6rem',
+    duration = 'height 0.2s, padding-top 0.2s, position 0.2s, background-color 0.2s, -webkit-backdrop-filter 0.2s, backdrop-filter 0.2s, -webkit-box-shadow 0.2s, box-shadow 0.2s, -webkit-transform 0.2s ease-out, transform 0.2s ease-out',
     background = 'rgba(0, 0, 0, 0.5)',
     shadow = '0px 0px 0px 0px rgba(0, 0, 0, 0)',
+    startScale = 1,
+    endScale = 0.75,
+    startX = 0,
+    endX = 0,
+    startY = 0,
+    endY = -3.2,
   }) => ({
     style: {
+      webkitTransition: duration,
       transition: duration,
-      height: `${!state ? start : end}`,
-      paddingTop: `${!state ? '5vh' : '0.50rem'}`,
       backgroundColor: `${!state ? 'rgba(0, 0, 0, 0)' : background}`,
       webkitBackdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
       backdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
+      webkitBoxShadow: `${
+        !state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow
+      }`,
       boxShadow: `${!state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow}`,
+      webkitTransform: `scale(${!state ? startScale : endScale}) translate(${
+        !state ? startX : endX
+      }rem, ${!state ? startY : endY}rem)`,
+      transform: `scale(${!state ? startScale : endScale}) translate(${
+        !state ? startX : endX
+      }rem, ${!state ? startY : endY}rem)`,
     },
   })
 )`
@@ -268,12 +280,19 @@ const Container = styled('div').attrs(
   top: 0;
   z-index: 2;
 
+  padding-top: 5vh;
+  height: 20vh;
+
   margin-bottom: 5vh;
   padding-bottom: ${spaces.narrow};
-  margin-left: -${spaces.wide};
-  margin-right: -${spaces.wide};
-  padding-left: ${spaces.wide};
-  padding-right: ${spaces.wide};
+  /* margin-left: -${spaces.wide};
+  margin-right: -${spaces.wide}; */
+  margin-left: -11rem;
+  margin-right: -11rem;
+  /* padding-left: ${spaces.wide};
+  padding-right: ${spaces.wide}; */
+  padding-left: 11rem;
+  padding-right: 11rem;
 
   /* background-color: ${(props) => props.theme.background};
 
@@ -296,6 +315,7 @@ const Info = styled.div`
   left: 0;
   /* top: 50%; */
 
+  -webkit-transition: transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
 `
 const Contact = styled.div`

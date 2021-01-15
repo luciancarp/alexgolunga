@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useMemo } from 'react'
 import { Canvas, useFrame, useThree, extend } from 'react-three-fiber'
 import * as THREE from 'three'
-import { MeshLine, MeshLineMaterial, MeshLineRaycast } from 'three.meshline'
+import { MeshLine, MeshLineMaterial } from 'three.meshline'
 import { ResizeObserver } from '@juggle/resize-observer'
 
 import ThemeContext from '../style/Theme'
@@ -61,7 +61,7 @@ const Line = ({ theme }) => {
   let color = theme.name === 'light' ? '#e6e6e6' : '#666'
 
   return (
-    <mesh raycast={MeshLineRaycast}>
+    <mesh>
       <meshLine attach='geometry' points={points} ref={line} />
       <meshLineMaterial
         attach='material'

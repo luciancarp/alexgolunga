@@ -5,16 +5,19 @@ export const TranslateDynamic = styled('div').attrs(
     state = true,
     duration = 'transform 0.2s',
     startX = 0,
-    endX = 50,
+    endX = 0,
     startY = 0,
-    endY = 50,
+    endY = 0,
   }) => ({
     style: {
       webkitTransition: duration,
       transition: duration,
-      transform: `translate(${!state ? startX : endX}%, ${
+      webkitTransform: `translate(${!state ? startX : endX}rem, ${
         !state ? startY : endY
-      }%)`,
+      }rem)`,
+      transform: `translate(${!state ? startX : endX}rem, ${
+        !state ? startY : endY
+      }rem)`,
     },
   })
 )``
@@ -28,45 +31,85 @@ export const Translate = styled.div`
 
   @-webkit-keyframes translate {
     from {
+      -webkit-transform: translate(0, 2rem);
+      -moz-transform: translate(0, 2rem);
+      -ms-transform: translate(0, 2rem);
+      -o-transform: translate(0, 2rem);
       transform: translate(0, 2rem);
     }
     to {
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
       transform: translate(0, 0);
     }
   }
 
   @-moz-keyframes translate {
     from {
+      -webkit-transform: translate(0, 2rem);
+      -moz-transform: translate(0, 2rem);
+      -ms-transform: translate(0, 2rem);
+      -o-transform: translate(0, 2rem);
       transform: translate(0, 2rem);
     }
     to {
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
       transform: translate(0, 0);
     }
   }
 
   @-ms-keyframes translate {
     from {
+      -webkit-transform: translate(0, 2rem);
+      -moz-transform: translate(0, 2rem);
+      -ms-transform: translate(0, 2rem);
+      -o-transform: translate(0, 2rem);
       transform: translate(0, 2rem);
     }
     to {
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
       transform: translate(0, 0);
     }
   }
 
   @-o-keyframes translate {
     from {
+      -webkit-transform: translate(0, 2rem);
+      -moz-transform: translate(0, 2rem);
+      -ms-transform: translate(0, 2rem);
+      -o-transform: translate(0, 2rem);
       transform: translate(0, 2rem);
     }
     to {
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
       transform: translate(0, 0);
     }
   }
 
   @keyframes translate {
     from {
+      -webkit-transform: translate(0, 2rem);
+      -moz-transform: translate(0, 2rem);
+      -ms-transform: translate(0, 2rem);
+      -o-transform: translate(0, 2rem);
       transform: translate(0, 2rem);
     }
     to {
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
       transform: translate(0, 0);
     }
   }
@@ -140,6 +183,7 @@ export const ScaleDynamic = styled('div').attrs(
     style: {
       webkitTransition: duration,
       transition: duration,
+      webkitTransform: `scale(${!state ? start : end})`,
       transform: `scale(${!state ? start : end})`,
     },
   })
