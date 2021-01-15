@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
@@ -6,7 +6,6 @@ import { useMediaQuery } from 'react-responsive'
 
 import { Opacity } from './Animations'
 import { spaces, screenSizes } from '../style/global'
-import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 
 import JitdemoMp4 from '../assets/videos/Jitdemo720.mp4'
 import JitdemoWebm from '../assets/videos/Jitdemo720.webm'
@@ -148,87 +147,80 @@ const Maxmsp = () => {
     query: `(max-width: ${screenSizes.laptop})`,
   })
 
-  const halfPage = useRef()
-  const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1)
-
   return (
-    <Container id={id} ref={halfPage}>
-      {hasScrolled ? (
-        <Opacity>
-          <Title>{title}</Title>
-          <GridContainer>
-            {isMobileOrTablet ? (
-              <>
-                <GridItem col={'1 / span 2'} row={'1'}>
-                  {content1}
-                </GridItem>
-                <GridItem col={'1 / span 2'} row={'2'}>
-                  <TremoloImg />
-                </GridItem>
-                <GridItem col={'1 / span 2'} row={'3'}>
-                  <EnvGenSynthImg />
-                </GridItem>
-                <GridItem col={'1 / span 2'} row={'4'}>
-                  <FFTFXImg />
-                </GridItem>
-                <GridItem col={'1 / span 2'} row={'5'}>
-                  <MfeditVideo />
-                </GridItem>
-                <GridItem col={'1 / span 2'} row={'6'}>
-                  <InnerGridConteiner>
-                    <GridItem col={'1 / span 2'} row={'1'}>
-                      <JitterTitle />
-                    </GridItem>
+    <Container id={id}>
+      <Opacity>
+        <Title>{title}</Title>
+        <GridContainer>
+          {isMobileOrTablet ? (
+            <>
+              <GridItem col={'1 / span 2'} row={'1'}>
+                {content1}
+              </GridItem>
+              <GridItem col={'1 / span 2'} row={'2'}>
+                <TremoloImg />
+              </GridItem>
+              <GridItem col={'1 / span 2'} row={'3'}>
+                <EnvGenSynthImg />
+              </GridItem>
+              <GridItem col={'1 / span 2'} row={'4'}>
+                <FFTFXImg />
+              </GridItem>
+              <GridItem col={'1 / span 2'} row={'5'}>
+                <MfeditVideo />
+              </GridItem>
+              <GridItem col={'1 / span 2'} row={'6'}>
+                <InnerGridConteiner>
+                  <GridItem col={'1 / span 2'} row={'1'}>
+                    <JitterTitle />
+                  </GridItem>
 
-                    <GridItem col={'1 / span 2'} row={'2'}>
-                      <div style={{ marginBottom: '2rem' }}>
-                        <JitDemoVideo customWidth={'70%'} />
-                      </div>
-                    </GridItem>
-                    <GridItem col={'1 / span 2'} row={'3'}>
-                      <ParticlesVideo customWidth={'70%'} />
-                    </GridItem>
-                  </InnerGridConteiner>
-                </GridItem>
-              </>
-            ) : (
-              <>
-                <GridItem col={'1 / span 2'} row={'1'}>
-                  {content1}
-                </GridItem>
-                <GridItem col={'1'} row={'2'}>
-                  <EnvGenSynthImg />
-                </GridItem>
-                <GridItem col={'1'} row={'3'}>
-                  <TremoloImg />
-                </GridItem>
-                <GridItem col={'2'} row={'2'}>
-                  <FFTFXImg />
-                </GridItem>
-                <GridItem col={'2'} row={'3'}>
-                  <MfeditVideo />
-                </GridItem>
-                <GridItem col={'1 / span 2'} row={'4'}>
-                  <InnerGridConteiner>
-                    <GridItem col={'1 / span 2'} row={'1'}>
-                      <JitterTitle />
-                    </GridItem>
+                  <GridItem col={'1 / span 2'} row={'2'}>
+                    <div style={{ marginBottom: '2rem' }}>
+                      <JitDemoVideo customWidth={'70%'} />
+                    </div>
+                  </GridItem>
+                  <GridItem col={'1 / span 2'} row={'3'}>
+                    <ParticlesVideo customWidth={'70%'} />
+                  </GridItem>
+                </InnerGridConteiner>
+              </GridItem>
+            </>
+          ) : (
+            <>
+              <GridItem col={'1 / span 2'} row={'1'}>
+                {content1}
+              </GridItem>
+              <GridItem col={'1'} row={'2'}>
+                <EnvGenSynthImg />
+              </GridItem>
+              <GridItem col={'1'} row={'3'}>
+                <TremoloImg />
+              </GridItem>
+              <GridItem col={'2'} row={'2'}>
+                <FFTFXImg />
+              </GridItem>
+              <GridItem col={'2'} row={'3'}>
+                <MfeditVideo />
+              </GridItem>
+              <GridItem col={'1 / span 2'} row={'4'}>
+                <InnerGridConteiner>
+                  <GridItem col={'1 / span 2'} row={'1'}>
+                    <JitterTitle />
+                  </GridItem>
 
-                    <GridItem col={'1'} row={'2'}>
-                      <JitDemoVideo customWidth={'100%'} />
-                    </GridItem>
-                    <GridItem col={'2'} row={'2'}>
-                      <ParticlesVideo customWidth={'100%'} />
-                    </GridItem>
-                  </InnerGridConteiner>
-                </GridItem>
-              </>
-            )}
-          </GridContainer>
-        </Opacity>
-      ) : (
-        <Placeholder />
-      )}
+                  <GridItem col={'1'} row={'2'}>
+                    <JitDemoVideo customWidth={'100%'} />
+                  </GridItem>
+                  <GridItem col={'2'} row={'2'}>
+                    <ParticlesVideo customWidth={'100%'} />
+                  </GridItem>
+                </InnerGridConteiner>
+              </GridItem>
+            </>
+          )}
+        </GridContainer>
+      </Opacity>
     </Container>
   )
 }
@@ -291,10 +283,6 @@ const InnerGridConteiner = styled.div`
   grid-template-columns: repeat(2, 1fr);
   column-gap: ${spaces.wide};
   row-gap: 0;
-`
-
-const Placeholder = styled.div`
-  height: 100vh;
 `
 
 const Title = styled.h1`

@@ -1,11 +1,10 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { useMediaQuery } from 'react-responsive'
 
 import { Opacity } from './Animations'
-import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 import { spaces, screenSizes } from '../style/global'
 
 import ImmenvdemovidMp4 from '../assets/videos/Immenvdemovid.mp4'
@@ -198,100 +197,93 @@ const Beating = () => {
     </p>
   )
 
-  const halfPage = useRef()
-  const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1)
-
   const isMobileOrTablet = useMediaQuery({
     query: `(max-width: ${screenSizes.laptop})`,
   })
 
   return (
-    <Container id={id} ref={halfPage}>
-      {hasScrolled ? (
-        <Opacity>
-          <Title>{title}</Title>
-          <GridContainer>
-            {isMobileOrTablet ? (
-              <>
-                <GridItem col={'1'} row={'1'}>
-                  <Lissajous2 />
-                </GridItem>
+    <Container id={id}>
+      <Opacity>
+        <Title>{title}</Title>
+        <GridContainer>
+          {isMobileOrTablet ? (
+            <>
+              <GridItem col={'1'} row={'1'}>
+                <Lissajous2 />
+              </GridItem>
 
-                <GridItem col={'2 / span 3'} row={'1'}>
-                  <Lissajous4 />
-                </GridItem>
+              <GridItem col={'2 / span 3'} row={'1'}>
+                <Lissajous4 />
+              </GridItem>
 
-                <GridItem col={'1 / span 3'} row={'2'}>
-                  {content1}
-                </GridItem>
+              <GridItem col={'1 / span 3'} row={'2'}>
+                {content1}
+              </GridItem>
 
-                <GridItem col={'1'} row={'3'}>
-                  <Lissajous1 />
-                </GridItem>
+              <GridItem col={'1'} row={'3'}>
+                <Lissajous1 />
+              </GridItem>
 
-                <GridItem col={'2 / span 3'} row={'3'}>
-                  <Lissajous3 />
-                </GridItem>
+              <GridItem col={'2 / span 3'} row={'3'}>
+                <Lissajous3 />
+              </GridItem>
 
-                <GridItem col={'1 / span 3'} row={'4'}>
-                  {content2}
-                </GridItem>
+              <GridItem col={'1 / span 3'} row={'4'}>
+                {content2}
+              </GridItem>
 
-                <GridItem col={'1 / span 3'} row={'5'}>
-                  <QuadraphonicImg />
-                </GridItem>
+              <GridItem col={'1 / span 3'} row={'5'}>
+                <QuadraphonicImg />
+              </GridItem>
 
-                <GridItem col={'1 / span 3'} row={'6'}>
-                  <DemoVideo customWidth={'70%'} />
-                </GridItem>
+              <GridItem col={'1 / span 3'} row={'6'}>
+                <DemoVideo customWidth={'70%'} />
+              </GridItem>
 
-                <GridItem col={'1 /span 3'} row={'7'}>
-                  <Link />
-                </GridItem>
-              </>
-            ) : (
-              <>
-                <GridItem col={'1'} row={'1'}>
-                  {content1}
-                </GridItem>
-                <GridItem col={'1'} row={'2'}>
-                  {content2}
-                </GridItem>
+              <GridItem col={'1 /span 3'} row={'7'}>
+                <Link />
+              </GridItem>
+            </>
+          ) : (
+            <>
+              <GridItem col={'1'} row={'1'}>
+                {content1}
+              </GridItem>
+              <GridItem col={'1'} row={'2'}>
+                {content2}
+              </GridItem>
 
-                <GridItem col={'2'} row={'1'}>
-                  <Lissajous2 />
-                </GridItem>
+              <GridItem col={'2'} row={'1'}>
+                <Lissajous2 />
+              </GridItem>
 
-                <GridItem col={'2'} row={'2'}>
-                  <Lissajous4 />
-                </GridItem>
+              <GridItem col={'2'} row={'2'}>
+                <Lissajous4 />
+              </GridItem>
 
-                <GridItem col={'3'} row={'1'}>
-                  <Lissajous1 />
-                </GridItem>
+              <GridItem col={'3'} row={'1'}>
+                <Lissajous1 />
+              </GridItem>
 
-                <GridItem col={'3'} row={'2'}>
-                  <Lissajous3 />
-                </GridItem>
+              <GridItem col={'3'} row={'2'}>
+                <Lissajous3 />
+              </GridItem>
 
-                <GridItem col={'2/ span 3'} row={'4'}>
-                  <QuadraphonicImg />
-                </GridItem>
+              <GridItem col={'2/ span 3'} row={'4'}>
+                <QuadraphonicImg />
+              </GridItem>
 
-                <GridItem col={'1'} row={'4'}>
-                  <DemoVideo customWidth={'100%'} />
-                </GridItem>
+              <GridItem col={'1'} row={'4'}>
+                <DemoVideo customWidth={'100%'} />
+              </GridItem>
 
-                <GridItem col={'1 /span 3'} row={'5'}>
-                  <Link />
-                </GridItem>
-              </>
-            )}
-          </GridContainer>
-        </Opacity>
-      ) : (
-        <Placeholder />
-      )}
+              <GridItem col={'1 /span 3'} row={'5'}>
+                <Link />
+              </GridItem>
+            </>
+          )}
+        </GridContainer>
+      </Opacity>
     </Container>
   )
 }
@@ -360,10 +352,6 @@ const GridContainer = styled.div`
   column-gap: ${spaces.wide};
   row-gap: ${spaces.wide};
   /* grid-auto-rows: minmax(100px, auto); */
-`
-
-const Placeholder = styled.div`
-  height: 100vh;
 `
 
 const Title = styled.h1`
