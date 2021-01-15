@@ -6,6 +6,9 @@ import { Opacity, Translate } from './Animations'
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility'
 import { spaces, screenSizes } from '../style/global'
 
+import WwiseMp4 from '../assets/videos/Wwise.mp4'
+import WwisePoster from '../Wwise-preview.jpg'
+
 const id = 'wwise'
 const title = 'Wwise Unity Integration'
 
@@ -36,7 +39,7 @@ const Wwise = () => {
                 </p>
               </GridItem>
               <GridItem col={'2'} row={1}>
-                <StyledIframe
+                {/* <StyledIframe
                   title='Game Audio Reel'
                   allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
                   frameBorder='0'
@@ -46,7 +49,16 @@ const Wwise = () => {
                   allowFullScreen
                   src='https://www.youtube.com/embed/K7sFteN4OB0'
                   isMobileOrTablet={isMobileOrTablet}
-                />
+                /> */}
+                <StyledVideo
+                  controls
+                  preload='none'
+                  poster={WwisePoster}
+                  isMobileOrTablet={isMobileOrTablet}
+                >
+                  <source src={WwiseMp4} type='video/mp4' />
+                  <track />
+                </StyledVideo>
               </GridItem>
             </GridContainer>
           </Translate>
@@ -89,17 +101,28 @@ const Container = styled.div`
   margin-bottom: ${spaces.spacer};
 `
 
-const StyledIframe = styled.iframe`
+const StyledVideo = styled.video`
   display: block;
   width: 100%;
-  /* height: ${(props) =>
-    props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh'}; */
-  height: 200px;
+
   border-style: solid;
   border-color: ${(props) => props.theme.text};
   border-width: 2px;
 
-  /* margin-top: ${spaces.wide}; */
+  margin: auto;
 `
+
+// const StyledIframe = styled.iframe`
+//   display: block;
+//   width: 100%;
+//   /* height: ${(props) =>
+//     props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh'}; */
+//   height: 200px;
+//   border-style: solid;
+//   border-color: ${(props) => props.theme.text};
+//   border-width: 2px;
+
+//   /* margin-top: ${spaces.wide}; */
+// `
 
 export default Wwise

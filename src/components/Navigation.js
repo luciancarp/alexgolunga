@@ -21,9 +21,10 @@ const Navigation = () => {
   const [isRendered, setIsRendered] = useState(false)
 
   useEffect(() => {
-    setTimeout(function () {
-      setIsRendered(true)
-    }, 500)
+    // setTimeout(function () {
+    //   setIsRendered(true)
+    // }, 500)
+    setIsRendered(true)
   }, [])
   return (
     <>
