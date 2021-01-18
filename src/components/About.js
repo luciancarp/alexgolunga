@@ -267,10 +267,10 @@ const Container = styled('div').attrs(
       boxShadow: `${!state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow}`,
       webkitTransform: `scale(${!state ? startScale : endScale}) translate(${
         !state ? startX : endX
-      }rem, ${!state ? startY : endY}rem)`,
+      }rem, ${!state ? startY : endY}rem) translateZ(0)`,
       transform: `scale(${!state ? startScale : endScale}) translate(${
         !state ? startX : endX
-      }rem, ${!state ? startY : endY}rem)`,
+      }rem, ${!state ? startY : endY}rem) translateZ(0)`,
     },
   })
 )`
@@ -292,6 +292,9 @@ const Container = styled('div').attrs(
   padding-right: ${spaces.wide}; */
   padding-left: 11rem;
   padding-right: 11rem;
+
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
 
   /* background-color: ${(props) => props.theme.background};
 

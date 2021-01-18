@@ -18,16 +18,26 @@ const Recording = () => {
           A short reel consisting of some music projects to which I contributed
           with recording and/or mixing.
         </p>
-        <StyledAudio controls preload='none'>
-          <source src={recmixreel} type='audio/wav' />
-        </StyledAudio>
+        <AudioContainer>
+          <StyledAudio controls preload='none'>
+            <source src={recmixreel} type='audio/wav' />
+          </StyledAudio>
+        </AudioContainer>
       </Opacity>
     </Container>
   )
 }
 
+const AudioContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
 const StyledAudio = styled.audio`
   margin-bottom: ${spaces.narrow};
+  width: 70%;
 `
 
 const Title = styled.h1`
