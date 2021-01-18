@@ -76,6 +76,7 @@ const NavItem = styled.li`
 
   h2 {
     font-size: 0.75rem;
+    text-align: center;
   }
 
   transform-origin: left;
