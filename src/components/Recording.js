@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import { Opacity } from './Animations'
 import { spaces } from '../style/global'
 
-import recmixreel from '../assets/audio/recmixreel.wav'
+import recmixreelWav from '../assets/audio/recmixreel.wav'
+import recmixreelMp3 from '../assets/audio/recmixreel.mp3'
 
 const id = 'recording'
 const title = 'Recording / Mix'
@@ -20,7 +21,8 @@ const Recording = () => {
         </p>
         <AudioContainer>
           <StyledAudio controls preload='none'>
-            <source src={recmixreel} type='audio/wav' />
+            <source src={recmixreelMp3} type='audio/mp3' />
+            <source src={recmixreelWav} type='audio/wav' />
           </StyledAudio>
         </AudioContainer>
       </Opacity>
