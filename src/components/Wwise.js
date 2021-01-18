@@ -28,7 +28,7 @@ const Wwise = () => {
             </p>
             <p>
               The sound design is original, and most of the systems created
-              using Wwise are described in the walkthrough below. All of the
+              using Wwise are described in the following walkthrough. All of the
               scripts shown are written by me as well.
             </p>
           </GridItem>

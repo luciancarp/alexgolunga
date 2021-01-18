@@ -22,6 +22,7 @@ const Footer = () => {
 
 const Center = styled.div`
   font-size: ${fontSizes.small};
+  opacity: 0.75;
 `
 
 const Container = styled.footer`

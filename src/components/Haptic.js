@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Opacity } from './Animations'
-import { spaces } from '../style/global'
+import { spaces, screenSizes } from '../style/global'
 
 const id = 'haptic'
 const title = 'Haptic Design'
@@ -53,21 +53,28 @@ const Haptic = () => {
             <StyledImg
               fluid={query.superhotReworkHaptic.childImageSharp.fluid}
             />
-            <p>Section from SUPERHOT: MCD trailer Re-Sound Design</p>
+            <Caption>
+              Section from SUPERHOT: MCD trailer Re-Sound Design
+            </Caption>
           </GridItem>
           <GridItem col={'2'} row={1}>
             <StyledImg fluid={query.particlesHaptic.childImageSharp.fluid} />
-            <p>Jitter Particles Animation</p>
+            <Caption>Jitter Particles Animation</Caption>
           </GridItem>
           <GridItem col={'3'} row={1}>
             <StyledImg fluid={query.weaponLaunchImpact.childImageSharp.fluid} />
-            <p>Weapon Launch / Impact</p>
+            <Caption>Weapon Launch / Impact</Caption>
           </GridItem>
         </GridContainer>
       </Opacity>
     </Container>
   )
 }
+
+const Caption = styled.figcaption`
+  opacity: 0.75;
+  text-align: center;
+`
 
 const StyledImg = styled(Img)`
   margin-bottom: ${spaces.narrow};
@@ -82,6 +89,11 @@ const GridItem = styled.div`
 `
 
 const GridContainer = styled.div`
+  @media (min-width: ${screenSizes.laptop}) {
+    width: 70%;
+    margin: auto;
+  }
+
   margin-top: ${spaces.wide};
 
   display: grid;

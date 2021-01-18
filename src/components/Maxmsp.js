@@ -80,8 +80,8 @@ const Maxmsp = () => {
     <ImageContainer>
       <StyledImg fluid={query.FFTFX.childImageSharp.fluid} alt='FFTFX' />
       <Caption>
-        Spectral/wavetable based FX unit written using gen~. Great for mangling
-        stuff together.
+        Spectral/wavetable based FX unit written using gen~. Great for
+        contorting stuff together.
       </Caption>
     </ImageContainer>
   )
@@ -270,7 +270,7 @@ const GridContainer = styled.div`
   margin-top: ${spaces.wide};
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 2fr;
   /* grid-template-columns: auto auto; */
   /* grid-template-rows: 80px auto 80px; */
   column-gap: ${spaces.wide};
@@ -280,7 +280,7 @@ const GridContainer = styled.div`
 
 const InnerGridConteiner = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 3fr 4fr;
   column-gap: ${spaces.wide};
   row-gap: 0;
 `
@@ -291,6 +291,7 @@ const Title = styled.h1`
 
 const Caption = styled.figcaption`
   opacity: 0.75;
+  text-align: center;
 `
 
 const Container = styled.div`

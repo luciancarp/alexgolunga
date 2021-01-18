@@ -21,8 +21,10 @@ const Layout = ({ children }) => {
         <ThemeSwitcher />
         {isDesktopOrLaptop && <Navigation />}
         <>
-          <Content>{children}</Content>
-          <Footer />
+          <Content>
+            {children}
+            <Footer />
+          </Content>
         </>
       </Container>
       <LissajousContainer>

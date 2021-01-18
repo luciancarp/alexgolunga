@@ -62,7 +62,7 @@ const Beating = () => {
       </p>
       <p>
         Accompanied by a visual analogue in the form of audio-reactive 3D
-        Lissajous curves (pictured right).
+        Lissajous curves.
       </p>
     </>
   )
@@ -138,9 +138,7 @@ const Beating = () => {
         use an Ambisonic setup.
       </h3>
       <StyledImgCaption fluid={query.render.childImageSharp.fluid} />
-      <Caption style={{ textAlign: 'center' }}>
-        Quadraphonic system in a 7m x 7m x 5m room.
-      </Caption>
+      <Caption>Quadraphonic system in a 7m x 7m x 5m room.</Caption>
     </ImageContainer>
   )
 
@@ -175,7 +173,7 @@ const Beating = () => {
         <source src={ImmenvdemovidMp4} type='video/mp4' />
         <track />
       </StyledVideo>
-      <Caption style={{ textAlign: 'center' }}>
+      <Caption>
         Apologies for the dropped frames towards the end, this is due to
         hardware limitations.
       </Caption>
@@ -269,12 +267,16 @@ const Beating = () => {
                 <Lissajous3 />
               </GridItem>
 
-              <GridItem col={'2/ span 3'} row={'4'}>
-                <QuadraphonicImg />
-              </GridItem>
+              <GridItem col={'1 / span 3'} row={'4'}>
+                <InnerGridConteiner>
+                  <GridItem col={'2'} row={'4'}>
+                    <QuadraphonicImg />
+                  </GridItem>
 
-              <GridItem col={'1'} row={'4'}>
-                <DemoVideo customWidth={'100%'} />
+                  <GridItem col={'1'} row={'4'}>
+                    <DemoVideo customWidth={'100%'} />
+                  </GridItem>
+                </InnerGridConteiner>
               </GridItem>
 
               <GridItem col={'1 /span 3'} row={'5'}>
@@ -295,6 +297,7 @@ const StyledLink = styled.a`
 
 const Caption = styled.figcaption`
   opacity: 0.75;
+  text-align: center;
 `
 
 const VideoContainer = styled.div`
@@ -352,6 +355,13 @@ const GridContainer = styled.div`
   column-gap: ${spaces.wide};
   row-gap: ${spaces.wide};
   /* grid-auto-rows: minmax(100px, auto); */
+`
+
+const InnerGridConteiner = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  column-gap: ${spaces.wide};
+  row-gap: 0;
 `
 
 const Title = styled.h1`
