@@ -64,14 +64,14 @@ const About = () => {
           <Styleda
             target='_blank'
             rel='noopener noreferrer'
-            href={'http://twitter.com/'}
+            href={'https://twitter.com/alexgolunga'}
           >
             <Twitter />
           </Styleda>
           <Styleda
             target='_blank'
             rel='noopener noreferrer'
-            href={'http://linkedin.com/'}
+            href={'https://www.linkedin.com/in/alexgolunga/'}
           >
             <Linkedin />
           </Styleda>
@@ -90,14 +90,14 @@ const About = () => {
           <Styleda
             target='_blank'
             rel='noopener noreferrer'
-            href={'http://twitter.com/'}
+            href={'https://twitter.com/alexgolunga'}
           >
             <Twitter />
           </Styleda>
           <Styleda
             target='_blank'
             rel='noopener noreferrer'
-            href={'http://linkedin.com/'}
+            href={'https://www.linkedin.com/in/alexgolunga/'}
           >
             <Linkedin />
           </Styleda>
@@ -172,14 +172,14 @@ const About = () => {
                           <Styleda
                             target='_blank'
                             rel='noopener noreferrer'
-                            href={'http://twitter.com/'}
+                            href={'https://twitter.com/alexgolunga'}
                           >
                             <Twitter />
                           </Styleda>
                           <Styleda
                             target='_blank'
                             rel='noopener noreferrer'
-                            href={'http://linkedin.com/'}
+                            href={'https://www.linkedin.com/in/alexgolunga/'}
                           >
                             <Linkedin />
                           </Styleda>
@@ -324,7 +324,9 @@ const Contact = styled.div`
   justify-content: space-between;
 `
 
-const Email = styled.h3``
+const Email = styled.h3`
+  margin: 0;
+`
 
 const Title = styled.h1`
   /* margin-bottom: 0.5rem;
