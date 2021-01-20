@@ -417,6 +417,8 @@ const MContainer = styled.div`
   margin-bottom: ${spaces.wide};
 
   padding-top: ${spaces.wide};
+  padding-right: ${spaces.narrow};
+  padding-left: ${spaces.narrow};
 
   display: flex;
   flex-direction: column;

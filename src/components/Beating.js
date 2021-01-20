@@ -310,6 +310,7 @@ const VideoContainer = styled.div`
 const ImageContainer = styled.div`
   max-width: ${(props) =>
     props.customWidth ? `${props.customWidth}` : '100%'};
+  max-height: 50vh;
   margin-left: auto;
   margin-right: auto;
 `
