@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import { useMediaQuery } from 'react-responsive'
 
 import { Opacity } from './Animations'
+import useIsClient from '../hooks/useIsClient'
 import { spaces, screenSizes } from '../style/global'
 
 import ImmenvdemovidMp4 from '../assets/videos/Immenvdemovid.mp4'
@@ -24,14 +25,21 @@ export const Image = graphql`
   }
 `
 
+export const RenderImage = graphql`
+  fragment RenderImage on File {
+    childImageSharp {
+      fluid(maxWidth: 800, quality: 90) {
+        ...GatsbyImageSharpFluid_withWebp
+      }
+    }
+  }
+`
+
 const Beating = () => {
   const query = useStaticQuery(graphql`
     query {
       render: file(relativePath: { eq: "render.png" }) {
-        ...Image
-      }
-      render1: file(relativePath: { eq: "render1.png" }) {
-        ...Image
+        ...RenderImage
       }
       lissajous1: file(relativePath: { eq: "Lissajous1.png" }) {
         ...Image
@@ -110,58 +118,19 @@ const Beating = () => {
     </ImageContainer>
   )
 
-  // const content3 = (
-  //   <>
-  //     <p>
-  //       Symmetry is generally used as a constraining factor, but in this case it
-  //       provides homogeneity for the whole space, thus communicating the
-  //       importance of individual perception and liberating one from the idea of
-  //       an optimal listening position.
-  //     </p>
-  //     <p>
-  //       This provides an adequate canvas for the visuals as well, which are
-  //       represented in a 1:1 aspect ratio. They would be projected on the
-  //       ceiling of the space.
-  //     </p>
-  //     <p>
-  //       The room would be acoustically analysed beforehand to identify room
-  //       modes — information that will be used for tuning the experience or
-  //       enhancing it by using the harmonics inherent to the space.
-  //     </p>
-  //   </>
-  // )
-
   const QuadraphonicImg = () => (
     <ImageContainer>
       <h3 style={{ textAlign: 'center' }}>
         The installation would ideally be arranged in an empty cuboid room and
         use an Ambisonic setup.
       </h3>
-      <StyledImgCaption fluid={query.render.childImageSharp.fluid} />
+      <StyledImgCaption
+        imgStyle={{ objectFit: 'contain' }}
+        fluid={query.render.childImageSharp.fluid}
+      />
       <Caption>Quadraphonic system in a 7m x 7m x 5m room.</Caption>
     </ImageContainer>
   )
-
-  // const content4 = (
-  //   <>
-  //     <p>
-  //       Attached you will also find an audiovisual demo emulating a Quad setup
-  //       using the Ambisonics format (headphone use is recommended). It showcases
-  //       some spatial choreography and the use of the beating effect, along with
-  //       a direct feed from the visual engine.
-  //     </p>
-  //     <p>
-  //       The software used in the installation consists of custom patches built
-  //       using Max/MSP and Jitter and their respective Max4Live ports.
-  //     </p>
-  //   </>
-  // )
-
-  // const RenderImg = () => (
-  //   <ImageContainer>
-  //     <StyledImgBorder fluid={query.render1.childImageSharp.fluid} />
-  //   </ImageContainer>
-  // )
 
   const DemoVideo = ({ customWidth = '50%' }) => (
     <VideoContainer customWidth={customWidth}>
@@ -199,8 +168,12 @@ const Beating = () => {
     query: `(max-width: ${screenSizes.laptop})`,
   })
 
+  const { isClient, key } = useIsClient()
+
+  if (!isClient) return <Placeholder />
+
   return (
-    <Container id={id}>
+    <Container id={id} key={key}>
       <Opacity>
         <Title>{title}</Title>
         <GridContainer>
@@ -290,6 +263,10 @@ const Beating = () => {
   )
 }
 
+const Placeholder = styled.div`
+  height: 75vh;
+`
+
 const StyledLink = styled.a`
   text-decoration: underline;
   cursor: pointer;
@@ -310,7 +287,6 @@ const VideoContainer = styled.div`
 const ImageContainer = styled.div`
   max-width: ${(props) =>
     props.customWidth ? `${props.customWidth}` : '100%'};
-  max-height: 50vh;
   margin-left: auto;
   margin-right: auto;
 `
@@ -322,6 +298,9 @@ const StyledImgCaption = styled(Img)`
   border-style: solid;
   border-color: ${(props) => props.theme.text};
   border-width: 2px;
+
+  height: 100%;
+  width: 100%;
 `
 
 // const StyledImgBorder = styled(Img)`

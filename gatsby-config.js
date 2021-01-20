@@ -19,7 +19,6 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -27,12 +26,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/assets/images`,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-      options: {
-        devMode: false,
       },
     },
     {
