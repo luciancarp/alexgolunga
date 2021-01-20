@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-scroll'
 import Scrollspy from 'react-scrollspy'
@@ -18,34 +18,46 @@ const navLinks = [
 const linkIds = navLinks.map((link) => link.id)
 
 const Navigation = () => {
+  const [isRendered, setIsRendered] = useState(false)
+
+  useEffect(() => {
+    // setTimeout(function () {
+    //   setIsRendered(true)
+    // }, 500)
+    setIsRendered(true)
+  }, [])
   return (
-    <Opacity>
-      <Container>
-        <NavMenu>
-          <NavList
-            items={linkIds}
-            currentClassName='is-current'
-            scrolledPastClassName='is-past'
-            offset={-125}
-          >
-            {navLinks.map((link) => (
-              <NavItem key={link.id}>
-                <StyledLink
-                  activeClass='active'
-                  to={link.id}
-                  spy={true}
-                  smooth={true}
-                  offset={-125}
-                  duration={300}
-                >
-                  <h2>{link.title}</h2>
-                </StyledLink>
-              </NavItem>
-            ))}
-          </NavList>
-        </NavMenu>
-      </Container>
-    </Opacity>
+    <>
+      {isRendered && (
+        <Opacity>
+          <Container>
+            <NavMenu>
+              <NavList
+                items={linkIds}
+                currentClassName='is-current'
+                scrolledPastClassName='is-past'
+                offset={-125}
+              >
+                {navLinks.map((link) => (
+                  <NavItem key={link.id}>
+                    <StyledLink
+                      activeClass='active'
+                      to={link.id}
+                      spy={true}
+                      smooth={true}
+                      offset={-125}
+                      duration={300}
+                    >
+                      <h2>{link.title}</h2>
+                    </StyledLink>
+                  </NavItem>
+                ))}
+              </NavList>
+            </NavMenu>
+          </Container>
+        </Opacity>
+      )}
+    </>
   )
 }
 
@@ -89,6 +101,7 @@ const NavList = styled(Scrollspy)`
 
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   justify-content: center;
 `
 
@@ -96,6 +109,8 @@ const NavMenu = styled.nav`
   position: relative;
   z-index: 10;
   .is-current {
+    /* color: ${(props) => props.theme.primary}; */
+
     opacity: 1;
 
     transform-origin: left;
@@ -105,7 +120,14 @@ const NavMenu = styled.nav`
 
     -webkit-transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+    /* height: 1rem; */
+    /* margin: 1rem; */
   }
+
+  /* .is-past {
+    transform: translate(0%, 50%) rotate(90deg);
+  } */
 
   height: 100%;
 `
@@ -116,7 +138,10 @@ const Container = styled.header`
   position: fixed;
   z-index: 1;
   top: 0;
+  /* left: 0; */
   overflow: visible;
+
+  /* padding: ${spaces.wide}; */
 `
 
 export default Navigation
