@@ -38,7 +38,6 @@ const Layout = ({ children }) => {
 
 const Container = styled.div`
   margin: 0 auto;
-  /* max-width: 1024px; */
   padding: 1rem;
   padding-top: 0;
   padding-bottom: 0;
@@ -59,9 +58,7 @@ const Content = styled.main`
   }
 
   margin: 0 auto;
-  @media (min-width: ${screenSizes.laptop}) {
-    /* margin-left: ${spaces.widthNav}; */
-  }
+
   padding: ${spaces.narrow};
   padding-top: 0;
 `

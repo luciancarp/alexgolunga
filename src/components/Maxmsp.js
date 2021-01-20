@@ -271,11 +271,8 @@ const GridContainer = styled.div`
 
   display: grid;
   grid-template-columns: 1fr 2fr;
-  /* grid-template-columns: auto auto; */
-  /* grid-template-rows: 80px auto 80px; */
   column-gap: ${spaces.wide};
   row-gap: 3rem;
-  /* grid-auto-rows: minmax(100px, auto); */
 `
 
 const InnerGridConteiner = styled.div`

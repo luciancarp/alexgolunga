@@ -28,7 +28,7 @@ export const Image = graphql`
 export const RenderImage = graphql`
   fragment RenderImage on File {
     childImageSharp {
-      fluid(maxWidth: 800, quality: 90) {
+      fluid(maxWidth: 600, quality: 90) {
         ...GatsbyImageSharpFluid_withWebp
       }
     }
@@ -303,12 +303,6 @@ const StyledImgCaption = styled(Img)`
   width: 100%;
 `
 
-// const StyledImgBorder = styled(Img)`
-//   border-style: solid;
-//   border-color: ${(props) => props.theme.text};
-//   border-width: 2px;
-// `
-
 const StyledVideo = styled.video`
   width: 100%;
 
@@ -334,7 +328,6 @@ const GridContainer = styled.div`
   grid-template-columns: 2fr 1fr 1fr;
   column-gap: ${spaces.wide};
   row-gap: ${spaces.wide};
-  /* grid-auto-rows: minmax(100px, auto); */
 `
 
 const InnerGridConteiner = styled.div`
