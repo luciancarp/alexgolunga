@@ -107,16 +107,19 @@ const Title = styled.h1`
   text-align: left;
 `
 
-const VideoContaier = styled.div``
+const VideoContaier = styled.div`
+  width: 100%;
+  padding: 0;
+  margin: 0;
+`
 
 const Container = styled.div`
   height: ${(props) => (props.isMobileOrTablet ? '100%' : '80vh')};
   margin-bottom: ${(props) =>
     props.isMobileOrTablet ? `${spaces.spacer}` : `${spaces.wide}`};
-
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 `
 

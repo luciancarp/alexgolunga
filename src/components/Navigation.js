@@ -36,7 +36,7 @@ const Navigation = () => {
                 items={linkIds}
                 currentClassName='is-current'
                 scrolledPastClassName='is-past'
-                offset={-100}
+                offset={-125}
               >
                 {navLinks.map((link) => (
                   <NavItem key={link.id}>
@@ -45,7 +45,7 @@ const Navigation = () => {
                       to={link.id}
                       spy={true}
                       smooth={true}
-                      offset={-100}
+                      offset={-125}
                       duration={300}
                     >
                       <h2>{link.title}</h2>

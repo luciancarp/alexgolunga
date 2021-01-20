@@ -50,5 +50,6 @@ export const screenSizes = {
   tablet: '768px',
   laptop: '1024px',
   laptopL: '1440px',
+  desktopS: '1920px',
   desktop: '2560px',
 }

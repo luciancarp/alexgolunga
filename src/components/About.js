@@ -51,6 +51,34 @@ const About = () => {
     query: `(max-width: ${screenSizes.laptop})`,
   })
 
+  const regularSize = useMediaQuery({
+    query: `(min-width: ${screenSizes.desktopS})`,
+  })
+
+  const largeSize = useMediaQuery({
+    query: `(min-width: ${screenSizes.desktop})`,
+  })
+
+  const largeOffsetX = 26
+  const regularOffsetX = 17
+  const smallOffsetX = 12
+
+  const largeOffsetY = 10
+  const regularOffsetY = 5
+  const smallOffsetY = 2
+
+  let offsetTitleX = smallOffsetX
+  let offsetHeaderY = smallOffsetY
+
+  if (regularSize) {
+    offsetTitleX = regularOffsetX
+    offsetHeaderY = regularOffsetY
+  }
+  if (largeSize) {
+    offsetTitleX = largeOffsetX
+    offsetHeaderY = largeOffsetY
+  }
+
   const animate = scrolled
 
   const MInfoSticky = () => (
@@ -150,13 +178,14 @@ const About = () => {
                   ? '12px -20px 20px 0px rgba(0, 0, 0, 0.8), -12px -20px 20px 0px rgba(0, 0, 0, 0.8)'
                   : '12px -20px 20px 0px rgba(238, 238, 238, 0.8), -12px -20px 20px 0px rgba(238, 238, 238, 0.8)'
               }
+              startY={offsetHeaderY}
             >
               <Translate>
                 <Opacity>
                   <Header>
                     <TranslateDynamic
                       state={animate}
-                      endX={12}
+                      endX={offsetTitleX}
                       endY={0}
                       duration={'transform 0.2s ease-out'}
                     >
@@ -286,6 +315,15 @@ const Container = styled('div').attrs(
   padding-bottom: ${spaces.narrow};
 
   width: 1000px;
+
+  @media (min-width: ${screenSizes.desktopS}) {
+    width: 1124px;
+  }
+
+  @media (min-width: ${screenSizes.desktop}) {
+    width: 1540px;
+  }
+
   padding-left: calc(50px + 0.75rem);
   padding-right: calc(50px + 0.75rem);
 `

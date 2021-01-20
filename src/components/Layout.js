@@ -50,8 +50,14 @@ const Container = styled.div`
 const Content = styled.main`
   max-width: 900px;
 
-  /* margin-top: 0; */
-  /* margin-left: 0; */
+  @media (min-width: ${screenSizes.desktopS}) {
+    max-width: 1024px;
+  }
+
+  @media (min-width: ${screenSizes.desktop}) {
+    max-width: 1440px;
+  }
+
   margin: 0 auto;
   @media (min-width: ${screenSizes.laptop}) {
     /* margin-left: ${spaces.widthNav}; */
