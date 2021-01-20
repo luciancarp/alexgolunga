@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import Layout from '../components/Layout'
-import About from '../components/About'
 
 import Reel from '../components/Reel'
 import Wwise from '../components/Wwise'
@@ -17,7 +16,6 @@ const IndexPage = () => {
     <>
       <SEO />
       <Layout>
-        <About />
         <Reel />
         <Wwise />
         <Maxmsp />

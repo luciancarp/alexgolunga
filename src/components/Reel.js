@@ -31,12 +31,16 @@ const Reel = () => {
   if (!isClient) return <Placeholder />
 
   return (
-    <Container id={id} isMobileOrTablet={isMobileOrTablet} key={key}>
-      {isRendered ? (
-        <Translate>
-          <Opacity>
-            <Title>{title}</Title>
-            {/* <StyledIframe
+    <>
+      {!isMobileOrTablet && <Spacer />}
+
+      <Container id={id} isMobileOrTablet={isMobileOrTablet} key={key}>
+        {isRendered ? (
+          <Translate>
+            <Opacity>
+              <VideoContaier>
+                <Title>{title}</Title>
+                {/* <StyledIframe
               title='Game Audio Reel'
               allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
               frameBorder='0'
@@ -50,21 +54,23 @@ const Reel = () => {
               src='https://www.youtube.com/embed/I2N-Hweo3vE'
             /> */}
 
-            <StyledVideo
-              controls
-              preload='none'
-              poster={ReelPoster}
-              isMobileOrTablet={isMobileOrTablet}
-            >
-              <source src={ReelMp4} type='video/mp4' />
-              <track />
-            </StyledVideo>
-          </Opacity>
-        </Translate>
-      ) : (
-        <Placeholder />
-      )}
-    </Container>
+                <StyledVideo
+                  controls
+                  preload='none'
+                  poster={ReelPoster}
+                  isMobileOrTablet={isMobileOrTablet}
+                >
+                  <source src={ReelMp4} type='video/mp4' />
+                  <track />
+                </StyledVideo>
+              </VideoContaier>
+            </Opacity>
+          </Translate>
+        ) : (
+          <Placeholder />
+        )}
+      </Container>
+    </>
   )
 }
 
@@ -101,12 +107,21 @@ const Title = styled.h1`
   text-align: left;
 `
 
+const VideoContaier = styled.div``
+
 const Container = styled.div`
-  height: ${(props) => (props.isMobileOrTablet ? '100%' : '65vh')};
+  height: ${(props) => (props.isMobileOrTablet ? '100%' : '80vh')};
   margin-bottom: ${(props) =>
-    props.isMobileOrTablet
-      ? `${spaces.spacer}`
-      : `calc(10vh + ${spaces.wide})`};
+    props.isMobileOrTablet ? `${spaces.spacer}` : `${spaces.wide}`};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const Spacer = styled.div`
+  height: 20vh;
 `
 
 export default Reel

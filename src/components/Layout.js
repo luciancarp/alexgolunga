@@ -7,6 +7,7 @@ import Footer from './Footer'
 import ThemeSwitcher from './ThemeSwitcher'
 import Navigation from './Navigation'
 import Lissajous from './Lissajous'
+import About from './About'
 
 import { spaces, screenSizes } from '../style/global'
 
@@ -21,6 +22,7 @@ const Layout = ({ children }) => {
         <ThemeSwitcher />
         {isDesktopOrLaptop && <Navigation />}
         <>
+          <About />
           <Content>
             {children}
             <Footer />

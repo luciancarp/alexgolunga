@@ -7,6 +7,7 @@ import TwitterSvg from '../assets/svg/twitter.svg'
 
 import {
   TranslateDynamic,
+  ScaleDynamic,
   OpacityDynamic,
   Translate,
   Opacity,
@@ -155,37 +156,37 @@ const About = () => {
                   <Header>
                     <TranslateDynamic
                       state={animate}
-                      endX={17.7}
+                      endX={12}
                       endY={0}
                       duration={'transform 0.2s ease-out'}
                     >
-                      {/* <ScaleDynamic
+                      <ScaleDynamic
                         state={animate}
                         end={0.75}
                         duration={'transform 0.2s ease-out'}
-                      > */}
-                      <Info state={animate}>
-                        <Title>{title}</Title>
-                        <Contact>
-                          <Email>agolunga@gmail.com</Email>
+                      >
+                        <Info state={animate}>
+                          <Title>{title}</Title>
+                          <Contact>
+                            <Email>agolunga@gmail.com</Email>
 
-                          <Styleda
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            href={'https://twitter.com/alexgolunga'}
-                          >
-                            <Twitter />
-                          </Styleda>
-                          <Styleda
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            href={'https://www.linkedin.com/in/alexgolunga/'}
-                          >
-                            <Linkedin />
-                          </Styleda>
-                        </Contact>
-                      </Info>
-                      {/* </ScaleDynamic> */}
+                            <Styleda
+                              target='_blank'
+                              rel='noopener noreferrer'
+                              href={'https://twitter.com/alexgolunga'}
+                            >
+                              <Twitter />
+                            </Styleda>
+                            <Styleda
+                              target='_blank'
+                              rel='noopener noreferrer'
+                              href={'https://www.linkedin.com/in/alexgolunga/'}
+                            >
+                              <Linkedin />
+                            </Styleda>
+                          </Contact>
+                        </Info>
+                      </ScaleDynamic>
                     </TranslateDynamic>
 
                     {showDescription && (
@@ -249,11 +250,11 @@ const Container = styled('div').attrs(
     background = 'rgba(0, 0, 0, 0.5)',
     shadow = '0px 0px 0px 0px rgba(0, 0, 0, 0)',
     startScale = 1,
-    endScale = 0.75,
+    endScale = 1,
     startX = 0,
     endX = 0,
-    startY = 0,
-    endY = -3.2,
+    startY = 2,
+    endY = 0,
   }) => ({
     style: {
       webkitTransition: duration,
@@ -267,40 +268,26 @@ const Container = styled('div').attrs(
       boxShadow: `${!state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow}`,
       webkitTransform: `scale(${!state ? startScale : endScale}) translate(${
         !state ? startX : endX
-      }rem, ${!state ? startY : endY}rem) perspective(1px)`,
+      }rem, ${!state ? startY : endY}rem) perspective(1px) translateX(-50%)`,
       transform: `scale(${!state ? startScale : endScale}) translate(${
         !state ? startX : endX
-      }rem, ${!state ? startY : endY}rem) perspective(1px)`,
+      }rem, ${!state ? startY : endY}rem) perspective(1px) translateX(-50%)`,
     },
   })
 )`
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 50%;
   z-index: 2;
 
-  padding-top: 5vh;
-  height: 20vh;
+  height: 6rem;
 
-  margin-bottom: 5vh;
+  padding-top: 0.5rem;
   padding-bottom: ${spaces.narrow};
-  /* margin-left: -${spaces.wide};
-  margin-right: -${spaces.wide}; */
-  margin-left: -11rem;
-  margin-right: -11rem;
-  /* padding-left: ${spaces.wide};
-  padding-right: ${spaces.wide}; */
-  padding-left: 11rem;
-  padding-right: 11rem;
 
-  /* background-color: ${(props) => props.theme.background};
-
-  @supports (backdrop-filter: none) {
-    background-color: ${(props) => props.theme.backgroundTransp};
-    backdrop-filter: blur(${(props) => props.theme.blur});
-  } */
-
-  /* box-shadow: 0px 0px 10px 6px; */
+  width: 1000px;
+  padding-left: calc(50px + 0.75rem);
+  padding-right: calc(50px + 0.75rem);
 `
 
 const Header = styled.div`
@@ -312,7 +299,6 @@ const Info = styled.div`
 
   position: absolute;
   left: 0;
-  /* top: 50%; */
 
   -webkit-transition: transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
@@ -329,8 +315,6 @@ const Email = styled.h3`
 `
 
 const Title = styled.h1`
-  /* margin-bottom: 0.5rem;
-  font-size: 3rem; */
   margin-bottom: ${(props) =>
     props.customMargin ? `${props.customMargin}` : '0.5rem'};
   font-size: ${(props) =>
@@ -342,14 +326,11 @@ const Description = styled.div`
   right: 0;
   top: 50%;
 
-  /* transition: transform 0.2s ease-in-out; */
-
   padding-left: ${spaces.wide};
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* justify-content: space-between; */
 `
 
 const DescriptionLine = styled.p`
@@ -399,8 +380,6 @@ const MContainer = styled.div`
 
   padding-top: ${spaces.wide};
 
-  /* background-color: ${(props) => props.theme.background}; */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -413,9 +392,6 @@ const MInfo = styled.div`
 `
 
 const MInfoStickyContainer = styled.div`
-  /* position: -webkit-sticky;
-  position: sticky; */
-
   position: fixed;
   top: 0;
   left: 0;
@@ -429,8 +405,6 @@ const MInfoStickyContainer = styled.div`
     -webkit-backdrop-filter: blur(${(props) => props.theme.blur});
     backdrop-filter: blur(${(props) => props.theme.blur});
   }
-
-  /* box-shadow: 0px 0px 10px 5px ${(props) => props.theme.backgroundTransp}; */
 
   display: flex;
   justify-content: center;
