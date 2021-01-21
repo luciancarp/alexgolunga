@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import { useMediaQuery } from 'react-responsive'
 
 import { Opacity } from './Animations'
+import useIsClient from '../hooks/useIsClient'
 import { spaces, screenSizes } from '../style/global'
 
 import JitdemoMp4 from '../assets/videos/Jitdemo720.mp4'
@@ -147,6 +148,10 @@ const Maxmsp = () => {
     query: `(max-width: ${screenSizes.laptop})`,
   })
 
+  const { isClient, key } = useIsClient()
+
+  if (!isClient) return <Placeholder />
+
   return (
     <Container id={id}>
       <Opacity>
@@ -224,6 +229,10 @@ const Maxmsp = () => {
     </Container>
   )
 }
+
+const Placeholder = styled.div`
+  height: 75vh;
+`
 
 const VideoContainer = styled.div`
   max-width: ${(props) =>

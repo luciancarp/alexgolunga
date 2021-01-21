@@ -11,6 +11,55 @@ import WwisePoster from '../Wwise-preview.jpg'
 const id = 'wwise'
 const title = 'Wwise Unity Integration'
 
+const content = (
+  <>
+    <p>
+      Burgundy is a demo I created to demonstrate my proficiency with some Wwise
+      and Unity integration features.
+    </p>
+    <p>
+      The sound design is original, and most of the systems created using Wwise
+      are described in the following walkthrough. All of the scripts shown are
+      written by me as well.
+    </p>
+  </>
+)
+
+const StyledVideo = styled.video`
+  display: block;
+  width: 100%;
+
+  border-style: solid;
+  border-color: ${(props) => props.theme.text};
+  border-width: 2px;
+
+  margin: auto;
+`
+const WwiseVideo = ({ isMobileOrTablet }) => (
+  <>
+    {/* <StyledIframe
+  title='Game Audio Reel'
+  allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+  frameBorder='0'
+  loading='lazy'
+  webkitallowfullscreen='true'
+  mozallowfullscreen='true'
+  allowFullScreen
+  src='https://www.youtube.com/embed/K7sFteN4OB0'
+  isMobileOrTablet={isMobileOrTablet}
+/> */}
+    <StyledVideo
+      controls
+      preload='none'
+      poster={WwisePoster}
+      isMobileOrTablet={isMobileOrTablet}
+    >
+      <source src={WwiseMp4} type='video/mp4' />
+      <track />
+    </StyledVideo>
+  </>
+)
+
 const Wwise = () => {
   const isMobileOrTablet = useMediaQuery({
     query: `(max-width: ${screenSizes.laptop})`,
@@ -21,39 +70,25 @@ const Wwise = () => {
       <Opacity>
         <Title>{title}</Title>
         <GridContainer>
-          <GridItem col={'1'} row={1}>
-            <p>
-              Burgundy is a demo I created to demonstrate my proficiency with
-              some Wwise and Unity integration features.
-            </p>
-            <p>
-              The sound design is original, and most of the systems created
-              using Wwise are described in the following walkthrough. All of the
-              scripts shown are written by me as well.
-            </p>
-          </GridItem>
-          <GridItem col={'2'} row={1}>
-            {/* <StyledIframe
-                  title='Game Audio Reel'
-                  allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                  frameBorder='0'
-                  loading='lazy'
-                  webkitallowfullscreen='true'
-                  mozallowfullscreen='true'
-                  allowFullScreen
-                  src='https://www.youtube.com/embed/K7sFteN4OB0'
-                  isMobileOrTablet={isMobileOrTablet}
-                /> */}
-            <StyledVideo
-              controls
-              preload='none'
-              poster={WwisePoster}
-              isMobileOrTablet={isMobileOrTablet}
-            >
-              <source src={WwiseMp4} type='video/mp4' />
-              <track />
-            </StyledVideo>
-          </GridItem>
+          {isMobileOrTablet ? (
+            <>
+              <GridItem col={'1 / span 2'} row={1}>
+                {content}
+              </GridItem>
+              <GridItem col={'1 / span 2'} row={2}>
+                <WwiseVideo isMobileOrTablet={isMobileOrTablet} />
+              </GridItem>
+            </>
+          ) : (
+            <>
+              <GridItem col={'1'} row={1}>
+                {content}
+              </GridItem>
+              <GridItem col={'2'} row={1}>
+                <WwiseVideo isMobileOrTablet={isMobileOrTablet} />
+              </GridItem>
+            </>
+          )}{' '}
         </GridContainer>
       </Opacity>
     </Container>
@@ -85,17 +120,6 @@ const Title = styled.h1`
 
 const Container = styled.div`
   margin-bottom: ${spaces.spacer};
-`
-
-const StyledVideo = styled.video`
-  display: block;
-  width: 100%;
-
-  border-style: solid;
-  border-color: ${(props) => props.theme.text};
-  border-width: 2px;
-
-  margin: auto;
 `
 
 // const StyledIframe = styled.iframe`
