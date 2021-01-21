@@ -59,13 +59,13 @@ const About = () => {
     query: `(min-width: ${screenSizes.desktop})`,
   })
 
-  const largeOffsetX = 26
-  const regularOffsetX = 17
-  const smallOffsetX = 12
+  const largeOffsetX = 25.5
+  const regularOffsetX = 16
+  const smallOffsetX = 13
 
   const largeOffsetY = 10
   const regularOffsetY = 5
-  const smallOffsetY = 2
+  const smallOffsetY = 2.75
 
   let offsetTitleX = smallOffsetX
   let offsetHeaderY = smallOffsetY
@@ -286,16 +286,16 @@ const Container = styled('div').attrs(
     endY = 0,
   }) => ({
     style: {
-      webkitTransition: duration,
+      WebkitTransition: duration,
       transition: duration,
       backgroundColor: `${!state ? 'rgba(0, 0, 0, 0)' : background}`,
-      webkitBackdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
+      WebkitBackdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
       backdropFilter: `${!state ? 'blur(0)' : `blur(10px)`}`,
-      webkitBoxShadow: `${
+      WebkitBoxShadow: `${
         !state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow
       }`,
       boxShadow: `${!state ? '0px 0px 0px 0px rgba(0, 0, 0, 0)' : shadow}`,
-      webkitTransform: `scale(${!state ? startScale : endScale}) translate(${
+      WebkitTransform: `scale(${!state ? startScale : endScale}) translate(${
         !state ? startX : endX
       }rem, ${!state ? startY : endY}rem) perspective(1px) translateX(-50%)`,
       transform: `scale(${!state ? startScale : endScale}) translate(${
