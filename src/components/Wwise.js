@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 
 import { Opacity } from './Animations'
+import useIsClient from '../hooks/useIsClient'
 import { spaces, screenSizes } from '../style/global'
 
 import WwiseMp4 from '../assets/videos/Wwise.mp4'
@@ -65,8 +66,12 @@ const Wwise = () => {
     query: `(max-width: ${screenSizes.laptop})`,
   })
 
+  const { isClient, key } = useIsClient()
+
+  if (!isClient) return <Placeholder />
+
   return (
-    <Container id={id}>
+    <Container id={id} key={key}>
       <Opacity>
         <Title>{title}</Title>
         <GridContainer>
@@ -134,5 +139,9 @@ const Container = styled.div`
 
 //   /* margin-top: ${spaces.wide}; */
 // `
+
+const Placeholder = styled.div`
+  height: 75vh;
+`
 
 export default Wwise

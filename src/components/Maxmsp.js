@@ -153,7 +153,7 @@ const Maxmsp = () => {
   if (!isClient) return <Placeholder />
 
   return (
-    <Container id={id}>
+    <Container id={id} key={key}>
       <Opacity>
         <Title>{title}</Title>
         <GridContainer>
