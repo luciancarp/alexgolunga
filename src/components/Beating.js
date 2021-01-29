@@ -342,7 +342,7 @@ const Title = styled.h1`
 `
 
 const Container = styled.div`
-  margin-bottom: ${spaces.wide};
+  margin-bottom: ${spaces.spacer};
 `
 
 export default Beating

@@ -36,8 +36,12 @@ const AudioContainer = styled.div`
 `
 
 const StyledAudio = styled.audio`
-  margin-bottom: ${spaces.narrow};
+  margin-top: ${spaces.regular};
+  margin-bottom: ${spaces.regular};
   width: 70%;
+
+  font-family: inherit;
+  font-size: inherit;
 `
 
 const Title = styled.h1`

@@ -116,7 +116,7 @@ const VideoContaier = styled.div`
 const Container = styled.div`
   height: ${(props) => (props.isMobileOrTablet ? '100%' : '80vh')};
   margin-bottom: ${(props) =>
-    props.isMobileOrTablet ? `${spaces.spacer}` : `${spaces.wide}`};
+    props.isMobileOrTablet ? `${spaces.spacer}` : `${spaces.spacer}`};
   width: 100%;
   display: flex;
   flex-direction: column;
