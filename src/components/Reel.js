@@ -6,8 +6,8 @@ import { Opacity, Translate } from './Animations'
 import useIsClient from '../hooks/useIsClient'
 import { spaces, screenSizes } from '../style/global'
 
-import ReelMp4 from '../assets/videos/reel.mp4'
-import ReelPoster from '../reel-preview.jpg'
+// import ReelMp4 from '../assets/videos/reel.mp4'
+// import ReelPoster from '../reel-preview.jpg'
 
 const id = 'reel'
 const title = 'Game Audio Reel'
@@ -40,21 +40,28 @@ const Reel = () => {
             <Opacity>
               <VideoContaier>
                 <Title>{title}</Title>
-                {/* <StyledIframe
-              title='Game Audio Reel'
-              allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-              frameBorder='0'
-              loading='lazy'
-              webkitallowfullscreen='true'
-              mozallowfullscreen='true'
-              allowFullScreen
-              // width="600"
-              // height="337"
-              isMobileOrTablet={isMobileOrTablet}
-              src='https://www.youtube.com/embed/I2N-Hweo3vE'
-            /> */}
-
-                <StyledVideo
+                <ReelContainer isMobileOrTablet={isMobileOrTablet}>
+                  <StyledIframe
+                    title='Game Audio Reel'
+                    allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                    frameBorder='0'
+                    loading='lazy'
+                    webkitallowfullscreen='true'
+                    mozallowfullscreen='true'
+                    allowFullScreen
+                    isMobileOrTablet={isMobileOrTablet}
+                    width='560'
+                    height='315'
+                    src='https://player.vimeo.com/video/506824916?title=0&byline=0'
+                  />
+                </ReelContainer>
+                {/* <iframe
+                  src='https://player.vimeo.com/video/499218137?autoplay=1&title=0&byline=0&portrait=0'
+                  frameborder='0'
+                  allow='autoplay; fullscreen; picture-in-picture'
+                  allowfullscreen
+                ></iframe> */}
+                {/* <StyledVideo
                   controls
                   preload='none'
                   poster={ReelPoster}
@@ -62,7 +69,7 @@ const Reel = () => {
                 >
                   <source src={ReelMp4} type='video/mp4' />
                   <track />
-                </StyledVideo>
+                </StyledVideo> */}
               </VideoContaier>
             </Opacity>
           </Translate>
@@ -78,29 +85,48 @@ const Placeholder = styled.div`
   height: 75vh;
 `
 
-// const StyledIframe = styled.iframe`
-//   display: block;
-//   width: 100%;
-//   height: ${(props) => (props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh')};
-
-//   border-style: solid;
-//   border-color: ${(props) => props.theme.text};
-//   border-width: 2px;
-// `
-
-const StyledVideo = styled.video`
+const ReelContainer = styled.div`
   display: block;
-  /* width: 90%; */
-  width: ${(props) => (props.isMobileOrTablet ? '100%' : '90%')};
-  /* height: ${(props) =>
-    props.isMobileOrTablet ? 'calc(100vw * 0.5)' : '60vh'}; */
+  position: relative;
+  overflow: hidden;
+  /* padding-top: 56.25%; // 16/9 ratio */
+  padding-top: 51%;
+  @media (max-width: ${screenSizes.laptop}) {
+    padding-top: 56.25%;
+  }
+
+  width: 90%;
+  @media (max-width: ${screenSizes.laptop}) {
+    width: 100%;
+  }
+
+  margin: auto;
+`
+
+const StyledIframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   border-style: solid;
   border-color: ${(props) => props.theme.text};
   border-width: 2px;
 
-  margin: auto;
+  padding: 0;
 `
+
+// const StyledVideo = styled.video`
+//   display: block;
+//   width: ${(props) => (props.isMobileOrTablet ? '100%' : '90%')};
+
+//   border-style: solid;
+//   border-color: ${(props) => props.theme.text};
+//   border-width: 2px;
+
+//   margin: auto;
+// `
 
 const Title = styled.h1`
   margin-bottom: ${spaces.wide};
