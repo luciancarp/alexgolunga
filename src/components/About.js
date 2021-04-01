@@ -145,7 +145,7 @@ const About = () => {
             target='_blank'
             rel='noopener noreferrer'
             href={
-              'https://drive.google.com/file/d/1beE-MiD-ynuhRe_z8VQryN5cUGi7VTgW/view'
+              'https://drive.google.com/file/d/1totDAVHHHuLGrO3vw9Z72syk-2GdUE3m/view'
             }
           >
             here
@@ -233,7 +233,7 @@ const About = () => {
                               target='_blank'
                               rel='noopener noreferrer'
                               href={
-                                'https://drive.google.com/file/d/1beE-MiD-ynuhRe_z8VQryN5cUGi7VTgW/view'
+                                'https://drive.google.com/file/d/1totDAVHHHuLGrO3vw9Z72syk-2GdUE3m/view'
                               }
                             >
                               here
