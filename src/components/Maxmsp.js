@@ -34,7 +34,7 @@ export const Image = graphql`
 const Maxmsp = () => {
   const query = useStaticQuery(graphql`
     query {
-      tremolo: file(relativePath: { eq: "AG_Tremolo.png" }) {
+      transientShaper: file(relativePath: { eq: "AG_TransientShaper.png" }) {
         ...Image
       }
       envGenSynth: file(relativePath: { eq: "AG_EnvGenSynth.png" }) {
@@ -56,11 +56,17 @@ const Maxmsp = () => {
     </>
   )
 
-  const TremoloImg = () => (
+  const TransientShaperImg = () => (
     <ImageContainer>
-      <StyledImg fluid={query.tremolo.childImageSharp.fluid} alt='Tremolo' />
+      <StyledImg
+        fluid={query.transientShaper.childImageSharp.fluid}
+        alt='Transient Shaper'
+      />
 
-      <Caption>Tremolo with switchable waveforms and smoothing.</Caption>
+      <Caption>
+        Transient shaper plugin with transient detection and envelope following
+        functions.
+      </Caption>
     </ImageContainer>
   )
 
@@ -163,7 +169,7 @@ const Maxmsp = () => {
                 {content1}
               </GridItem>
               <GridItem col={'1 / span 2'} row={'2'}>
-                <TremoloImg />
+                <TransientShaperImg />
               </GridItem>
               <GridItem col={'1 / span 2'} row={'3'}>
                 <EnvGenSynthImg />
@@ -200,7 +206,7 @@ const Maxmsp = () => {
                 <EnvGenSynthImg />
               </GridItem>
               <GridItem col={'1'} row={'3'}>
-                <TremoloImg />
+                <TransientShaperImg />
               </GridItem>
               <GridItem col={'2'} row={'2'}>
                 <FFTFXImg />
