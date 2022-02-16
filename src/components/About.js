@@ -139,7 +139,7 @@ const About = () => {
             <br />
           </DescriptionLine>
         ))}
-        <CV>
+        <Cv>
           You can find my CV{' '}
           <CVLink
             target='_blank'
@@ -151,7 +151,7 @@ const About = () => {
             here
           </CVLink>
           .
-        </CV>
+        </Cv>
       </MDescription>
     </MContainer>
   )
@@ -227,7 +227,7 @@ const About = () => {
                               <br />
                             </DescriptionLine>
                           ))}
-                          <CV>
+                          <Cv>
                             You can find my CV{' '}
                             <CVLink
                               target='_blank'
@@ -239,7 +239,7 @@ const About = () => {
                               here
                             </CVLink>
                             .
-                          </CV>
+                          </Cv>
                         </Description>
                       </OpacityDynamic>
                     )}
@@ -375,7 +375,7 @@ const DescriptionLine = styled.p`
   margin-bottom: 0.1rem;
 `
 
-const CV = styled.p`
+const Cv = styled.p`
   margin-top: ${spaces.narrow};
 `
 

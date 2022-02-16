@@ -9,12 +9,12 @@ import Haptic from '../components/Haptic'
 import Recording from '../components/Recording'
 import Beating from '../components/Beating'
 
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 
 const IndexPage = () => {
   return (
     <>
-      <SEO />
+      <Seo />
       <Layout>
         <Reel />
         <Wwise />
