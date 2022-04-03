@@ -1,313 +1,313 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
-import { useMediaQuery } from 'react-responsive'
+// import React from 'react'
+// import styled from 'styled-components'
+// import { graphql, useStaticQuery } from 'gatsby'
+// import Img from 'gatsby-image'
+// import { useMediaQuery } from 'react-responsive'
 
-import { Opacity } from './Animations'
-import useIsClient from '../hooks/useIsClient'
-import { spaces, screenSizes } from '../style/global'
+// import { Opacity } from './Animations'
+// import useIsClient from '../hooks/useIsClient'
+// import { spaces, screenSizes } from '../style/global'
 
-import JitdemoMp4 from '../assets/videos/Jitdemo720.mp4'
-import JitdemoWebm from '../assets/videos/Jitdemo720.webm'
-import JitdemoPoster from '../Jitdemo720-preview.jpg'
-import MfeditMp4 from '../assets/videos/Mfedit.mp4'
-import MfeditWebm from '../assets/videos/Mfedit.webm'
-import MfeditPoster from '../Mfedit-preview.jpg'
-import NotionparticlesconvertedMp4 from '../assets/videos/Notionparticlesconverted.mp4'
-import NotionparticlesconvertedWebm from '../assets/videos/Notionparticlesconverted.webm'
-import NotionparticlesconvertedPoster from '../Notionparticlesconverted-preview.jpg'
+// import JitdemoMp4 from '../assets/videos/Jitdemo720.mp4'
+// import JitdemoWebm from '../assets/videos/Jitdemo720.webm'
+// import JitdemoPoster from '../Jitdemo720-preview.jpg'
+// import MfeditMp4 from '../assets/videos/Mfedit.mp4'
+// import MfeditWebm from '../assets/videos/Mfedit.webm'
+// import MfeditPoster from '../Mfedit-preview.jpg'
+// import NotionparticlesconvertedMp4 from '../assets/videos/Notionparticlesconverted.mp4'
+// import NotionparticlesconvertedWebm from '../assets/videos/Notionparticlesconverted.webm'
+// import NotionparticlesconvertedPoster from '../Notionparticlesconverted-preview.jpg'
 
-const id = 'maxmsp'
-const title = 'MaxMSP'
+// const id = 'maxmsp'
+// const title = 'MaxMSP'
 
-export const Image = graphql`
-  fragment Image on File {
-    childImageSharp {
-      fluid(maxWidth: 600, quality: 90) {
-        ...GatsbyImageSharpFluid_withWebp
-      }
-    }
-  }
-`
+// export const Image = graphql`
+//   fragment Image on File {
+//     childImageSharp {
+//       fluid(maxWidth: 600, quality: 90) {
+//         ...GatsbyImageSharpFluid_withWebp
+//       }
+//     }
+//   }
+// `
 
-const Maxmsp = () => {
-  const query = useStaticQuery(graphql`
-    query {
-      transientShaper: file(relativePath: { eq: "AG_TransientShaper.png" }) {
-        ...Image
-      }
-      envGenSynth: file(relativePath: { eq: "AG_EnvGenSynth.png" }) {
-        ...Image
-      }
-      FFTFX: file(relativePath: { eq: "AG_FFTFX.png" }) {
-        ...Image
-      }
-    }
-  `)
+// const Maxmsp = () => {
+//   const query = useStaticQuery(graphql`
+//     query {
+//       transientShaper: file(relativePath: { eq: "AG_TransientShaper.png" }) {
+//         ...Image
+//       }
+//       envGenSynth: file(relativePath: { eq: "AG_EnvGenSynth.png" }) {
+//         ...Image
+//       }
+//       FFTFX: file(relativePath: { eq: "AG_FFTFX.png" }) {
+//         ...Image
+//       }
+//     }
+//   `)
 
-  const content1 = (
-    <>
-      <p>
-        I program custom audio devices such as flexible samplers, basic reverbs,
-        audio spatialisation devices (using binaural and ambisonic externals),
-        synths and utilities.
-      </p>
-    </>
-  )
+//   const content1 = (
+//     <>
+//       <p>
+//         I program custom audio devices such as flexible samplers, basic reverbs,
+//         audio spatialisation devices (using binaural and ambisonic externals),
+//         synths and utilities.
+//       </p>
+//     </>
+//   )
 
-  const TransientShaperImg = () => (
-    <ImageContainer>
-      <StyledImg
-        fluid={query.transientShaper.childImageSharp.fluid}
-        alt='Transient Shaper'
-      />
+//   const TransientShaperImg = () => (
+//     <ImageContainer>
+//       <StyledImg
+//         fluid={query.transientShaper.childImageSharp.fluid}
+//         alt='Transient Shaper'
+//       />
 
-      <Caption>
-        Transient shaper plugin with transient detection and envelope following
-        functions.
-      </Caption>
-    </ImageContainer>
-  )
+//       <Caption>
+//         Transient shaper plugin with transient detection and envelope following
+//         functions.
+//       </Caption>
+//     </ImageContainer>
+//   )
 
-  const EnvGenSynthImg = () => (
-    <ImageContainer>
-      <StyledImg
-        fluid={query.envGenSynth.childImageSharp.fluid}
-        alt='EnvGenSynth'
-      />
-      <Caption>
-        Single-oscillator synth with multiple waveform/noise options and
-        multi-stage envelope generator.
-      </Caption>
-    </ImageContainer>
-  )
+//   const EnvGenSynthImg = () => (
+//     <ImageContainer>
+//       <StyledImg
+//         fluid={query.envGenSynth.childImageSharp.fluid}
+//         alt='EnvGenSynth'
+//       />
+//       <Caption>
+//         Single-oscillator synth with multiple waveform/noise options and
+//         multi-stage envelope generator.
+//       </Caption>
+//     </ImageContainer>
+//   )
 
-  const FFTFXImg = () => (
-    <ImageContainer>
-      <StyledImg fluid={query.FFTFX.childImageSharp.fluid} alt='FFTFX' />
-      <Caption>
-        Spectral/wavetable based FX unit written using gen~. Great for
-        contorting stuff together.
-      </Caption>
-    </ImageContainer>
-  )
+//   const FFTFXImg = () => (
+//     <ImageContainer>
+//       <StyledImg fluid={query.FFTFX.childImageSharp.fluid} alt='FFTFX' />
+//       <Caption>
+//         Spectral/wavetable based FX unit written using gen~. Great for
+//         contorting stuff together.
+//       </Caption>
+//     </ImageContainer>
+//   )
 
-  const MfeditVideo = () => (
-    <VideoContainer>
-      <StyledVideo controls preload='none' poster={MfeditPoster}>
-        <source src={MfeditWebm} type='video/webm' />
-        <source src={MfeditMp4} type='video/mp4' />
-        <track />
-      </StyledVideo>
-      <Caption>
-        Millefeuille: an 8-voice sound layering tool with per-voice multi-stage
-        amplitude envelopes and non-linear playback functions.
-      </Caption>
-    </VideoContainer>
-  )
+//   const MfeditVideo = () => (
+//     <VideoContainer>
+//       <StyledVideo controls preload='none' poster={MfeditPoster}>
+//         <source src={MfeditWebm} type='video/webm' />
+//         <source src={MfeditMp4} type='video/mp4' />
+//         <track />
+//       </StyledVideo>
+//       <Caption>
+//         Millefeuille: an 8-voice sound layering tool with per-voice multi-stage
+//         amplitude envelopes and non-linear playback functions.
+//       </Caption>
+//     </VideoContainer>
+//   )
 
-  const JitterTitle = () => (
-    <h2
-      style={{
-        textAlign: 'center',
-        marginBottom: spaces.wide,
-      }}
-    >
-      I also create minimalist visuals using Jitter:
-    </h2>
-  )
+//   const JitterTitle = () => (
+//     <h2
+//       style={{
+//         textAlign: 'center',
+//         marginBottom: spaces.wide,
+//       }}
+//     >
+//       I also create minimalist visuals using Jitter:
+//     </h2>
+//   )
 
-  const JitDemoVideo = ({ customWidth = '50%' }) => (
-    <VideoContainer customWidth={customWidth}>
-      <StyledVideo controls preload='none' poster={JitdemoPoster}>
-        <source src={JitdemoWebm} type='video/webm' />
-        <source src={JitdemoMp4} type='video/mp4' />
-        <track />
-      </StyledVideo>
-      <Caption>
-        Oscillator waveforms are switched stochastically using a table of
-        weighted probabilities and the audio morph is smoothed with gen~
-      </Caption>
-    </VideoContainer>
-  )
+//   const JitDemoVideo = ({ customWidth = '50%' }) => (
+//     <VideoContainer customWidth={customWidth}>
+//       <StyledVideo controls preload='none' poster={JitdemoPoster}>
+//         <source src={JitdemoWebm} type='video/webm' />
+//         <source src={JitdemoMp4} type='video/mp4' />
+//         <track />
+//       </StyledVideo>
+//       <Caption>
+//         Oscillator waveforms are switched stochastically using a table of
+//         weighted probabilities and the audio morph is smoothed with gen~
+//       </Caption>
+//     </VideoContainer>
+//   )
 
-  const ParticlesVideo = ({ customWidth = '50%' }) => (
-    <VideoContainer customWidth={customWidth}>
-      <StyledVideo
-        controls
-        preload='none'
-        poster={NotionparticlesconvertedPoster}
-      >
-        <source src={NotionparticlesconvertedWebm} type='video/webm' />
-        <source src={NotionparticlesconvertedMp4} type='video/mp4' />
-        <track />
-      </StyledVideo>
-      <Caption>
-        Particle system written with jit.gen and some openGL Jitter modules. The
-        background is actually displaying the lifetimes of the particles.
-      </Caption>
-    </VideoContainer>
-  )
+//   const ParticlesVideo = ({ customWidth = '50%' }) => (
+//     <VideoContainer customWidth={customWidth}>
+//       <StyledVideo
+//         controls
+//         preload='none'
+//         poster={NotionparticlesconvertedPoster}
+//       >
+//         <source src={NotionparticlesconvertedWebm} type='video/webm' />
+//         <source src={NotionparticlesconvertedMp4} type='video/mp4' />
+//         <track />
+//       </StyledVideo>
+//       <Caption>
+//         Particle system written with jit.gen and some openGL Jitter modules. The
+//         background is actually displaying the lifetimes of the particles.
+//       </Caption>
+//     </VideoContainer>
+//   )
 
-  const isMobileOrTablet = useMediaQuery({
-    query: `(max-width: ${screenSizes.laptop})`,
-  })
+//   const isMobileOrTablet = useMediaQuery({
+//     query: `(max-width: ${screenSizes.laptop})`,
+//   })
 
-  const { isClient, key } = useIsClient()
+//   const { isClient, key } = useIsClient()
 
-  if (!isClient) return <Placeholder />
+//   if (!isClient) return <Placeholder />
 
-  return (
-    <Container id={id} key={key}>
-      <Opacity>
-        <Title>{title}</Title>
-        <GridContainer>
-          {isMobileOrTablet ? (
-            <>
-              <GridItem col={'1 / span 2'} row={'1'}>
-                {content1}
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={'2'}>
-                <TransientShaperImg />
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={'3'}>
-                <EnvGenSynthImg />
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={'4'}>
-                <FFTFXImg />
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={'5'}>
-                <MfeditVideo />
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={'6'}>
-                <InnerGridConteiner>
-                  <GridItem col={'1 / span 2'} row={'1'}>
-                    <JitterTitle />
-                  </GridItem>
+//   return (
+//     <Container id={id} key={key}>
+//       <Opacity>
+//         <Title>{title}</Title>
+//         <GridContainer>
+//           {isMobileOrTablet ? (
+//             <>
+//               <GridItem col={'1 / span 2'} row={'1'}>
+//                 {content1}
+//               </GridItem>
+//               <GridItem col={'1 / span 2'} row={'2'}>
+//                 <TransientShaperImg />
+//               </GridItem>
+//               <GridItem col={'1 / span 2'} row={'3'}>
+//                 <EnvGenSynthImg />
+//               </GridItem>
+//               <GridItem col={'1 / span 2'} row={'4'}>
+//                 <FFTFXImg />
+//               </GridItem>
+//               <GridItem col={'1 / span 2'} row={'5'}>
+//                 <MfeditVideo />
+//               </GridItem>
+//               <GridItem col={'1 / span 2'} row={'6'}>
+//                 <InnerGridConteiner>
+//                   <GridItem col={'1 / span 2'} row={'1'}>
+//                     <JitterTitle />
+//                   </GridItem>
 
-                  <GridItem col={'1 / span 2'} row={'2'}>
-                    <div style={{ marginBottom: '2rem' }}>
-                      <JitDemoVideo customWidth={'70%'} />
-                    </div>
-                  </GridItem>
-                  <GridItem col={'1 / span 2'} row={'3'}>
-                    <ParticlesVideo customWidth={'70%'} />
-                  </GridItem>
-                </InnerGridConteiner>
-              </GridItem>
-            </>
-          ) : (
-            <>
-              <GridItem col={'1 / span 2'} row={'1'}>
-                {content1}
-              </GridItem>
-              <GridItem col={'1'} row={'2'}>
-                <EnvGenSynthImg />
-              </GridItem>
-              <GridItem col={'1'} row={'3'}>
-                <TransientShaperImg />
-              </GridItem>
-              <GridItem col={'2'} row={'2'}>
-                <FFTFXImg />
-              </GridItem>
-              <GridItem col={'2'} row={'3'}>
-                <MfeditVideo />
-              </GridItem>
-              <GridItem col={'1 / span 2'} row={'4'}>
-                <InnerGridConteiner>
-                  <GridItem col={'1 / span 2'} row={'1'}>
-                    <JitterTitle />
-                  </GridItem>
+//                   <GridItem col={'1 / span 2'} row={'2'}>
+//                     <div style={{ marginBottom: '2rem' }}>
+//                       <JitDemoVideo customWidth={'70%'} />
+//                     </div>
+//                   </GridItem>
+//                   <GridItem col={'1 / span 2'} row={'3'}>
+//                     <ParticlesVideo customWidth={'70%'} />
+//                   </GridItem>
+//                 </InnerGridConteiner>
+//               </GridItem>
+//             </>
+//           ) : (
+//             <>
+//               <GridItem col={'1 / span 2'} row={'1'}>
+//                 {content1}
+//               </GridItem>
+//               <GridItem col={'1'} row={'2'}>
+//                 <EnvGenSynthImg />
+//               </GridItem>
+//               <GridItem col={'1'} row={'3'}>
+//                 <TransientShaperImg />
+//               </GridItem>
+//               <GridItem col={'2'} row={'2'}>
+//                 <FFTFXImg />
+//               </GridItem>
+//               <GridItem col={'2'} row={'3'}>
+//                 <MfeditVideo />
+//               </GridItem>
+//               <GridItem col={'1 / span 2'} row={'4'}>
+//                 <InnerGridConteiner>
+//                   <GridItem col={'1 / span 2'} row={'1'}>
+//                     <JitterTitle />
+//                   </GridItem>
 
-                  <GridItem col={'1'} row={'2'}>
-                    <JitDemoVideo customWidth={'100%'} />
-                  </GridItem>
-                  <GridItem col={'2'} row={'2'}>
-                    <ParticlesVideo customWidth={'100%'} />
-                  </GridItem>
-                </InnerGridConteiner>
-              </GridItem>
-            </>
-          )}
-        </GridContainer>
-      </Opacity>
-    </Container>
-  )
-}
+//                   <GridItem col={'1'} row={'2'}>
+//                     <JitDemoVideo customWidth={'100%'} />
+//                   </GridItem>
+//                   <GridItem col={'2'} row={'2'}>
+//                     <ParticlesVideo customWidth={'100%'} />
+//                   </GridItem>
+//                 </InnerGridConteiner>
+//               </GridItem>
+//             </>
+//           )}
+//         </GridContainer>
+//       </Opacity>
+//     </Container>
+//   )
+// }
 
-const Placeholder = styled.div`
-  height: 75vh;
-`
+// const Placeholder = styled.div`
+//   height: 75vh;
+// `
 
-const VideoContainer = styled.div`
-  max-width: ${(props) =>
-    props.customWidth ? `${props.customWidth}` : '100%'};
-  margin-left: auto;
-  margin-right: auto;
-`
+// const VideoContainer = styled.div`
+//   max-width: ${(props) =>
+//     props.customWidth ? `${props.customWidth}` : '100%'};
+//   margin-left: auto;
+//   margin-right: auto;
+// `
 
-const ImageContainer = styled.div`
-  max-width: ${(props) =>
-    props.customWidth ? `${props.customWidth}` : '100%'};
-  margin-left: auto;
-  margin-right: auto;
-`
+// const ImageContainer = styled.div`
+//   max-width: ${(props) =>
+//     props.customWidth ? `${props.customWidth}` : '100%'};
+//   margin-left: auto;
+//   margin-right: auto;
+// `
 
-const StyledImg = styled(Img)`
-  margin-bottom: ${spaces.narrow};
-  border-style: solid;
-  border-color: ${(props) => props.theme.text};
-  border-width: 2px;
-`
+// const StyledImg = styled(Img)`
+//   margin-bottom: ${spaces.narrow};
+//   border-style: solid;
+//   border-color: ${(props) => props.theme.text};
+//   border-width: 2px;
+// `
 
-const StyledVideo = styled.video`
-  width: 100%;
+// const StyledVideo = styled.video`
+//   width: 100%;
 
-  border-style: solid;
-  border-color: ${(props) => props.theme.text};
-  border-width: 2px;
+//   border-style: solid;
+//   border-color: ${(props) => props.theme.text};
+//   border-width: 2px;
 
-  margin-bottom: ${spaces.narrow};
-`
+//   margin-bottom: ${spaces.narrow};
+// `
 
-const GridItem = styled.div`
-  grid-column: ${(props) => (props.col ? props.col : '1 / 2')};
-  grid-row: ${(props) => (props.row ? props.row : '1')};
+// const GridItem = styled.div`
+//   grid-column: ${(props) => (props.col ? props.col : '1 / 2')};
+//   grid-row: ${(props) => (props.row ? props.row : '1')};
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// `
 
-const GridContainer = styled.div`
-  margin-top: ${spaces.wide};
+// const GridContainer = styled.div`
+//   margin-top: ${spaces.wide};
 
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  column-gap: ${spaces.wide};
-  row-gap: 3rem;
-`
+//   display: grid;
+//   grid-template-columns: 1fr 2fr;
+//   column-gap: ${spaces.wide};
+//   row-gap: 3rem;
+// `
 
-const InnerGridConteiner = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 4fr;
-  column-gap: ${spaces.wide};
-  row-gap: 0;
-`
+// const InnerGridConteiner = styled.div`
+//   display: grid;
+//   grid-template-columns: 3fr 4fr;
+//   column-gap: ${spaces.wide};
+//   row-gap: 0;
+// `
 
-const Title = styled.h1`
-  margin-bottom: ${spaces.wide};
-`
+// const Title = styled.h1`
+//   margin-bottom: ${spaces.wide};
+// `
 
-const Caption = styled.figcaption`
-  opacity: 0.75;
-  text-align: center;
-`
+// const Caption = styled.figcaption`
+//   opacity: 0.75;
+//   text-align: center;
+// `
 
-const Container = styled.div`
-  margin-bottom: ${spaces.spacer};
-`
+// const Container = styled.div`
+//   margin-bottom: ${spaces.spacer};
+// `
 
-export default Maxmsp
+// export default Maxmsp
