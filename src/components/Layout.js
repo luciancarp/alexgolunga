@@ -11,6 +11,8 @@ import About from './About'
 
 import { spaces, screenSizes } from '../style/global'
 
+const isWorkInProgress = true
+
 const Layout = ({ children }) => {
   const isDesktopOrLaptop = useMediaQuery({
     query: `(min-width: ${screenSizes.laptopL})`,
@@ -20,7 +22,7 @@ const Layout = ({ children }) => {
     <>
       <Container>
         <ThemeSwitcher />
-        {isDesktopOrLaptop && <Navigation />}
+        {isDesktopOrLaptop && !isWorkInProgress && <Navigation />}
         <>
           <About />
           <Content>

@@ -17,8 +17,10 @@ import ThemeContext from '../style/Theme'
 import useIsClient from '../hooks/useIsClient'
 
 const title = 'Alex Golunga'
-const description =
-  'Hi, my name is Alex.\nSound designer and audio engineer.\nMaxMSP programmer.\nPassionate about game audio implementation and DSP.'
+// const description =
+//   'Hi, my name is Alex.\nSound designer and audio engineer.\nMaxMSP programmer.\nPassionate about game audio implementation and DSP.'
+
+const description = "Hi, my name is Alex.\nI'm a Technical Audio Designer."
 
 const About = () => {
   const [scrolled, setScrolled] = useState(false)
